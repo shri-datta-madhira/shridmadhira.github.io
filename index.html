@@ -31,6 +31,39 @@
             background: #5A67D8; /* Darker indigo on hover */
         }
 
+        /* Hero section specific styles for scroll indicator */
+        .scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 2s infinite;
+            position: absolute; /* Changed to absolute to position relative to parent section */
+            bottom: 40px; /* Position from the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for true centering */
+            color: #818CF8; /* text-indigo-400 for consistency with Shri's name */
+            font-size: 1.125rem; /* text-lg */
+            z-index: 10; /* Ensure it's above other content if needed */
+        }
+
+        .scroll-indicator .arrow {
+            font-size: 2rem; /* text-3xl */
+            margin-top: 0.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
         /* Styles for horizontal scrolling containers */
         .horizontal-scroll-container {
             overflow-x: auto;
@@ -59,15 +92,21 @@
             display: inline-block; /* Allows horizontal arrangement */
             vertical-align: top; /* Aligns cards at the top */
             flex-shrink: 0; /* Prevents cards from shrinking */
-            width: 280px; /* Fixed width for cards */
+            width: 280px; /* Reverted width for cards */
+            min-height: 220px; /* Adjusted min-height for more space */
             margin-right: 1.5rem; /* Space between cards */
-            text-align: center;
+            text-align: center; /* Default for general cards */
             cursor: pointer;
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             /* Ensure text wraps within the card */
             white-space: normal;
             position: relative; /* Needed for absolute positioning of GitHub icon */
             /* Background set by parent section, but hover effect is universal */
+        }
+
+        /* Specific alignment for work experience cards */
+        #experience-home .card {
+            text-align: left; /* Align content to the left for experience cards */
         }
 
         .card:hover {
@@ -131,17 +170,45 @@
             color: #F7FAFC; /* white */
         }
 
+        /* Updated skill-icon and work experience logo size */
         .skill-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px; /* Increased from 60px */
+            height: 80px; /* Increased from 60px */
             object-fit: contain;
-            margin: 0 auto 0.5rem auto;
+            margin: 0 auto 0.5rem auto; /* Centered by default for skills/hobbies */
+        }
+
+        .work-experience-logo {
+            width: 80px; /* Consistent size */
+            height: 80px; /* Consistent size */
+            object-fit: contain;
+            margin: 0 0.5rem 0.5rem 0; /* Aligned left for work experience */
+        }
+
+        /* New style for skill bubbles */
+        .skill-bubble {
+            display: inline-block;
+            padding: 0.3rem 0.75rem; /* px-3 py-1 */
+            border-radius: 9999px; /* rounded-full */
+            border: 1px solid #667EEA; /* Indigo outline */
+            background-color: transparent; /* Transparent background by default */
+            color: #A78BFA; /* Indigo text by default */
+            font-size: 0.875rem; /* text-sm */
+            margin-right: 0.5rem; /* mr-2 */
+            margin-bottom: 0.5rem; /* mb-2 */
+            white-space: nowrap; /* Prevent breaking inside the bubble */
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition */
+        }
+
+        .skill-bubble:hover {
+            background-color: #667EEA; /* Filled with indigo on hover */
+            color: #FFFFFF; /* White text on hover */
         }
 
         .github-icon-button {
             position: absolute;
             top: 0.5rem; /* Reduced from 0.75rem */
-            right: 0.5rem; /* Reduced from 0.75rem */
+            right: 0.5rem; /* Reduced from 0.5rem */
             background-color: rgba(45, 55, 72, 0.8); /* Darker background for button */
             border-radius: 9999px; /* full rounded */
             padding: 0.3rem; /* Reduced from 0.5rem */
@@ -158,6 +225,17 @@
             width: 20px; /* Reduced from 24px */
             height: 20px; /* Reduced from 24px */
             display: block;
+        }
+        /* Social icon size */
+        .social-icon {
+            width: 40px; /* Increased size */
+            height: 40px; /* Increased size */
+        }
+        .hobby-icon {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin: 0 auto 0.5rem auto; /* Centered within its card */
         }
     </style>
 </head>
@@ -193,8 +271,8 @@
         </div>
     </nav>
 
-    <!-- Hero/About Section -->
-    <section id="about" class="container mx-auto py-16 px-6 md:px-12 flex flex-col md:flex-row items-center justify-center min-h-screen">
+    <!-- About Section -->
+    <section id="about" class="container mx-auto py-16 px-6 md:px-12 flex flex-col md:flex-row items-center justify-center min-h-screen relative">
         <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pr-12">
             <h1 class="text-5xl md:text-6xl font-extrabold text-gray-100 leading-tight mb-4">
                 Hey, I'm <span class="text-indigo-400">Shri!</span>
@@ -215,9 +293,12 @@
             </div>
         </div>
         <div class="md:w-1/2 flex justify-center md:justify-end">
-            <!-- Placeholder for a profile image or illustration -->
             <img src="./images/ShriDattaMadhira_2x2.jpg" alt="Shri D. Madhira" class="rounded-full shadow-xl w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-indigo-700">
-            <!-- TODO: Replace with actual profile photo URL -->
+            </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll down</span>
+            <div class="arrow">&#8595;</div>
         </div>
     </section>
 
@@ -227,7 +308,7 @@
         <div class="horizontal-scroll-container flex space-x-6">
             <!-- Fifth Third Bank Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="fifth-third-modal-content">
-                <img src="./images/exp/ftb.png" alt="Fifth Third Bank" class="rounded-full mx-auto mb-3 border border-indigo-800">
+                <img src="./images/exp/ftb.png" alt="Fifth Third Bank" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
                 <!-- TODO: Replace with actual Fifth Third Bank logo URL (e.g., 'https://yourdomain.com/images/fifth-third-logo.png') -->
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1">Fifth Third Bank</h4>
                 <p class="text-md text-gray-300">Software Engineer (Contract)</p>
@@ -236,7 +317,7 @@
 
             <!-- Matson Inc Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="matson-modal-content">
-                <img src="./images/exp/matson.png" alt="Matson Inc" class="rounded-full mx-auto mb-3 border border-indigo-800">
+                <img src="./images/exp/matson.png" alt="Matson Inc" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
                 <!-- TODO: Replace with actual Matson Inc logo URL (e.g., 'https://yourdomain.com/images/matson-logo.png') -->
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1">Matson Inc</h4>
                 <p class="text-md text-gray-300">Software Developer (Contract)</p>
@@ -245,7 +326,7 @@
 
             <!-- Vor Biopharma Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="vor-modal-content">
-                <img src="./images/exp/vor.webp" alt="Vor Biopharma" class="rounded-full mx-auto mb-3 border border-indigo-800">
+                <img src="./images/exp/vor.webp" alt="Vor Biopharma" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
                 <!-- TODO: Replace with actual Vor Biopharma logo URL (e.g., 'https://yourdomain.com/images/vor-logo.png') -->
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1">Vor Biopharma</h4>
                 <p class="text-md text-gray-300">Software Engineering Co-op</p>
@@ -254,7 +335,7 @@
 
             <!-- Northeastern University Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="northeastern-modal-content">
-                <img src="./images/exp/neu.jpg" alt="Northeastern University" class="rounded-full mx-auto mb-3 border border-indigo-800">
+                <img src="./images/exp/neu.jpg" alt="Northeastern University" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
                 <!-- TODO: Replace with actual Northeastern University logo URL (e.g., 'https://yourdomain.com/images/nu-logo.png') -->
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1">Northeastern University</h4>
                 <p class="text-md text-gray-300">Research & Teaching Assistant</p>
@@ -263,7 +344,7 @@
 
             <!-- Infosys Limited Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="infosys-modal-content">
-                <img src="./images/exp/infosys.jpg" alt="Infosys Limited" class="rounded-full mx-auto mb-3 border border-indigo-800">
+                <img src="./images/exp/infosys.jpg" alt="Infosys Limited" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
                 <!-- TODO: Replace with actual Infosys Limited logo URL (e.g., 'https://yourdomain.com/images/infosys-logo.png') -->
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1">Infosys Limited</h4>
                 <p class="text-md text-gray-300">Software Development Engineer</p>
@@ -277,66 +358,137 @@
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">Core Skills</h2>
         <div class="horizontal-scroll-container flex space-x-6">
             <!-- Programming Languages Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="prog-lang-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=Code" alt="Programming Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Programming Languages icon URL (e.g., 'https://yourdomain.com/images/code-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Programming Languages</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Programming Languages</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Java</span>
+                    <span class="skill-bubble">Python</span>
+                    <span class="skill-bubble">JavaScript</span>
+                    <span class="skill-bubble">TypeScript</span>
+                    <span class="skill-bubble">Shell Scripting</span>
+                </div>
             </div>
 
             <!-- Web Technologies Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="web-tech-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=Web" alt="Web Tech Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Web Technologies icon URL (e.g., 'https://yourdomain.com/images/web-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Web Technologies</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Web Technologies</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Node.js</span>
+                    <span class="skill-bubble">React.js</span>
+                    <span class="skill-bubble">HTML</span>
+                    <span class="skill-bubble">CSS</span>
+                    <span class="skill-bubble">Bootstrap</span>
+                    <span class="skill-bubble">jQuery</span>
+                    <span class="skill-bubble">REST APIs</span>
+                </div>
             </div>
 
             <!-- Cloud Platforms Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="cloud-plat-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=Cloud" alt="Cloud Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Cloud Platforms icon URL (e.g., 'https://yourdomain.com/images/cloud-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Cloud Platforms</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Cloud Platforms</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">AWS</span>
+                    <span class="skill-bubble">S3</span>
+                    <span class="skill-bubble">ECS Fargate</span>
+                    <span class="skill-bubble">Lambda</span>
+                    <span class="skill-bubble">VPC</span>
+                    <span class="skill-bubble">RDS</span>
+                    <span class="skill-bubble">API Gateway</span>
+                    <span class="skill-bubble">SQS</span>
+                    <span class="skill-bubble">Terraform</span>
+                    <span class="skill-bubble">Kubernetes</span>
+                    <span class="skill-bubble">Azure</span>
+                </div>
             </div>
 
             <!-- Database Technologies Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="db-tech-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=DB" alt="Database Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Database Technologies icon URL (e.g., 'https://yourdomain.com/images/db-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Database Technologies</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Database Technologies</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Oracle</span>
+                    <span class="skill-bubble">SQL Server</span>
+                    <span class="skill-bubble">PostgreSQL</span>
+                    <span class="skill-bubble">IBM DB2</span>
+                    <span class="skill-bubble">MongoDB</span>
+                    <span class="skill-bubble">Snowflake</span>
+                </div>
             </div>
 
             <!-- Frameworks & Libraries Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="frameworks-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=Libs" alt="Frameworks Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Frameworks & Libraries icon URL (e.g., 'https://yourdomain.com/images/frameworks-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Frameworks & Libraries</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Frameworks & Libraries</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Spring Framework</span>
+                    <span class="skill-bubble">Spring Boot</span>
+                    <span class="skill-bubble">Hibernate</span>
+                    <span class="skill-bubble">JPA</span>
+                    <span class="skill-bubble">Maven</span>
+                    <span class="skill-bubble">Gradle</span>
+                    <span class="skill-bubble">MapStruct</span>
+                    <span class="skill-bubble">Liquibase</span>
+                    <span class="skill-bubble">Redux</span>
+                </div>
             </div>
 
             <!-- DevOps Tools Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="devops-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=DevOps" alt="DevOps Icon" class="skill-icon">
-                <!-- TODO: Replace with actual DevOps Tools icon URL (e.g., 'https://yourdomain.com/images/devops-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">DevOps Tools</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">DevOps Tools</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Git</span>
+                    <span class="skill-bubble">Jenkins</span>
+                    <span class="skill-bubble">CI/CD</span>
+                    <span class="skill-bubble">Docker</span>
+                    <span class="skill-bubble">Postman</span>
+                    <span class="skill-bubble">JFrog Artifactory</span>
+                    <span class="skill-bubble">LaunchDarkly</span>
+                    <span class="skill-bubble">Apache ActiveMQ</span>
+                    <span class="skill-bubble">Apache Tomcat</span>
+                    <span class="skill-bubble">Prometheus</span>
+                    <span class="skill-bubble">Checkmarx</span>
+                    <span class="skill-bubble">SonarQube</span>
+                    <span class="skill-bubble">Kafka</span>
+                </div>
             </div>
 
             <!-- Testing Tools Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="testing-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=Test" alt="Testing Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Testing Tools icon URL (e.g., 'https://yourdomain.com/images/testing-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Testing Tools</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Testing Tools</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">JUnit</span>
+                    <span class="skill-bubble">Mockito</span>
+                    <span class="skill-bubble">Newman</span>
+                    <span class="skill-bubble">Cucumber</span>
+                    <span class="skill-bubble">Selenium</span>
+                </div>
             </div>
 
             <!-- Software Architecture & Methodologies Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="arch-meth-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=Arch" alt="Architecture Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Architecture & Methodologies icon URL (e.g., 'https://yourdomain.com/images/arch-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Architecture & Methodologies</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Architecture & Methodologies</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Event-Driven Systems</span>
+                    <span class="skill-bubble">Microservices Modernization</span>
+                    <span class="skill-bubble">Database Hydration</span>
+                    <span class="skill-bubble">Agile</span>
+                    <span class="skill-bubble">Scrum</span>
+                    <span class="skill-bubble">TDD</span>
+                    <span class="skill-bubble">SDLC</span>
+                    <span class="skill-bubble">OOP</span>
+                </div>
             </div>
 
             <!-- Miscellaneous Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="misc-modal-content">
-                <img src="https://placehold.co/60x60/1A202C/667EEA?text=Misc" alt="Miscellaneous Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Miscellaneous icon URL (e.g., 'https://yourdomain.com/images/misc-icon.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Miscellaneous</h4>
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Miscellaneous</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">GitHub Actions</span>
+                    <span class="skill-bubble">NLTK</span>
+                    <span class="skill-bubble">TensorFlow</span>
+                    <span class="skill-bubble">Keras</span>
+                    <span class="skill-bubble">PyTorch</span>
+                    <span class="skill-bubble">Spark</span>
+                    <span class="skill-bubble">DBeaver</span>
+                </div>
             </div>
         </div>
     </section>
@@ -346,7 +498,7 @@
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">My Projects</h2>
         <div class="horizontal-scroll-container flex space-x-6">
             <!-- Project 1: Topical Search Engine -->
-            <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-search-engine-modal-content" data-github-url="https://github.com/YourGitHubLinkForThisProject1">
+            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-search-engine-modal-content" data-github-url="https://github.com/YourGitHubLinkForThisProject1">
                 <a href="https://github.com/YourGitHubLinkForThisProject1" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
                     <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
                     <!-- TODO: Replace with actual GitHub icon URL (e.g., 'https://yourdomain.com/images/github-icon.png') -->
@@ -358,7 +510,7 @@
             </div>
 
             <!-- Project 2: Text Summarization in NLP -->
-            <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-nlp-modal-content" data-github-url="https://github.com/YourGitHubLinkForThisProject2">
+            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-nlp-modal-content" data-github-url="https://github.com/YourGitHubLinkForThisProject2">
                 <a href="https://github.com/YourGitHubLinkForThisProject2" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
                     <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
                     <!-- TODO: Replace with actual GitHub icon URL -->
@@ -370,7 +522,7 @@
             </div>
 
             <!-- Project 3: Anidb -->
-            <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-anidb-modal-content" data-github-url="https://github.com/YourGitHubLinkForThisProject3">
+            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-anidb-modal-content" data-github-url="https://github.com/YourGitHubLinkForThisProject3">
                 <a href="https://github.com/YourGitHubLinkForThisProject3" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
                     <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
                     <!-- TODO: Replace with actual GitHub icon URL -->
@@ -384,37 +536,32 @@
     </section>
 
     <!-- Interests & Hobbies Section -->
-    <section id="hobbies" class="container mx-auto py-16 px-6 md:px-12 bg-gray-950 rounded-lg shadow-lg my-8">
+    <section id="hobbies" class="container mx-auto py-10 px-6 md:px-12 bg-gray-950 rounded-lg shadow-lg my-8">
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">Interests & Hobbies</h2>
-        <div class="horizontal-scroll-container flex space-x-6">
+        <div class="horizontal-scroll-container">
             <!-- Hobby Card: Soccer -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <img src="https://img.icons8.com/ios-filled/50/E2E8F0/football2.png" alt="Soccer Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Soccer icon/image URL -->
+            <div class="card bg-gray-800 p-10 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="./images/hobbies/football.png" alt="Soccer Icon" class="rounded-full mb-3 border border-indigo-800 hobby-icon">
                 <p class="text-xl font-semibold text-indigo-400 mt-2">Soccer</p>
             </div>
             <!-- Hobby Card: Car Racing -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <img src="https://img.icons8.com/ios-filled/50/E2E8F0/formula-1.png" alt="Car Racing Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Car Racing icon/image URL -->
+            <div class="card bg-gray-800 p-10 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="./images/hobbies/f1.png" alt="Car Racing Icon" class="rounded-full mb-3 border border-indigo-800 hobby-icon">
                 <p class="text-xl font-semibold text-indigo-400 mt-2">Car Racing</p>
             </div>
             <!-- Hobby Card: Drawing -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <img src="https://img.icons8.com/ios-filled/50/E2E8F0/paint-palette.png" alt="Drawing Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Drawing icon/image URL -->
+            <div class="card bg-gray-800 p-10 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="./images/hobbies/drawing.png" alt="Drawing Icon" class="rounded-full mb-3 border border-indigo-800 hobby-icon">
                 <p class="text-xl font-semibold text-indigo-400 mt-2">Drawing</p>
             </div>
             <!-- Hobby Card: Video Games -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <img src="https://img.icons8.com/ios-filled/50/E2E8F0/controller.png" alt="Video Games Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Video Games icon/image URL -->
+            <div class="card bg-gray-800 p-10 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="./images/hobbies/video-games.jpg" alt="Video Games Icon" class="rounded-full mb-3 border border-indigo-800 hobby-icon">
                 <p class="text-xl font-semibold text-indigo-400 mt-2">Video Games</p>
             </div>
             <!-- Hobby Card: Traveling -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <img src="https://img.icons8.com/ios-filled/50/E2E8F0/airplane-take-off.png" alt="Traveling Icon" class="skill-icon">
-                <!-- TODO: Replace with actual Traveling icon/image URL -->
+            <div class="card bg-gray-800 p-10 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <img src="./images/hobbies/travelling.png" alt="Traveling Icon" class="rounded-full mb-3 border border-indigo-800 hobby-icon">
                 <p class="text-xl font-semibold text-indigo-400 mt-2">Traveling</p>
             </div>
         </div>
@@ -422,23 +569,24 @@
 
     <!-- Contact Section -->
     <section id="contact" class="container mx-auto py-16 px-6 md:px-12 bg-gray-800 rounded-lg shadow-lg my-8">
-        <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">Get in Touch</h2>
+        <h2 class="text-4xl font-bold text-center text-indigo-400 mb-12">Get In Touch</h2>
         <div class="max-w-2xl mx-auto">
             <p class="text-lg text-gray-200 text-center mb-8">
-                I'm always open to new opportunities and collaborations. Feel free to reach out!
+                I'm always open to new opportunities and collaborations.
+                Please feel free to reach out!
             </p>
             <form class="space-y-6">
                 <div>
                     <label for="name" class="block text-lg font-medium text-gray-200 mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-900 text-gray-100" placeholder="Your Name">
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="Your Name">
                 </div>
                 <div>
                     <label for="email" class="block text-lg font-medium text-gray-200 mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-900 text-gray-100" placeholder="your.email@example.com">
+                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="your.email@example.com">
                 </div>
                 <div>
                     <label for="message" class="block text-lg font-medium text-gray-200 mb-2">Message</label>
-                    <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-900 text-gray-100" placeholder="Your message..."></textarea>
+                    <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="Your message..."></textarea>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="bg-indigo-600 text-white px-10 py-4 rounded-full text-xl font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg">
@@ -449,11 +597,14 @@
             <div class="mt-12 text-center text-gray-300">
                 <p>You can also connect with me on:</p>
                 <div class="flex justify-center space-x-6 mt-4">
-                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition duration-300">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <a href="https://www.linkedin.com/in/shridattamadhira/" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition duration-300">
+                        <svg class="w-10 h-10 social-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a href="https://github.com/YourGitHubUsername" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition duration-300">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.499.09.682-.217.682-.483 0-.237-.007-.866-.012-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.835.09-.647.35-1.089.636-1.338-2.22-.253-4.555-1.119-4.555-4.935 0-1.09.39-1.984 1.029-2.685-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.428 9.428 0 0112 6.844c.85.004 1.7.114 2.504.337 1.909-1.295 2.747-1.025 2.747-1.025.546 1.379.202 2.398.099 2.65.64.701 1.028 1.595 1.028 2.685 0 3.823-2.339 4.681-4.569 4.92.359.309.678.917.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C21.137 20.218 24 16.46 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"/></svg>
+                    <a href="https://github.com/shri-datta-madhira" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition duration-300">
+                        <svg class="w-10 h-10 social-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.499.09.682-.217.682-.483 0-.237-.007-.866-.012-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.835.09-.647.35-1.089.636-1.338-2.22-.253-4.555-1.119-4.555-4.935 0-1.09.39-1.984 1.029-2.685-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.428 9.428 0 0112 6.844c.85.004 1.7.114 2.504.337 1.909-1.295 2.747-1.025 2.747-1.025.546 1.379.202 2.398.099 2.65.64.701 1.028 1.595 1.028 2.685 0 3.823-2.339 4.681-4.569 4.92.359.309.678.917.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C21.137 20.218 24 16.46 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"/></svg>
+                    </a>
+                    <a href="https://instagram.com/the_guy.9991" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition duration-300">
+                        <svg class="w-10 h-10 social-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C8.74 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.636c-.789.306-1.459.717-2.126 1.384-.667.667-1.078 1.337-1.384 2.126-.303.765-.504 1.63-.563 2.908-.058 1.28-.072 1.68-.072 4.902s.014 3.623.072 4.903c.059 1.278.26 2.143.563 2.908.306.789.717 1.459 1.384 2.126.667.667 1.337 1.079 2.126 1.384.765.303 1.63.504 2.908.562 1.28.058 1.68.072 4.902.072s3.623-.014 4.903-.072c1.278-.059 2.143-.26 2.908-.563.789-.306 1.459-.717 2.126-1.384.667-.667 1.079-1.337 1.384-2.126.303-.765.504-1.63.562-2.908.058-1.28.072-1.68.072-4.902s-.014-3.623-.072-4.903c-.059-1.278-.26-2.143-.563-2.908-.306-.789-.717-1.459-1.384-2.126-.667-.667-1.337-1.079-2.126-1.384C20.218.26 19.353.06 18.072.002 16.792-.057 16.39-.072 12-.072zm0 2.163c3.21 0 3.58.012 4.85.071 1.17.055 1.8.249 2.22.41.42.164.715.377.99.65.275.276.488.57.65.99.16.42.355 1.05.41 2.22.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.055 1.17-.249 1.8-.41 2.22-.164.42-.377.715-.65.99-.276.275-.57.488-.99.65-.42.16-1.05.355-2.22.41-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.055-1.8-.249-2.22-.41-.42-.164-.715-.377-.99-.65-.275-.276-.488-.57-.65-.99-.16-.42-.355-1.05-.41-2.22-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.055-1.17.249-1.8.41-2.22.164.42.377.715.65-.99.276-.275.57-.488.99-.65.42-.16 1.05-.355 2.22-.41 1.27-.06 1.64-.07 4.85-.07zm0 3.629c-3.4 0-6.171 2.77-6.171 6.171s2.771 6.171 6.171 6.171 6.171-2.77 6.171-6.171-2.77-6.171-6.171-6.171zm0 10.165c-2.208 0-4-1.792-4-4s1.792-4 4-4 4 1.792 4 4-1.792 4-4 4zm6.479-9.187c-.528 0-.956.428-.956.956s.428.956.956.956.956-.428.956-.956-.428-.956-.956-.956z"/></svg>
                     </a>
                 </div>
             </div>
@@ -475,8 +626,7 @@
         <!-- Experience Details -->
         <div id="fifth-third-modal-content">
             <div class="flex items-center mb-4">
-                <img src="https://placehold.co/60x60/1A202C/E2E8F0?text=53B" alt="Fifth Third Bank Logo" class="rounded-full mr-4 border border-indigo-800">
-                <!-- TODO: Replace with actual Fifth Third Bank logo URL -->
+                <img src="./images/exp/ftb.png" alt="Fifth Third Bank Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Fifth Third Bank</h3>
                     <p class="text-xl font-bold text-gray-300">Software Engineer (Contract)</p>
@@ -495,8 +645,7 @@
         </div>
         <div id="matson-modal-content">
             <div class="flex items-center mb-4">
-                <img src="https://placehold.co/60x60/1A202C/E2E8F0?text=MAT" alt="Matson Inc Logo" class="rounded-full mr-4 border border-indigo-800">
-                <!-- TODO: Replace with actual Matson Inc logo URL -->
+                <img src="./images/exp/matson.png" alt="Matson Inc Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Matson Inc</h3>
                     <p class="text-xl font-bold text-gray-300">Software Developer (Contract)</p>
@@ -511,8 +660,7 @@
         </div>
         <div id="vor-modal-content">
             <div class="flex items-center mb-4">
-                <img src="https://placehold.co/60x60/1A202C/E2E8F0?text=VOR" alt="Vor Biopharma Logo" class="rounded-full mr-4 border border-indigo-800">
-                <!-- TODO: Replace with actual Vor Biopharma logo URL -->
+                <img src="./images/exp/vor.webp" alt="Vor Biopharma Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Vor Biopharma</h3>
                     <p class="text-xl font-bold text-gray-300">Software Engineering Co-op</p>
@@ -527,8 +675,7 @@
         </div>
         <div id="northeastern-modal-content">
             <div class="flex items-center mb-4">
-                <img src="https://placehold.co/60x60/1A202C/E2E8F0?text=NU" alt="Northeastern University Logo" class="rounded-full mr-4 border border-indigo-800">
-                <!-- TODO: Replace with actual Northeastern University logo URL -->
+                <img src="./images/exp/neu.jpg" alt="Northeastern University Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Northeastern University</h3>
                     <p class="text-xl font-bold text-gray-300">Research & Teaching Assistant</p>
@@ -552,8 +699,7 @@
         </div>
         <div id="infosys-modal-content">
             <div class="flex items-center mb-4">
-                <img src="https://placehold.co/60x60/1A202C/E2E8F0?text=INF" alt="Infosys Limited Logo" class="rounded-full mr-4 border border-indigo-800">
-                <!-- TODO: Replace with actual Infosys Limited logo URL -->
+                <img src="./images/exp/infosys.jpg" alt="Infosys Limited Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Infosys Limited</h3>
                     <p class="text-xl font-bold text-gray-300">Software Development Engineer</p>
@@ -566,271 +712,11 @@
             </ul>
         </div>
 
-        <!-- Skill Details (Modal Content) -->
-        <div id="prog-lang-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Programming Languages</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/java-coffee-cup-logo--v1.png" alt="Java Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Java icon URL -->
-                    <span class="block text-sm text-gray-200">Java</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/python--v1.png" alt="Python Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Python icon URL -->
-                    <span class="block text-sm text-gray-200">Python</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/javascript--v1.png" alt="JavaScript Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual JavaScript icon URL -->
-                    <span class="block text-sm text-gray-200">JavaScript</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/typescript.png" alt="TypeScript Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual TypeScript icon URL -->
-                    <span class="block text-sm text-gray-200">TypeScript</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/console.png" alt="Shell Scripting Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Shell Scripting icon URL -->
-                    <span class="block text-sm text-gray-200">Shell Scripting</span></div>
-            </div>
-        </div>
-        <div id="web-tech-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Web Technologies</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/nodejs.png" alt="Node.js Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Node.js icon URL -->
-                    <span class="block text-sm text-gray-200">Node.js</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/react-native.png" alt="React.js Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual React.js icon URL -->
-                    <span class="block text-sm text-gray-200">React.js</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/html-5--v1.png" alt="HTML Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual HTML icon URL -->
-                    <span class="block text-sm text-gray-200">HTML</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/css3.png" alt="CSS Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual CSS icon URL -->
-                    <span class="block text-sm text-gray-200">CSS</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/bootstrap.png" alt="Bootstrap Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Bootstrap icon URL -->
-                    <span class="block text-sm text-gray-200">Bootstrap</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/jquery.png" alt="jQuery Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual jQuery icon URL -->
-                    <span class="block text-sm text-gray-200">jQuery</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/api.png" alt="REST APIs Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual REST APIs icon URL -->
-                    <span class="block text-sm text-gray-200">REST APIs</span></div>
-            </div>
-        </div>
-        <div id="cloud-plat-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Cloud Platforms</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/amazon-web-services.png" alt="AWS Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual AWS icon URL -->
-                    <span class="block text-sm text-gray-200">AWS</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/60/E2E8F0/external-amazon-s3-a-storage-service-for-the-internet-logo-shadow-tal-revivo.png" alt="S3 Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual S3 icon URL -->
-                    <span class="block text-sm text-gray-200">S3</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/amazon-ec2.png" alt="ECS Fargate Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual ECS Fargate icon URL -->
-                    <span class="block text-sm text-gray-200">ECS Fargate</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/aws-lambda.png" alt="Lambda Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Lambda icon URL -->
-                    <span class="block text-sm text-gray-200">Lambda</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/virtual-private-cloud.png" alt="VPC Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual VPC icon URL -->
-                    <span class="block text-sm text-gray-200">VPC</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/amazon-rds.png" alt="RDS Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual RDS icon URL -->
-                    <span class="block text-sm text-gray-200">RDS</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/api-gateway.png" alt="API Gateway Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual API Gateway icon URL -->
-                    <span class="block text-sm text-gray-200">API Gateway</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/amazon-sqs.png" alt="SQS Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual SQS icon URL -->
-                    <span class="block text-sm text-gray-200">SQS</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/terraform.png" alt="Terraform Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Terraform icon URL -->
-                    <span class="block text-sm text-gray-200">Terraform</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/kubernetes.png" alt="Kubernetes Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Kubernetes icon URL -->
-                    <span class="block text-sm text-gray-200">Kubernetes</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/azure-1.png" alt="Azure Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Azure icon URL -->
-                    <span class="block text-sm text-gray-200">Azure</span></div>
-            </div>
-        </div>
-        <div id="db-tech-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Database Technologies</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/oracle-logo.png" alt="Oracle Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Oracle icon URL -->
-                    <span class="block text-sm text-gray-200">Oracle</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/microsoft-sql-server.png" alt="SQL Server Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual SQL Server icon URL -->
-                    <span class="block text-sm text-gray-200">SQL Server</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/postgreesql.png" alt="PostgreSQL Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual PostgreSQL icon URL -->
-                    <span class="block text-sm text-gray-200">PostgreSQL</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/ibm.png" alt="IBM DB2 Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual IBM DB2 icon URL -->
-                    <span class="block text-sm text-gray-200">IBM DB2</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/mongodb.png" alt="MongoDB Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual MongoDB icon URL -->
-                    <span class="block text-sm text-gray-200">MongoDB</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/snowflake.png" alt="Snowflake Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Snowflake icon URL -->
-                    <span class="block text-sm text-gray-200">Snowflake</span></div>
-            </div>
-        </div>
-        <div id="frameworks-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Frameworks & Libraries</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/spring-boot.png" alt="Spring Framework Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Spring Framework icon URL -->
-                    <span class="block text-sm text-gray-200">Spring Framework</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/spring-boot.png" alt="Spring Boot Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Spring Boot icon URL -->
-                    <span class="block text-sm text-gray-200">Spring Boot</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/hibernate.png" alt="Hibernate Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Hibernate icon URL -->
-                    <span class="block text-sm text-gray-200">Hibernate</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/java-persistence-api.png" alt="JPA Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual JPA icon URL -->
-                    <span class="block text-sm text-gray-200">JPA</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/apache-maven.png" alt="Maven Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Maven icon URL -->
-                    <span class="block text-sm text-gray-200">Maven</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/gradle.png" alt="Gradle Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Gradle icon URL -->
-                    <span class="block text-sm text-gray-200">Gradle</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=MapStruct" alt="MapStruct Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual MapStruct icon URL -->
-                    <span class="block text-sm text-gray-200">MapStruct</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=Liquibase" alt="Liquibase Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Liquibase icon URL -->
-                    <span class="block text-sm text-gray-200">Liquibase</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/redux.png" alt="Redux Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Redux icon URL -->
-                    <span class="block text-sm text-gray-200">Redux</span></div>
-            </div>
-        </div>
-        <div id="devops-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">DevOps Tools</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/git.png" alt="Git Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Git icon URL -->
-                    <span class="block text-sm text-gray-200">Git</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/jenkins.png" alt="Jenkins Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Jenkins icon URL -->
-                    <span class="block text-sm text-gray-200">Jenkins</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/ci-cd.png" alt="CI/CD Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual CI/CD icon URL -->
-                    <span class="block text-sm text-gray-200">CI/CD</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/docker.png" alt="Docker Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Docker icon URL -->
-                    <span class="block text-sm text-gray-200">Docker</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/postman.png" alt="Postman Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Postman icon URL -->
-                    <span class="block text-sm text-gray-200">Postman</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/jfrog.png" alt="JFrog Artifactory Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual JFrog Artifactory icon URL -->
-                    <span class="block text-sm text-gray-200">JFrog Artifactory</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=LaunchDarkly" alt="LaunchDarkly Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual LaunchDarkly icon URL -->
-                    <span class="block text-sm text-gray-200">LaunchDarkly</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/apache.png" alt="Apache ActiveMQ Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Apache ActiveMQ icon URL -->
-                    <span class="block text-sm text-gray-200">Apache ActiveMQ</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/tomcat.png" alt="Apache Tomcat Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Apache Tomcat icon URL -->
-                    <span class="block text-sm text-gray-200">Apache Tomcat</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/prometheus.png" alt="Prometheus Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Prometheus icon URL -->
-                    <span class="block text-sm text-gray-200">Prometheus</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=Checkmarx" alt="Checkmarx Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Checkmarx icon URL -->
-                    <span class="block text-sm text-gray-200">Checkmarx</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/sonarqube.png" alt="SonarQube Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual SonarQube icon URL -->
-                    <span class="block text-sm text-gray-200">SonarQube</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/kafka.png" alt="Kafka Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Kafka icon URL -->
-                    <span class="block text-sm text-gray-200">Kafka</span></div>
-            </div>
-        </div>
-        <div id="testing-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Testing Tools</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/junit.png" alt="JUnit Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual JUnit icon URL -->
-                    <span class="block text-sm text-gray-200">JUnit</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=Mockito" alt="Mockito Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Mockito icon URL -->
-                    <span class="block text-sm text-gray-200">Mockito</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/postman.png" alt="Newman Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Newman icon URL -->
-                    <span class="block text-sm text-gray-200">Newman</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/cucumber.png" alt="Cucumber Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Cucumber icon URL -->
-                    <span class="block text-sm text-gray-200">Cucumber</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/selenium-test-automation.png" alt="Selenium Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Selenium icon URL -->
-                    <span class="block text-sm text-gray-200">Selenium</span></div>
-            </div>
-        </div>
-        <div id="arch-meth-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Architecture & Methodologies</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/event-driven-architecture.png" alt="Event-Driven Systems Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Event-Driven Systems icon URL -->
-                    <span class="block text-sm text-gray-200">Event-Driven Systems</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/microservices.png" alt="Microservices Modernization Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Microservices Modernization icon URL -->
-                    <span class="block text-sm text-gray-200">Microservices Modernization</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=DB+Hydration" alt="Database Hydration Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Database Hydration icon URL -->
-                    <span class="block text-sm text-gray-200">Database Hydration</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/agile.png" alt="Agile Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Agile icon URL -->
-                    <span class="block text-sm text-gray-200">Agile</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/scrum.png" alt="Scrum Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Scrum icon URL -->
-                    <span class="block text-sm text-gray-200">Scrum</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/test-driven-development.png" alt="TDD Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual TDD icon URL -->
-                    <span class="block text-sm text-gray-200">TDD</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/software-development.png" alt="SDLC Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual SDLC icon URL -->
-                    <span class="block text-sm text-gray-200">SDLC</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/object-oriented-programming.png" alt="OOP Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual OOP icon URL -->
-                    <span class="block text-sm text-gray-200">OOP</span></div>
-            </div>
-        </div>
-        <div id="misc-modal-content">
-            <h3 class="text-2xl font-bold text-indigo-400 mb-4">Miscellaneous</h3>
-            <div class="horizontal-scroll-container flex space-x-6">
-                <div class="skill-item"><img src="https://img.icons8.com/ios-filled/60/E2E8F0/github-actions.png" alt="GitHub Actions Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual GitHub Actions icon URL -->
-                    <span class="block text-sm text-gray-200">GitHub Actions</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=NLTK" alt="NLTK Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual NLTK icon URL -->
-                    <span class="block text-sm text-gray-200">NLTK</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/tensorflow.png" alt="TensorFlow Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual TensorFlow icon URL -->
-                    <span class="block text-sm text-gray-200">TensorFlow</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/keras.png" alt="Keras Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Keras icon URL -->
-                    <span class="block text-sm text-gray-200">Keras</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/pytorch.png" alt="PyTorch Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual PyTorch icon URL -->
-                    <span class="block text-sm text-gray-200">PyTorch</span></div>
-                <div class="skill-item"><img src="https://img.icons8.com/color/60/E2E8F0/apache-spark.png" alt="Spark Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual Spark icon URL -->
-                    <span class="block text-sm text-gray-200">Spark</span></div>
-                <div class="skill-item"><img src="https://placehold.co/60x60/1A202C/E2E8F0?text=DBeaver" alt="DBeaver Icon" class="skill-icon">
-                    <!-- TODO: Replace with actual DBeaver icon URL -->
-                    <span class="block text-sm text-gray-200">DBeaver</span></div>
-            </div>
-        </div>
-
         <!-- Project Details -->
         <div id="project-search-engine-modal-content">
             <h3 class="text-2xl font-bold text-indigo-400 mb-2">Topical Search Engine</h3>
             <p class="text-lg text-gray-300 mb-4">
-                <span class="font-medium">Skills:</span> Python, Elasticsearch, Docker, PageRank Algorithm, Priority Queues
+                <span class="font-medium">Skills:</span> Python, Elasticsearch, Docker, PageRank, Priority Queues
             </p>
             <p class="text-gray-200 mb-4">
                 <strong>Engineered</strong> a highly efficient web crawler using graphs to crawl and index <strong>80K websites in 18 hours</strong> for a topical search engine.
@@ -928,7 +814,10 @@
         document.querySelectorAll('.card[data-modal-target]').forEach(card => {
             card.addEventListener('click', function() {
                 const targetId = this.dataset.modalTarget;
-                openModal(targetId);
+                // Only open modal if it's not a skill card (as skills are now inline)
+                if (!this.closest('#skills-home')) {
+                    openModal(targetId);
+                }
             });
         });
 
