@@ -178,7 +178,15 @@
             margin: 0 auto 0.5rem auto; /* Centered by default for skills/hobbies */
         }
 
-        .work-experience-logo {
+        .out-experience-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 0.5rem auto; /* Aligned center for work experience */
+        }
+
+        .in-experience-logo {
             width: 80px; /* Consistent size */
             height: 80px; /* Consistent size */
             object-fit: contain;
@@ -308,47 +316,42 @@
         <div class="horizontal-scroll-container flex space-x-6">
             <!-- Fifth Third Bank Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="fifth-third-modal-content">
-                <img src="./images/exp/ftb.png" alt="Fifth Third Bank" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
-                <!-- TODO: Replace with actual Fifth Third Bank logo URL (e.g., 'https://yourdomain.com/images/fifth-third-logo.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Fifth Third Bank</h4>
-                <p class="text-md text-gray-300">Software Engineer (Contract)</p>
-                <p class="text-sm text-gray-400">Dec 2023 – Present</p>
+                <img src="./images/exp/ftb.png" alt="Fifth Third Bank" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Fifth Third Bank</h4>
+                <p class="text-md text-gray-300 text-center">Software Engineer</p>
+                <p class="text-sm text-gray-400 text-center">Dec 2023 – Present</p>
             </div>
 
             <!-- Matson Inc Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="matson-modal-content">
-                <img src="./images/exp/matson.png" alt="Matson Inc" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
-                <!-- TODO: Replace with actual Matson Inc logo URL (e.g., 'https://yourdomain.com/images/matson-logo.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Matson Inc</h4>
-                <p class="text-md text-gray-300">Software Developer (Contract)</p>
-                <p class="text-sm text-gray-400">May 2023 – Dec 2023</p>
+                <img src="./images/exp/matson.png" alt="Matson Inc" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Matson Inc</h4>
+                <p class="text-md text-gray-300 text-center">Software Developer</p>
+                <p class="text-sm text-gray-400 text-center">May 2023 – Dec 2023</p>
             </div>
 
             <!-- Vor Biopharma Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="vor-modal-content">
-                <img src="./images/exp/vor.webp" alt="Vor Biopharma" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
-                <!-- TODO: Replace with actual Vor Biopharma logo URL (e.g., 'https://yourdomain.com/images/vor-logo.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Vor Biopharma</h4>
-                <p class="text-md text-gray-300">Software Engineering Co-op</p>
-                <p class="text-sm text-gray-400">Jan 2022 – Jun 2022</p>
+                <img src="./images/exp/vor.png" alt="Vor Biopharma" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Vor Biopharma</h4>
+                <p class="text-md text-gray-300 text-center">Software Engineering Co-op</p>
+                <p class="text-sm text-gray-400 text-center">Jan 2022 – Jun 2022</p>
             </div>
 
             <!-- Northeastern University Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="northeastern-modal-content">
-                <img src="./images/exp/neu.jpg" alt="Northeastern University" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
-                <!-- TODO: Replace with actual Northeastern University logo URL (e.g., 'https://yourdomain.com/images/nu-logo.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Northeastern University</h4>
-                <p class="text-md text-gray-300">Research & Teaching Assistant</p>
-                <p class="text-sm text-gray-400">Sept 2021 – May 2023</p>
+                <img src="./images/exp/neu.jpg" alt="Northeastern University" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Northeastern University</h4>
+                <p class="text-md text-gray-300 text-center">GRA & TA</p>
+                <p class="text-sm text-gray-400 text-center">Sept 2021 – May 2023</p>
             </div>
 
             <!-- Infosys Limited Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="infosys-modal-content">
-                <img src="./images/exp/infosys.jpg" alt="Infosys Limited" class="rounded-full mb-3 border border-indigo-800 work-experience-logo">
-                <!-- TODO: Replace with actual Infosys Limited logo URL (e.g., 'https://yourdomain.com/images/infosys-logo.png') -->
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1">Infosys Limited</h4>
-                <p class="text-md text-gray-300">Software Development Engineer</p>
-                <p class="text-sm text-gray-400">Dec 2018 – Feb 2020</p>
+                <img src="./images/exp/infosys.jpg" alt="Infosys Limited" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Infosys Limited</h4>
+                <p class="text-md text-gray-300 text-center">Software Development Engineer</p>
+                <p class="text-sm text-gray-400 text-center">Dec 2018 – Feb 2020</p>
             </div>
         </div>
     </section>
@@ -626,7 +629,7 @@
         <!-- Experience Details -->
         <div id="fifth-third-modal-content">
             <div class="flex items-center mb-4">
-                <img src="./images/exp/ftb.png" alt="Fifth Third Bank Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
+                <img src="./images/exp/ftb.png" alt="Fifth Third Bank Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Fifth Third Bank</h3>
                     <p class="text-xl font-bold text-gray-300">Software Engineer (Contract)</p>
@@ -645,7 +648,7 @@
         </div>
         <div id="matson-modal-content">
             <div class="flex items-center mb-4">
-                <img src="./images/exp/matson.png" alt="Matson Inc Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
+                <img src="./images/exp/matson.png" alt="Matson Inc Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Matson Inc</h3>
                     <p class="text-xl font-bold text-gray-300">Software Developer (Contract)</p>
@@ -660,7 +663,7 @@
         </div>
         <div id="vor-modal-content">
             <div class="flex items-center mb-4">
-                <img src="./images/exp/vor.webp" alt="Vor Biopharma Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
+                <img src="./images/exp/vor.png" alt="Vor Biopharma Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Vor Biopharma</h3>
                     <p class="text-xl font-bold text-gray-300">Software Engineering Co-op</p>
@@ -675,7 +678,7 @@
         </div>
         <div id="northeastern-modal-content">
             <div class="flex items-center mb-4">
-                <img src="./images/exp/neu.jpg" alt="Northeastern University Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
+                <img src="./images/exp/neu.jpg" alt="Northeastern University Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Northeastern University</h3>
                     <p class="text-xl font-bold text-gray-300">Research & Teaching Assistant</p>
@@ -699,7 +702,7 @@
         </div>
         <div id="infosys-modal-content">
             <div class="flex items-center mb-4">
-                <img src="./images/exp/infosys.jpg" alt="Infosys Limited Logo" class="rounded-full mr-4 border border-indigo-800 work-experience-logo">
+                <img src="./images/exp/infosys.jpg" alt="Infosys Limited Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
                     <h3 class="text-3xl font-bold text-indigo-400">Infosys Limited</h3>
                     <p class="text-xl font-bold text-gray-300">Software Development Engineer</p>
