@@ -106,8 +106,11 @@
 
         /* Specific alignment for work experience cards */
         #experience-home .card {
-            text-align: left; /* Align content to the left for experience cards */
-        }
+            text-align: center;
+            min-height: 265px;  /* Slightly taller */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }   
 
         .card:hover {
             transform: translateY(-5px);
@@ -239,6 +242,7 @@
             width: 40px; /* Increased size */
             height: 40px; /* Increased size */
         }
+        /* Interests & Hobbies icon size */
         .hobby-icon {
             width: 100px;
             height: 100px;
@@ -320,6 +324,9 @@
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Fifth Third Bank</h4>
                 <p class="text-md text-gray-300 text-center">Software Engineer</p>
                 <p class="text-sm text-gray-400 text-center">Dec 2023 – Present</p>
+                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
+                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+                </div>
             </div>
 
             <!-- Matson Inc Card -->
@@ -328,6 +335,9 @@
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Matson Inc</h4>
                 <p class="text-md text-gray-300 text-center">Software Developer</p>
                 <p class="text-sm text-gray-400 text-center">May 2023 – Dec 2023</p>
+                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
+                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+                </div>
             </div>
 
             <!-- Vor Biopharma Card -->
@@ -336,22 +346,31 @@
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Vor Biopharma</h4>
                 <p class="text-md text-gray-300 text-center">Software Engineering Co-op</p>
                 <p class="text-sm text-gray-400 text-center">Jan 2022 – Jun 2022</p>
+                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
+                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+                </div>
             </div>
 
             <!-- Northeastern University Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="northeastern-modal-content">
                 <img src="./images/exp/neu.jpg" alt="Northeastern University" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Northeastern University</h4>
+                <h4 class="text-md font-semibold text-indigo-400 mb-1 text-center">Northeastern University</h4>
                 <p class="text-md text-gray-300 text-center">GRA & TA</p>
                 <p class="text-sm text-gray-400 text-center">Sept 2021 – May 2023</p>
+                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
+                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+                </div>
             </div>
 
             <!-- Infosys Limited Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="infosys-modal-content">
                 <img src="./images/exp/infosys.jpg" alt="Infosys Limited" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Infosys Limited</h4>
-                <p class="text-md text-gray-300 text-center">Software Development Engineer</p>
+                <p class="text-sm text-gray-300 text-center">Software Development Engineer</p>
                 <p class="text-sm text-gray-400 text-center">Dec 2018 – Feb 2020</p>
+                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none flex items-center justify-center">
+                    <p class="text-sm text-white mt-4 italic relative z-10">Click for more</p>
+                </div>
             </div>
         </div>
     </section>
@@ -628,6 +647,7 @@
     <div class="hidden">
         <!-- Experience Details -->
         <div id="fifth-third-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <div class="flex items-center mb-4">
                 <img src="./images/exp/ftb.png" alt="Fifth Third Bank Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
@@ -647,6 +667,7 @@
             </ul>
         </div>
         <div id="matson-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <div class="flex items-center mb-4">
                 <img src="./images/exp/matson.png" alt="Matson Inc Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
@@ -662,6 +683,7 @@
             </ul>
         </div>
         <div id="vor-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <div class="flex items-center mb-4">
                 <img src="./images/exp/vor.png" alt="Vor Biopharma Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
@@ -677,6 +699,7 @@
             </ul>
         </div>
         <div id="northeastern-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <div class="flex items-center mb-4">
                 <img src="./images/exp/neu.jpg" alt="Northeastern University Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
@@ -701,6 +724,7 @@
             </div>
         </div>
         <div id="infosys-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <div class="flex items-center mb-4">
                 <img src="./images/exp/infosys.jpg" alt="Infosys Limited Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
@@ -717,6 +741,7 @@
 
         <!-- Project Details -->
         <div id="project-search-engine-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <h3 class="text-2xl font-bold text-indigo-400 mb-2">Topical Search Engine</h3>
             <p class="text-lg text-gray-300 mb-4">
                 <span class="font-medium">Skills:</span> Python, Elasticsearch, Docker, PageRank, Priority Queues
@@ -730,6 +755,7 @@
             </a>
         </div>
         <div id="project-nlp-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <h3 class="text-2xl font-bold text-indigo-400 mb-2">Text Summarization in NLP</h3>
             <p class="text-lg text-gray-300 mb-4">
                 <span class="font-medium">Skills:</span> Python, Google Colab, Recurrent Neural Networks, LSTM, Attention
@@ -743,6 +769,7 @@
             </a>
         </div>
         <div id="project-anidb-modal-content">
+            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
             <h3 class="text-2xl font-bold text-indigo-400 mb-2">Anidb</h3>
             <p class="text-lg text-gray-300 mb-4">
                 <span class="font-medium">Skills:</span> React.js, Node.js, MongoDB, Express, REST APIs, HTML, Bootstrap
