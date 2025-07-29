@@ -38,13 +38,20 @@
             align-items: center;
             justify-content: center;
             animation: bounce 2s infinite;
-            position: absolute; /* Changed to absolute to position relative to parent section */
-            bottom: 40px; /* Position from the bottom */
+            position: fixed; /* Changed to fixed to keep it at the bottom of the viewport */
+            bottom: 20px; /* Position from the bottom */
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Adjust for true centering */
             color: #818CF8; /* text-indigo-400 for consistency with Shri's name */
             font-size: 1.125rem; /* text-lg */
-            z-index: 10; /* Ensure it's above other content if needed */
+            z-index: 50; /* Ensure it's above other content and navigation */
+            opacity: 1; /* Start visible */
+            transition: opacity 0.5s ease-out; /* Smooth fade out */
+        }
+
+        .scroll-indicator.hidden-on-scroll {
+            opacity: 0;
+            pointer-events: none; /* Disable interaction once hidden */
         }
 
         .scroll-indicator .arrow {
@@ -291,7 +298,12 @@
 
     <!-- About Section -->
     <section id="about" class="container bg-gray-950 mx-auto py-16 px-6 md:px-12 flex flex-col md:flex-row items-center justify-center min-h-screen relative">
-        <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pr-12">
+        <!-- Image Div (now first for mobile, left for desktop) -->
+        <div class="md:w-1/2 flex justify-center md:justify-start mb-8 md:mb-0 md:pr-12">
+            <img src="./images/ShriDattaMadhira_2x2.jpg" alt="Shri D. Madhira" class="rounded-full shadow-xl w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-indigo-700">
+        </div>
+        <!-- Description and Buttons Div (now second for mobile, right for desktop) -->
+        <div class="md:w-1/2 text-center md:text-left">
             <h1 class="text-5xl md:text-6xl font-extrabold text-gray-100 leading-tight mb-4">
                 Hey, I'm <span class="text-indigo-400">Shri!</span>
             </h1>
@@ -301,24 +313,24 @@
             <p class="text-lg text-gray-200 leading-relaxed">
                 Highly accomplished Software Engineer with nearly 4 years of experience and a Master's degree, specializing in cloud-native development (AWS), microservices architecture, and high-volume event-driven systems. Proven expertise in Java, Python, and modern web technologies, driving significant improvements in system scalability, reliability, and code quality. Adept at leading Agile initiatives, resolving critical production issues, and influencing technical strategy in fast-paced environments.
             </p>
-            <div class="mt-8 space-x-4">
-                <a href="#experience-home" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg">
+            <div class="mt-8 flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 items-center md:items-start">
+                <a href="#experience-home" class="block w-full md:inline-block md:w-auto bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg">
                     View Experience
                 </a>
-                <a href="#skills-home" class="inline-block border border-indigo-600 text-indigo-400 px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-900 transition duration-300">
+                <a href="#skills-home" class="block w-full md:inline-block md:w-auto border border-indigo-600 text-indigo-400 px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-900 transition duration-300">
                     View Skills
                 </a>
             </div>
         </div>
-        <div class="md:w-1/2 flex justify-center md:justify-end">
-            <img src="./images/ShriDattaMadhira_2x2.jpg" alt="Shri D. Madhira" class="rounded-full shadow-xl w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-indigo-700">
-            </div>
 
-        <div class="scroll-indicator">
-            <span>Scroll down</span>
-            <div class="arrow">&#8595;</div>
-        </div>
+        <!-- Scroll indicator is now fixed to the viewport -->
     </section>
+
+    <!-- Scroll Indicator (now fixed to the viewport, outside the section) -->
+    <div class="scroll-indicator" id="scroll-indicator">
+        <span>Scroll down</span>
+        <div class="arrow">&#8595;</div>
+    </div>
 
     <!-- Home Page Work Experience Section -->
     <section id="experience-home" class="container mx-auto py-16 px-6 md:px-12 bg-gray-800 rounded-lg shadow-lg my-8">
@@ -712,7 +724,7 @@
             </div>
             <ul class="list-disc list-inside text-gray-200 space-y-3 text-base">
                 <li><strong>Drove</strong> monolithic-to-microservices modernization on AWS ECS Fargate with Terraform/Jenkins, optimizing Zelle services.</li>
-                <li><strong>Architected</strong> high-throughput Kafka event-driven systems for critical domains (user/account updates, payments, EWS notifications), processing <strong>~150M events/day</strong> with <strong>99.99% success rate</strong> and <strong><30ms processing time per event</strong>.</li>
+                <li><strong>Architected</strong> high-throughput Kafka event-driven systems for critical domains (user/account updates, payments, EWS notifications), processing <strong>~150M events/day</strong> with <strong>99.99% success rate</strong> and <strong>&lt;30ms processing time per event</strong>.</li>
                 <li><strong>Developed</strong> and deployed three AWS Lambda functions for payment monitoring, S3 backups, and user reminders, integrating RDS/DB2 for enhanced fraud detection and customer engagement.</li>
                 <li><strong>Boosted</strong> code coverage to <strong>91.1%</strong> via Mockito tests and <strong>resolved</strong> over <strong>15 critical production bugs</strong> across diverse flows, enhancing data consistency and user satisfaction.</li>
                 <li><strong>Led</strong> Agile ceremonies and PI Planning as interim Product Owner, coordinating stakeholders for on-time, compliant releases.</li>
@@ -843,8 +855,8 @@
                 <span class="font-medium">Skills:</span> Java, MVC, Junit4, Swing
             </p>
             <p class="text-gray-200 mb-4">
-                <strong>Developed</strong> a text based adventure game in which the player takes on the role of the protagonist in an interactive story driven by exploration and/or puzzle solving. 
-                The world for our game consists of a dungeon, a network of tunnels and caves that are interconnected so that player can explore the entire world by traveling from cave to cave through the tunnels that connect them. 
+                <strong>Developed</strong> a text based adventure game in which the player takes on the role of the protagonist in an interactive story driven by exploration and/or puzzle solving.
+                The world for our game consists of a dungeon, a network of tunnels and caves that are interconnected so that player can explore the entire world by traveling from cave to cave through the tunnels that connect them.
                 The dungeon will have treasure, arrows, and monsters in it. The player should successfully navigate through the dungeon and get out of it alive.
             </p>
             <a href="https://github.com/shri-datta-madhira/game-of-dungeons" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center">
@@ -873,7 +885,7 @@
                 <span class="font-medium">Skills:</span> Python, Azure, PL/SQL, Node.js, Raspberry Pie
             </p>
             <p class="text-gray-200 mb-4">
-                This project is used to sample the capabilities of taking employee card-in and card-out times using face detection to reduce bottleneck near entry ways during rush hours. 
+                This project is used to sample the capabilities of taking employee card-in and card-out times using face detection to reduce bottleneck near entry ways during rush hours.
                 Raspberry Pie is used to which a small camera unit is connected. We took people's pictures and stored them in Azure blob storage, and use the face api to do face recognition.
             </p>
             <p>
@@ -969,6 +981,26 @@
                 e.stopPropagation(); // Stop the event from bubbling up to the card, which would open the modal
             });
         });
+
+        // --- Scroll indicator visibility logic ---
+        const scrollIndicator = document.getElementById('scroll-indicator');
+        
+        function handleScroll() {
+            if (window.scrollY > 0) {
+                // If scrolled down, hide the indicator
+                scrollIndicator.classList.add('hidden-on-scroll');
+            } else {
+                // If at the very top, show the indicator
+                scrollIndicator.classList.remove('hidden-on-scroll');
+            }
+        }
+
+        // Add the scroll event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Call handleScroll on initial load to set correct state if page reloads not at top
+        window.addEventListener('load', handleScroll);
+        // --- End scroll indicator visibility logic ---
     </script>
 </body>
 </html>
