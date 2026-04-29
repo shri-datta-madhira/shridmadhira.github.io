@@ -153,21 +153,123 @@
         }
 
         .modal-content {
-            background-color: #2D3748; /* Darker background for modal */
-            color: #E2E8F0; /* Lighter text for modal */
+            background-color: #1e293b;
+            color: #E2E8F0;
             padding: 2rem;
-            border-radius: 0.75rem; /* rounded-lg */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3); /* Darker shadow */
-            max-width: 90%;
+            border-radius: 0.875rem;
+            box-shadow: 0 25px 50px -5px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.15);
+            max-width: 600px;
+            width: 92%;
             max-height: 90%;
-            overflow-y: auto; /* Enable scrolling for modal content */
+            overflow-y: auto;
             position: relative;
             transform: scale(0.95);
             transition: transform 0.3s ease-in-out;
         }
 
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 1.25rem;
+                width: 96%;
+                border-radius: 0.625rem;
+            }
+        }
+
         .modal-overlay.active .modal-content {
             transform: scale(1);
+        }
+
+        /* Stat chip cards inside modal */
+        .stat-chips-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.25rem;
+        }
+        .stat-chip {
+            background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1));
+            border: 1px solid rgba(99,102,241,0.35);
+            border-radius: 0.75rem;
+            padding: 0.65rem 0.85rem;
+            text-align: center;
+            flex: 1 1 calc(33% - 0.6rem); /* 3 per row on wide, wraps to 2 or 1 */
+            min-width: 90px;
+            max-width: 160px;
+        }
+        .stat-chip .stat-value {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #a5b4fc;
+            line-height: 1.2;
+        }
+        .stat-chip .stat-label {
+            font-size: 0.62rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.2rem;
+        }
+
+        @media (max-width: 420px) {
+            .stat-chip {
+                flex: 1 1 calc(50% - 0.6rem); /* 2 per row on mobile */
+                max-width: none;
+                font-size: 0.9rem;
+            }
+            .stat-chip .stat-value { font-size: 1rem; }
+        }
+
+        /* Tech dock strip */
+        .tech-dock {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.6rem 0.1rem 0.4rem;
+            scrollbar-width: thin;
+            scrollbar-color: #667EEA #1e293b;
+        }
+        .tech-dock::-webkit-scrollbar { height: 4px; }
+        .tech-dock::-webkit-scrollbar-track { background: #1e293b; border-radius: 10px; }
+        .tech-dock::-webkit-scrollbar-thumb { background: #667EEA; border-radius: 10px; }
+
+        .dock-item {
+            flex-shrink: 0;
+            transition: transform 0.15s ease;
+        }
+        .dock-item:hover { transform: translateY(-4px) scale(1.08); }
+        .dock-item .dock-pill {
+            background: rgba(30,41,59,0.9);
+            border: 1px solid rgba(99,102,241,0.4);
+            border-radius: 9999px;
+            padding: 0.28rem 0.8rem;
+            font-size: 0.75rem;
+            color: #c7d2fe;
+            white-space: nowrap;
+            font-weight: 500;
+            display: block;
+        }
+        .dock-item:hover .dock-pill {
+            background: rgba(99,102,241,0.25);
+            border-color: #818cf8;
+            color: #e0e7ff;
+        }
+
+        .modal-section-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            margin-bottom: 0.4rem;
+            font-weight: 700;
+        }
+
+        .exp-headline {
+            font-size: 1.05rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+            border-left: 3px solid #6366f1;
+            padding-left: 0.85rem;
+            margin-bottom: 1.25rem;
         }
 
         .modal-close-button {
@@ -229,7 +331,97 @@
             color: #FFFFFF; /* White text on hover */
         }
 
-        .github-icon-button {
+        /* Project card overrides */
+        .project-card {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: top;
+            flex-shrink: 0;
+            width: 280px;
+            background: #1e293b;
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 0.875rem;
+            padding: 1.25rem;
+            margin-right: 1.5rem;
+            white-space: normal;
+            cursor: default;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px -8px rgba(99,102,241,0.35);
+            border-color: rgba(99,102,241,0.5);
+        }
+        .project-card:hover::before { opacity: 1; }
+
+        .project-card .proj-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #a5b4fc;
+            margin-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+        .project-card .proj-impact {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            line-height: 1.55;
+            flex-grow: 1;
+            margin-bottom: 0.85rem;
+        }
+        .project-card .proj-impact strong {
+            color: #e0e7ff;
+        }
+        .project-card .proj-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.9rem;
+        }
+        .proj-skill-tag {
+            font-size: 0.68rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: 9999px;
+            background: rgba(99,102,241,0.12);
+            border: 1px solid rgba(99,102,241,0.3);
+            color: #a5b4fc;
+            white-space: nowrap;
+        }
+        .proj-github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-decoration: none;
+            border: 1px solid rgba(99,102,241,0.25);
+            border-radius: 9999px;
+            padding: 0.3rem 0.75rem;
+            transition: all 0.2s ease;
+            width: fit-content;
+        }
+        .proj-github-btn:hover {
+            color: #e0e7ff;
+            border-color: #6366f1;
+            background: rgba(99,102,241,0.15);
+        }
+        .proj-github-btn img {
+            width: 14px;
+            height: 14px;
+            filter: brightness(0.7);
+        }
+        .proj-github-btn:hover img { filter: brightness(1); }
             position: absolute;
             top: 0.5rem; /* Reduced from 0.75rem */
             right: 0.5rem; /* Reduced from 0.5rem */
@@ -263,6 +455,8 @@
             margin: 0 auto 0.5rem auto; /* Centered within its card */
         }
     </style>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="bg-gray-950 text-gray-100">
 
@@ -310,8 +504,11 @@
             <p class="text-xl md:text-2xl text-gray-300 mb-6">
                 A passionate Software Engineer specializing in cloud-native development and microservices.
             </p>
-            <p class="text-lg text-gray-200 leading-relaxed">
-                Highly accomplished Software Engineer with nearly 4 years of experience and a Master's degree, specializing in cloud-native development (AWS), microservices architecture, and high-volume event-driven systems. Proven expertise in Java, Python, and modern web technologies, driving significant improvements in system scalability, reliability, and code quality. Adept at leading Agile initiatives, resolving critical production issues, and influencing technical strategy in fast-paced environments.
+            <p class="text-lg text-gray-200 leading-relaxed mb-4">
+                Software Engineer with 4+ years of building fault-tolerant, eventually-consistent cloud-native systems that process 400M+ events/day, leveraging AI-assisted development practices to ship faster and think bigger — spanning fintech, logistics, and biotech.
+            </p>
+            <p class="text-lg text-indigo-300 font-semibold leading-relaxed border-l-4 border-indigo-500 pl-4 italic">
+                What sets me apart: I think like a PM and build like an engineer — asking <em>why</em> before <em>how</em>, and turning business problems into systems that scale.
             </p>
             <div class="mt-8 flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 items-center md:items-start">
                 <a href="#experience-home" class="block w-full md:inline-block md:w-auto bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg">
@@ -341,7 +538,7 @@
                 <img src="./images/exp/ftb.png" alt="Fifth Third Bank" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Fifth Third Bank</h4>
                 <p class="text-md text-gray-300 text-center">Software Engineer</p>
-                <p class="text-sm text-gray-400 text-center">Dec 2023 – Present</p>
+                <p class="text-sm text-gray-400 text-center">Dec 2023 – Present <span class="text-indigo-300 font-medium exp-duration" data-start="2023-12" data-end="present"></span></p>
                 <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
                     <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
                 </div>
@@ -352,7 +549,7 @@
                 <img src="./images/exp/matson.png" alt="Matson Inc" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Matson Inc</h4>
                 <p class="text-md text-gray-300 text-center">Software Developer</p>
-                <p class="text-sm text-gray-400 text-center">May 2023 – Dec 2023</p>
+                <p class="text-sm text-gray-400 text-center">May 2023 – Dec 2023 <span class="text-indigo-300 font-medium exp-duration" data-start="2023-05" data-end="2023-12"></span></p>
                 <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
                     <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
                 </div>
@@ -363,7 +560,7 @@
                 <img src="./images/exp/vor.png" alt="Vor Biopharma" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Vor Biopharma</h4>
                 <p class="text-md text-gray-300 text-center">Software Engineering Co-op</p>
-                <p class="text-sm text-gray-400 text-center">Jan 2022 – Jun 2022</p>
+                <p class="text-sm text-gray-400 text-center">Jan 2022 – Jun 2022 <span class="text-indigo-300 font-medium exp-duration" data-start="2022-01" data-end="2022-06"></span></p>
                 <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
                     <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
                 </div>
@@ -374,7 +571,7 @@
                 <img src="./images/exp/neu.jpg" alt="Northeastern University" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
                 <h4 class="text-md font-semibold text-indigo-400 mb-1 text-center">Northeastern University</h4>
                 <p class="text-md text-gray-300 text-center">GRA & TA</p>
-                <p class="text-sm text-gray-400 text-center">Sept 2021 – May 2023</p>
+                <p class="text-sm text-gray-400 text-center">Sept 2021 – May 2023 <span class="text-indigo-300 font-medium exp-duration" data-start="2021-09" data-end="2023-05"></span></p>
                 <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
                     <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
                 </div>
@@ -385,7 +582,7 @@
                 <img src="./images/exp/infosys.jpg" alt="Infosys Limited" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Infosys Limited</h4>
                 <p class="text-sm text-gray-300 text-center">Software Development Engineer</p>
-                <p class="text-sm text-gray-400 text-center">Dec 2018 – Feb 2020</p>
+                <p class="text-sm text-gray-400 text-center">Dec 2018 – Feb 2020 <span class="text-indigo-300 font-medium exp-duration" data-start="2018-12" data-end="2020-02"></span></p>
                 <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none flex items-center justify-center">
                     <p class="text-sm text-white mt-4 italic relative z-10">Click for more</p>
                 </div>
@@ -401,224 +598,251 @@
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-4">Programming Languages</h4>
                 <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Java</span>
+                    <span class="skill-bubble">Java (8–21)</span>
                     <span class="skill-bubble">Python</span>
                     <span class="skill-bubble">JavaScript</span>
                     <span class="skill-bubble">TypeScript</span>
+                    <span class="skill-bubble">Groovy</span>
                     <span class="skill-bubble">Shell Scripting</span>
+                    <span class="skill-bubble">Go*</span>
+                    <span class="skill-bubble">C++*</span>
                 </div>
             </div>
 
             <!-- Web Technologies Skill Card -->
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Web Technologies</h4>
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Web & APIs</h4>
                 <div class="flex flex-wrap justify-center">
                     <span class="skill-bubble">Node.js</span>
                     <span class="skill-bubble">React.js</span>
-                    <span class="skill-bubble">HTML</span>
-                    <span class="skill-bubble">CSS</span>
-                    <span class="skill-bubble">Bootstrap</span>
-                    <span class="skill-bubble">jQuery</span>
-                    <span class="skill-bubble">REST APIs</span>
+                    <span class="skill-bubble">REST</span>
+                    <span class="skill-bubble">GraphQL</span>
+                    <span class="skill-bubble">gRPC</span>
+                    <span class="skill-bubble">HTML/CSS</span>
+                    <span class="skill-bubble">Redux</span>
+                    <span class="skill-bubble">Protobuf*</span>
+                    <span class="skill-bubble">Thrift*</span>
                 </div>
             </div>
 
-            <!-- Cloud Platforms Skill Card -->
+            <!-- AWS Skill Card -->
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Cloud Platforms</h4>
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">AWS</h4>
                 <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">AWS</span>
-                    <span class="skill-bubble">S3</span>
-                    <span class="skill-bubble">ECS Fargate</span>
                     <span class="skill-bubble">Lambda</span>
-                    <span class="skill-bubble">VPC</span>
+                    <span class="skill-bubble">ECS / ECR</span>
+                    <span class="skill-bubble">S3</span>
                     <span class="skill-bubble">RDS</span>
-                    <span class="skill-bubble">API Gateway</span>
                     <span class="skill-bubble">SQS</span>
-                    <span class="skill-bubble">Terraform</span>
+                    <span class="skill-bubble">VPC</span>
+                    <span class="skill-bubble">API Gateway</span>
+                    <span class="skill-bubble">Secrets Manager</span>
+                    <span class="skill-bubble">CodeArtifact</span>
+                    <span class="skill-bubble">DynamoDB*</span>
+                    <span class="skill-bubble">Kinesis*</span>
+                </div>
+            </div>
+
+            <!-- DevOps & CI/CD Skill Card -->
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">DevOps & CI/CD</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Docker</span>
                     <span class="skill-bubble">Kubernetes</span>
+                    <span class="skill-bubble">Terraform</span>
+                    <span class="skill-bubble">Jenkins</span>
+                    <span class="skill-bubble">CI/CD</span>
+                    <span class="skill-bubble">Git</span>
+                    <span class="skill-bubble">LaunchDarkly</span>
                     <span class="skill-bubble">Azure</span>
+                    <span class="skill-bubble">GCP</span>
+                </div>
+            </div>
+
+            <!-- Observability Skill Card -->
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Observability</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Prometheus</span>
+                    <span class="skill-bubble">Splunk</span>
+                    <span class="skill-bubble">Grafana*</span>
+                    <span class="skill-bubble">OpenTelemetry*</span>
+                    <span class="skill-bubble">Datadog*</span>
                 </div>
             </div>
 
             <!-- Database Technologies Skill Card -->
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Database Technologies</h4>
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Databases</h4>
                 <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Oracle</span>
-                    <span class="skill-bubble">SQL Server</span>
                     <span class="skill-bubble">PostgreSQL</span>
                     <span class="skill-bubble">IBM DB2</span>
+                    <span class="skill-bubble">Oracle (PL/SQL)</span>
                     <span class="skill-bubble">MongoDB</span>
+                    <span class="skill-bubble">SQL Server</span>
                     <span class="skill-bubble">Snowflake</span>
+                    <span class="skill-bubble">Cassandra*</span>
+                    <span class="skill-bubble">Redis*</span>
+                    <span class="skill-bubble">Elasticsearch*</span>
                 </div>
             </div>
 
-            <!-- Frameworks & Libraries Skill Card -->
+            <!-- Java Frameworks Skill Card -->
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Frameworks & Libraries</h4>
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Java Frameworks</h4>
                 <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Spring Framework</span>
                     <span class="skill-bubble">Spring Boot</span>
                     <span class="skill-bubble">Hibernate</span>
                     <span class="skill-bubble">JPA</span>
-                    <span class="skill-bubble">Maven</span>
                     <span class="skill-bubble">Gradle</span>
+                    <span class="skill-bubble">Maven</span>
                     <span class="skill-bubble">MapStruct</span>
                     <span class="skill-bubble">Liquibase</span>
-                    <span class="skill-bubble">Redux</span>
+                    <span class="skill-bubble">HashiCorp Vault</span>
                 </div>
             </div>
 
-            <!-- DevOps Tools Skill Card -->
+            <!-- Testing & AI Skill Card -->
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">DevOps Tools</h4>
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Testing & AI/ML</h4>
                 <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Git</span>
-                    <span class="skill-bubble">Jenkins</span>
-                    <span class="skill-bubble">CI/CD</span>
-                    <span class="skill-bubble">Docker</span>
-                    <span class="skill-bubble">Postman</span>
-                    <span class="skill-bubble">JFrog Artifactory</span>
-                    <span class="skill-bubble">LaunchDarkly</span>
-                    <span class="skill-bubble">Apache ActiveMQ</span>
-                    <span class="skill-bubble">Apache Tomcat</span>
-                    <span class="skill-bubble">Prometheus</span>
-                    <span class="skill-bubble">Checkmarx</span>
-                    <span class="skill-bubble">SonarQube</span>
-                    <span class="skill-bubble">Kafka</span>
-                </div>
-            </div>
-
-            <!-- Testing Tools Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Testing Tools</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">JUnit</span>
                     <span class="skill-bubble">Mockito</span>
-                    <span class="skill-bubble">Newman</span>
+                    <span class="skill-bubble">JUnit</span>
                     <span class="skill-bubble">Cucumber</span>
-                    <span class="skill-bubble">Selenium</span>
+                    <span class="skill-bubble">GitHub Copilot</span>
+                    <span class="skill-bubble">PyTorch</span>
+                    <span class="skill-bubble">TensorFlow</span>
                 </div>
             </div>
 
-            <!-- Software Architecture & Methodologies Skill Card -->
+            <!-- Messaging Skill Card -->
+            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Messaging</h4>
+                <div class="flex flex-wrap justify-center">
+                    <span class="skill-bubble">Apache Kafka</span>
+                    <span class="skill-bubble">ActiveMQ</span>
+                    <span class="skill-bubble">RabbitMQ</span>
+                    <span class="skill-bubble">Apache Flink*</span>
+                </div>
+            </div>
+
+            <!-- Methodologies Skill Card -->
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-4">Architecture & Methodologies</h4>
                 <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Event-Driven Systems</span>
-                    <span class="skill-bubble">Microservices Modernization</span>
-                    <span class="skill-bubble">Database Hydration</span>
-                    <span class="skill-bubble">Agile</span>
-                    <span class="skill-bubble">Scrum</span>
+                    <span class="skill-bubble">Microservices</span>
+                    <span class="skill-bubble">Event-Driven</span>
+                    <span class="skill-bubble">Distributed Systems</span>
                     <span class="skill-bubble">TDD</span>
-                    <span class="skill-bubble">SDLC</span>
+                    <span class="skill-bubble">Agile/Scrum</span>
+                    <span class="skill-bubble">IaC</span>
+                    <span class="skill-bubble">SLI/SLO</span>
+                    <span class="skill-bubble">SRE*</span>
+                    <span class="skill-bubble">FinOps*</span>
                     <span class="skill-bubble">OOP</span>
-                </div>
-            </div>
-
-            <!-- Miscellaneous Skill Card -->
-            <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Miscellaneous</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">GitHub Actions</span>
-                    <span class="skill-bubble">NLTK</span>
-                    <span class="skill-bubble">TensorFlow</span>
-                    <span class="skill-bubble">Keras</span>
-                    <span class="skill-bubble">PyTorch</span>
-                    <span class="skill-bubble">Spark</span>
-                    <span class="skill-bubble">DBeaver</span>
+                    <span class="skill-bubble">SDLC</span>
                 </div>
             </div>
         </div>
+        <p class="text-sm text-gray-500 text-center mt-4 italic">* Familiar / exposure-level experience</p>
     </section>
-
-    <!-- Projects Section -->
     <section id="projects-home" class="bg-gray-800 py-16 px-6 md:px-12 rounded-lg mx-auto container my-8 shadow-lg">
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">My Projects</h2>
         <div class="horizontal-scroll-container flex space-x-6">
             <!-- Project 1: Topical Search Engine -->
-            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-search-engine-modal-content" data-github-url="https://github.com/shri-datta-madhira/Information-Retrieval/tree/main/HW-3">
-                <a href="https://github.com/shri-datta-madhira/Information-Retrieval/tree/main/HW-3" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
-                </a>
-                <h3 class="text-2xl font-semibold text-indigo-400 mb-3 text-wrap">Real-time Topical Search Engine</h3>
-                <p class="text-gray-300 mb-4 text-sm text-wrap">
-                    <span class="font-medium">Skills:</span> Python, Elasticsearch, Docker, PageRank, Priority Queues
-                </p>
-                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
-                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+            <div class="project-card">
+                <p class="proj-title">Real-time Topical Search Engine</p>
+                <p class="proj-impact">Engineered a web crawler that indexed <strong>80K websites in 18 hours</strong> using graph-based traversal, PageRank scoring, and Elasticsearch for sub-second topical queries.</p>
+                <div class="proj-skills">
+                    <span class="proj-skill-tag">Python</span>
+                    <span class="proj-skill-tag">Elasticsearch</span>
+                    <span class="proj-skill-tag">Docker</span>
+                    <span class="proj-skill-tag">PageRank</span>
+                    <span class="proj-skill-tag">Priority Queues</span>
                 </div>
+                <a href="https://github.com/shri-datta-madhira/Information-Retrieval/tree/main/HW-3" target="_blank" class="proj-github-btn">
+                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
+                </a>
             </div>
 
             <!-- Project 2: Text Summarization in NLP -->
-            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-nlp-modal-content" data-github-url="https://github.com/shri-datta-madhira/text-summarization-nlp">
-                <a href="https://github.com/shri-datta-madhira/text-summarization-nlp" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
-                </a>
-                <h3 class="text-2xl font-semibold text-indigo-400 mb-3 text-wrap">Text Summarization in NLP</h3>
-                <p class="text-gray-300 mb-4 text-sm text-wrap">
-                    <span class="font-medium">Skills:</span> Python, Google Colab, RNN, LSTM, Attention
-                </p>
-                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
-                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+            <div class="project-card">
+                <p class="proj-title">Text Summarization in NLP</p>
+                <p class="proj-impact">Built encoder-decoder models with LSTM units and attention mechanisms for abstractive summarization, achieving a <strong>BLEU score of 0.85</strong>.</p>
+                <div class="proj-skills">
+                    <span class="proj-skill-tag">Python</span>
+                    <span class="proj-skill-tag">Google Colab</span>
+                    <span class="proj-skill-tag">RNN</span>
+                    <span class="proj-skill-tag">LSTM</span>
+                    <span class="proj-skill-tag">Attention</span>
                 </div>
+                <a href="https://github.com/shri-datta-madhira/text-summarization-nlp" target="_blank" class="proj-github-btn">
+                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
+                </a>
             </div>
 
             <!-- Project 3: Anidb -->
-            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-anidb-modal-content" data-github-url="https://github.com/CantFindThisProject">
-                <a href="https://github.com/CantFindThisProject" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
-                </a>
-                <h3 class="text-2xl font-semibold text-indigo-400 mb-3 text-wrap">Anidb - Anime Info website</h3>
-                <p class="text-gray-300 mb-4 text-sm text-wrap">
-                    <span class="font-medium">Skills:</span> React.js, Node.js, MongoDB, Express, REST APIs, Bootstrap
-                </p>
-                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
-                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+            <div class="project-card">
+                <p class="proj-title">Anidb — Anime Info Website</p>
+                <p class="proj-impact">Full-stack website with data on <strong>23K+ anime</strong> — featuring user reviews, ratings, follow system, and bookmarking built on a React + Node + MongoDB stack.</p>
+                <div class="proj-skills">
+                    <span class="proj-skill-tag">React.js</span>
+                    <span class="proj-skill-tag">Node.js</span>
+                    <span class="proj-skill-tag">MongoDB</span>
+                    <span class="proj-skill-tag">Express</span>
+                    <span class="proj-skill-tag">REST APIs</span>
+                    <span class="proj-skill-tag">Bootstrap</span>
                 </div>
+                <a href="https://github.com/CantFindThisProject" target="_blank" class="proj-github-btn">
+                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
+                </a>
             </div>
 
             <!-- Project 4: Game of Dungeons -->
-            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center" data-modal-target="project-god-modal-content" data-github-url="https://github.com/shri-datta-madhira/game-of-dungeons">
-                <a href="https://github.com/shri-datta-madhira/game-of-dungeons" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
-                </a>
-                <h3 class="text-2xl font-semibold text-indigo-400 mb-3 text-wrap">Game of Dungeons</h3>
-                <p class="text-gray-300 mb-4 text-sm text-wrap">
-                    <span class="font-medium">Skills:</span> Java, MVC, Junit4, Swing
-                </p>
-                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
-                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+            <div class="project-card">
+                <p class="proj-title">Game of Dungeons</p>
+                <p class="proj-impact">Text-based dungeon adventure game with a procedurally connected cave network — featuring treasure, monsters, arrows, and a player who must escape alive.</p>
+                <div class="proj-skills">
+                    <span class="proj-skill-tag">Java</span>
+                    <span class="proj-skill-tag">MVC</span>
+                    <span class="proj-skill-tag">JUnit4</span>
+                    <span class="proj-skill-tag">Swing</span>
                 </div>
+                <a href="https://github.com/shri-datta-madhira/game-of-dungeons" target="_blank" class="proj-github-btn">
+                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
+                </a>
             </div>
 
-            <!-- Project 5: Take attendance using face recognition -->
-            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-face-detect-modal-content" data-github-url="https://github.com/shri-datta-madhira/employee-attendance-using-face-recognition">
-                <a href="https://github.com/shri-datta-madhira/employee-attendance-using-face-recognition" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
-                </a>
-                <h3 class="text-2xl font-semibold text-indigo-400 mb-3 text-wrap">Employee Attendance using Face Detection</h3>
-                <p class="text-gray-300 mb-4 text-sm text-wrap">
-                    <span class="font-medium">Skills:</span> Python, Azure, PL/SQL, Node.js, Raspberry Pie
-                </p>
-                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
-                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+            <!-- Project 5: Employee Attendance using Face Detection -->
+            <div class="project-card">
+                <p class="proj-title">Employee Attendance via Face Detection</p>
+                <p class="proj-impact">Raspberry Pi + Azure Face API system that <strong>cut check-in bottlenecks by 30%+</strong> — later scaled and deployed across multiple office locations. 🎉</p>
+                <div class="proj-skills">
+                    <span class="proj-skill-tag">Python</span>
+                    <span class="proj-skill-tag">Azure</span>
+                    <span class="proj-skill-tag">PL/SQL</span>
+                    <span class="proj-skill-tag">Node.js</span>
+                    <span class="proj-skill-tag">Raspberry Pi</span>
                 </div>
+                <a href="https://github.com/shri-datta-madhira/employee-attendance-using-face-recognition" target="_blank" class="proj-github-btn">
+                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
+                </a>
             </div>
 
             <!-- Project 6: Arctic Sea Ice Prediction -->
-            <div class="card bg-gray-700 p-6 pt-12 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="project-artic-modal-content" data-github-url="https://github.com/shri-datta-madhira/arctic-sea-ice-prediction">
-                <a href="https://github.com/shri-datta-madhira/arctic-sea-ice-prediction" target="_blank" class="github-icon-button" onclick="event.stopPropagation()">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub Icon">
-                </a>
-                <h3 class="text-2xl font-semibold text-indigo-400 mb-3 text-wrap">Arctic Sea Ice Levels Prediction</h3>
-                <p class="text-gray-300 mb-4 text-sm text-wrap">
-                    <span class="font-medium">Skills:</span> Python, Pandas, Numpy, Data Mining
-                </p>
-                <div class="rounded-lg absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-indigo-500 to-transparent z-0 pointer-events-none">
-                    <p class="text-sm text-white text-center mt-4 italic relative z-10">Click for more</p>
+            <div class="project-card">
+                <p class="proj-title">Arctic Sea Ice Levels Prediction</p>
+                <p class="proj-impact">End-to-end data mining pipeline — from raw climate data through cleaning, EDA, and ML prediction — exploring how sea ice extent correlates with global temperature shifts.</p>
+                <div class="proj-skills">
+                    <span class="proj-skill-tag">Python</span>
+                    <span class="proj-skill-tag">Pandas</span>
+                    <span class="proj-skill-tag">Numpy</span>
+                    <span class="proj-skill-tag">Sklearn</span>
+                    <span class="proj-skill-tag">Data Mining</span>
                 </div>
+                <a href="https://github.com/shri-datta-madhira/arctic-sea-ice-prediction" target="_blank" class="proj-github-btn">
+                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
+                </a>
             </div>
         </div>
     </section>
@@ -663,23 +887,24 @@
                 I'm always open to new opportunities and collaborations.
                 Please feel free to reach out!
             </p>
-            <form class="space-y-6">
+            <form id="contact-form" class="space-y-6">
                 <div>
                     <label for="name" class="block text-lg font-medium text-gray-200 mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="Your Name">
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="Your Name">
                 </div>
                 <div>
                     <label for="email" class="block text-lg font-medium text-gray-200 mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="your.email@example.com">
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="your.email@example.com">
                 </div>
                 <div>
                     <label for="message" class="block text-lg font-medium text-gray-200 mb-2">Message</label>
-                    <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="Your message..."></textarea>
+                    <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100" placeholder="Your message..."></textarea>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="bg-indigo-600 text-white px-10 py-4 rounded-full text-xl font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg">
-                        <a href="mailto:your.email@example.com?subject=Contact from Portfolio&body=Hi there," class="...">Send Message</a>
+                    <button type="submit" class="bg-indigo-600 text-white px-10 py-4 rounded-full text-xl font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                        Send Message
                     </button>
+                    <p id="form-feedback" class="hidden mt-4 text-center text-sm"></p>
                 </div>
             </form>
             <div class="mt-12 text-center text-gray-300">
@@ -713,96 +938,182 @@
     <div class="hidden">
         <!-- Experience Details -->
         <div id="fifth-third-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <div class="flex items-center mb-4">
+            <!-- Header -->
+            <div class="flex items-center mb-5 pt-2">
                 <img src="./images/exp/ftb.png" alt="Fifth Third Bank Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
-                    <h3 class="text-3xl font-bold text-indigo-400">Fifth Third Bank</h3>
-                    <p class="text-xl font-bold text-gray-300">Software Engineer</p>
-                    <p class="text-lg text-gray-400">Dec 2023 – Present</p>
+                    <h3 class="text-2xl font-bold text-indigo-400">Fifth Third Bank</h3>
+                    <p class="text-base font-semibold text-gray-300">Software Engineer</p>
+                    <p class="text-sm text-gray-500">Dec 2023 – Present · Remote</p>
                 </div>
             </div>
-            <ul class="list-disc list-inside text-gray-200 space-y-3 text-base">
-                <li><strong>Drove</strong> monolithic-to-microservices modernization on AWS ECS Fargate with Terraform/Jenkins, optimizing Zelle services.</li>
-                <li><strong>Architected</strong> high-throughput Kafka event-driven systems for critical domains (user/account updates, payments, EWS notifications), processing <strong>~150M events/day</strong> with <strong>99.99% success rate</strong> and <strong>&lt;30ms processing time per event</strong>.</li>
-                <li><strong>Developed</strong> and deployed three AWS Lambda functions for payment monitoring, S3 backups, and user reminders, integrating RDS/DB2 for enhanced fraud detection and customer engagement.</li>
-                <li><strong>Boosted</strong> code coverage to <strong>91.1%</strong> via Mockito tests and <strong>resolved</strong> over <strong>15 critical production bugs</strong> across diverse flows, enhancing data consistency and user satisfaction.</li>
-                <li><strong>Led</strong> Agile ceremonies and PI Planning as interim Product Owner, coordinating stakeholders for on-time, compliant releases.</li>
-                <li><strong>Presented</strong> technical strategies in leadership meetings, influencing architecture and demonstrating expertise in development, operations, and business alignment.</li>
-                <li><strong>Implemented</strong> LaunchDarkly feature flags for risk-free deploys and A/B tests, achieving a streak of <strong>10 successful releases</strong> and accelerating feature delivery.</li>
-            </ul>
+            <!-- Headline -->
+            <p class="exp-headline">
+                Rebuilt Zelle's core payment infrastructure from a monolith into event-driven microservices — now handling <strong>$2B+ in daily transactions</strong> across millions of users with zero critical production failures.
+            </p>
+            <!-- Stats -->
+            <p class="modal-section-label">Impact</p>
+            <div class="stat-chips-grid">
+                <div class="stat-chip"><div class="stat-value">400M+</div><div class="stat-label">events / day</div></div>
+                <div class="stat-chip"><div class="stat-value">~5ms</div><div class="stat-label">avg latency</div></div>
+                <div class="stat-chip"><div class="stat-value">99%+</div><div class="stat-label">success rate</div></div>
+                <div class="stat-chip"><div class="stat-value">91%</div><div class="stat-label">code coverage</div></div>
+                <div class="stat-chip"><div class="stat-value">500K+</div><div class="stat-label">daily reminders</div></div>
+                <div class="stat-chip"><div class="stat-value">10/12</div><div class="stat-label">clean releases</div></div>
+            </div>
+            <!-- Tech Dock -->
+            <p class="modal-section-label">Technologies</p>
+            <div class="tech-dock">
+                <div class="dock-item"><span class="dock-pill">Java</span></div>
+                <div class="dock-item"><span class="dock-pill">Spring Boot</span></div>
+                <div class="dock-item"><span class="dock-pill">Apache Kafka</span></div>
+                <div class="dock-item"><span class="dock-pill">IBM DB2</span></div>
+                <div class="dock-item"><span class="dock-pill">AWS Lambda</span></div>
+                <div class="dock-item"><span class="dock-pill">AWS ECS</span></div>
+                <div class="dock-item"><span class="dock-pill">AWS S3</span></div>
+                <div class="dock-item"><span class="dock-pill">Terraform</span></div>
+                <div class="dock-item"><span class="dock-pill">Jenkins</span></div>
+                <div class="dock-item"><span class="dock-pill">Docker</span></div>
+                <div class="dock-item"><span class="dock-pill">HashiCorp Vault</span></div>
+                <div class="dock-item"><span class="dock-pill">LaunchDarkly</span></div>
+                <div class="dock-item"><span class="dock-pill">Splunk</span></div>
+                <div class="dock-item"><span class="dock-pill">Mockito</span></div>
+                <div class="dock-item"><span class="dock-pill">Newman</span></div>
+                <div class="dock-item"><span class="dock-pill">Cucumber</span></div>
+                <div class="dock-item"><span class="dock-pill">REST APIs</span></div>
+            </div>
         </div>
         <div id="matson-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <div class="flex items-center mb-4">
+            <!-- Header -->
+            <div class="flex items-center mb-5 pt-2">
                 <img src="./images/exp/matson.png" alt="Matson Inc Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
-                    <h3 class="text-3xl font-bold text-indigo-400">Matson Inc</h3>
-                    <p class="text-xl font-bold text-gray-300">Software Developer</p>
-                    <p class="text-lg text-gray-400">May 2023 – Dec 2023</p>
+                    <h3 class="text-2xl font-bold text-indigo-400">Matson Inc</h3>
+                    <p class="text-base font-semibold text-gray-300">Software Developer</p>
+                    <p class="text-sm text-gray-500">May 2023 – Dec 2023 · Phoenix, AZ</p>
                 </div>
             </div>
-            <ul class="list-disc list-inside text-gray-200 space-y-3 text-base">
-                <li><strong>Developed</strong> Groovy APIs to optimize container loading sequences for vessels, directly improving efficiency for <strong>200+ employees</strong> across <strong>3 major Alaskan ports</strong>.</li>
-                <li><strong>Optimized</strong> Jasper Reports for 24-hour gate statistics, expanding metrics from 2 to 4 types to reveal patterns and enhance operations at Anchorage port, <strong>reducing analysis time by 20%</strong> and providing <strong>on-call support</strong> to maintain high system uptime.</li>
-                <li><strong>Engineered</strong> a master-slave server pattern for critical TDP-TOS communication, <strong>boosting system resiliency by 99.9% uptime</strong> and enabling load balancing for <strong>10K+ messages/hour</strong> during high-throughput operations.</li>
-            </ul>
+            <!-- Headline -->
+            <p class="exp-headline">
+                Modernized port operations software for one of the largest US shipping lines — improving throughput, security, and system resilience across <strong>4 major Pacific ports</strong>.
+            </p>
+            <!-- Stats -->
+            <p class="modal-section-label">Impact</p>
+            <div class="stat-chips-grid">
+                <div class="stat-chip"><div class="stat-value">500+</div><div class="stat-label">port workers</div></div>
+                <div class="stat-chip"><div class="stat-value">~25%</div><div class="stat-label">less downtime</div></div>
+                <div class="stat-chip"><div class="stat-value">10+</div><div class="stat-label">vulns fixed</div></div>
+                <div class="stat-chip"><div class="stat-value">4</div><div class="stat-label">ports covered</div></div>
+            </div>
+            <!-- Tech Dock -->
+            <p class="modal-section-label">Technologies</p>
+            <div class="tech-dock">
+                <div class="dock-item"><span class="dock-pill">Groovy</span></div>
+                <div class="dock-item"><span class="dock-pill">Java</span></div>
+                <div class="dock-item"><span class="dock-pill">Apache ActiveMQ</span></div>
+                <div class="dock-item"><span class="dock-pill">AWS Secrets Manager</span></div>
+                <div class="dock-item"><span class="dock-pill">Jasper Reports</span></div>
+                <div class="dock-item"><span class="dock-pill">SQL</span></div>
+                <div class="dock-item"><span class="dock-pill">REST APIs</span></div>
+                <div class="dock-item"><span class="dock-pill">Master-Slave Failover</span></div>
+            </div>
         </div>
         <div id="vor-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <div class="flex items-center mb-4">
+            <!-- Header -->
+            <div class="flex items-center mb-5 pt-2">
                 <img src="./images/exp/vor.png" alt="Vor Biopharma Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
-                    <h3 class="text-3xl font-bold text-indigo-400">Vor Biopharma</h3>
-                    <p class="text-xl font-bold text-gray-300">Software Engineering Co-op</p>
-                    <p class="text-lg text-gray-400">Jan 2022 – Jun 2022</p>
+                    <h3 class="text-2xl font-bold text-indigo-400">Vor Biopharma</h3>
+                    <p class="text-base font-semibold text-gray-300">Software Engineering Co-op</p>
+                    <p class="text-sm text-gray-500">Jan 2022 – Jun 2022 · Cambridge, MA</p>
                 </div>
             </div>
-            <ul class="list-disc list-inside text-gray-200 space-y-3 text-base">
-                <li><strong>Enhanced</strong> 5 critical data pipelines using Shell scripting and Python, cutting analysis time by <strong>50%</strong>.</li>
-                <li><strong>Assisted</strong> in building an in-memory sequencer data store, reducing data retrieval latency by <strong>70%</strong> and gene analysis time by <strong>~30 minutes</strong>.</li>
-                <li><strong>Collaborated</strong> with research scientists to translate complex biological requirements into scalable software solutions, ensuring data integrity for critical genomic research.</li>
-            </ul>
+            <!-- Headline -->
+            <p class="exp-headline">
+                Accelerated genomic research pipelines at a clinical-stage biotech — cutting gene analysis time from hours down to <strong>~30 minutes</strong> by building an in-memory data store from scratch.
+            </p>
+            <!-- Stats -->
+            <p class="modal-section-label">Impact</p>
+            <div class="stat-chips-grid">
+                <div class="stat-chip"><div class="stat-value">70%</div><div class="stat-label">latency reduction</div></div>
+                <div class="stat-chip"><div class="stat-value">~30 min</div><div class="stat-label">gene analysis</div></div>
+                <div class="stat-chip"><div class="stat-value">5+</div><div class="stat-label">pipelines enhanced</div></div>
+            </div>
+            <!-- Tech Dock -->
+            <p class="modal-section-label">Technologies</p>
+            <div class="tech-dock">
+                <div class="dock-item"><span class="dock-pill">Python</span></div>
+                <div class="dock-item"><span class="dock-pill">Shell Scripting</span></div>
+                <div class="dock-item"><span class="dock-pill">In-Memory Store</span></div>
+                <div class="dock-item"><span class="dock-pill">Data Pipelines</span></div>
+                <div class="dock-item"><span class="dock-pill">Genomic Data</span></div>
+            </div>
         </div>
         <div id="northeastern-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <div class="flex items-center mb-4">
+            <!-- Header -->
+            <div class="flex items-center mb-5 pt-2">
                 <img src="./images/exp/neu.jpg" alt="Northeastern University Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
-                    <h3 class="text-3xl font-bold text-indigo-400">Northeastern University</h3>
-                    <p class="text-xl font-bold text-gray-300">Research & Teaching Assistant</p>
-                    <p class="text-lg text-gray-400">Sept 2021 – May 2023</p>
+                    <h3 class="text-2xl font-bold text-indigo-400">Northeastern University</h3>
+                    <p class="text-base font-semibold text-gray-300">Research & Teaching Assistant</p>
+                    <p class="text-sm text-gray-500">Sept 2021 – May 2023 · Boston, MA</p>
                 </div>
             </div>
-            <div class="mb-6">
-                <h4 class="text-xl font-semibold text-gray-200 mb-2">Research Assistant</h4>
-                <ul class="list-disc list-inside text-gray-200 space-y-2 text-base">
-                    <li>Established python scripts to gather, analyze, and visualize large experimental data on 802.11ad Wi-Fi standard while providing services as a Research Assistant at NU WiNS Lab.</li>
-                </ul>
+            <!-- Headline -->
+            <p class="exp-headline">
+                Contributed to cutting-edge Wi-Fi research while mentoring 200+ students across three CS courses — from introductory programming to graduate-level data mining.
+            </p>
+            <!-- Stats -->
+            <p class="modal-section-label">Impact</p>
+            <div class="stat-chips-grid">
+                <div class="stat-chip"><div class="stat-value">200+</div><div class="stat-label">students mentored</div></div>
+                <div class="stat-chip"><div class="stat-value">3</div><div class="stat-label">courses TA'd</div></div>
+                <div class="stat-chip"><div class="stat-value">802.11ad</div><div class="stat-label">Wi-Fi research</div></div>
             </div>
-            <div>
-                <h4 class="text-xl font-semibold text-gray-200 mb-2">Teaching Assistant</h4>
-                <ul class="list-disc list-inside text-gray-200 space-y-2 text-base">
-                    <li>CS1100 (Computer Science & its Applications)</li>
-                    <li>CS4910 (Introduction to Non-Interactive Rendering Techniques)</li>
-                    <li>CS6220 (Data Mining Techniques)</li>
-                </ul>
+            <!-- Tech Dock -->
+            <p class="modal-section-label">Technologies & Courses</p>
+            <div class="tech-dock">
+                <div class="dock-item"><span class="dock-pill">Python</span></div>
+                <div class="dock-item"><span class="dock-pill">Data Visualization</span></div>
+                <div class="dock-item"><span class="dock-pill">802.11ad Wi-Fi</span></div>
+                <div class="dock-item"><span class="dock-pill">CS1100</span></div>
+                <div class="dock-item"><span class="dock-pill">CS4910</span></div>
+                <div class="dock-item"><span class="dock-pill">CS6220 Data Mining</span></div>
             </div>
         </div>
         <div id="infosys-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <div class="flex items-center mb-4">
+            <!-- Header -->
+            <div class="flex items-center mb-5 pt-2">
                 <img src="./images/exp/infosys.jpg" alt="Infosys Limited Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
                 <div>
-                    <h3 class="text-3xl font-bold text-indigo-400">Infosys Limited</h3>
-                    <p class="text-xl font-bold text-gray-300">Software Development Engineer</p>
-                    <p class="text-lg text-gray-400">Dec 2018 – Feb 2020</p>
+                    <h3 class="text-2xl font-bold text-indigo-400">Infosys Limited</h3>
+                    <p class="text-base font-semibold text-gray-300">Software Development Engineer</p>
+                    <p class="text-sm text-gray-500">Dec 2018 – Feb 2020 · Hyderabad, India</p>
                 </div>
             </div>
-            <ul class="list-disc list-inside text-gray-200 space-y-3 text-base">
-                <li><strong>Slashed 30% daily employee check-in time</strong> by leading a team of 6 students for the development of a face recognition application.</li>
-                <li>Enhanced performance of a bank stock market application by 23% (response time), leveraging PL/SQL, Node.js, & Java.</li>
-            </ul>
+            <!-- Headline -->
+            <p class="exp-headline">
+                Started my engineering career building real products at scale — from a face recognition attendance system deployed across multiple office locations, to optimizing a bank trading application's backend performance.
+            </p>
+            <!-- Stats -->
+            <p class="modal-section-label">Impact</p>
+            <div class="stat-chips-grid">
+                <div class="stat-chip"><div class="stat-value">30%+</div><div class="stat-label">faster check-ins</div></div>
+                <div class="stat-chip"><div class="stat-value">6</div><div class="stat-label">person team led</div></div>
+                <div class="stat-chip"><div class="stat-value">Multi-site</div><div class="stat-label">deployment scale</div></div>
+            </div>
+            <!-- Tech Dock -->
+            <p class="modal-section-label">Technologies</p>
+            <div class="tech-dock">
+                <div class="dock-item"><span class="dock-pill">Java</span></div>
+                <div class="dock-item"><span class="dock-pill">Python</span></div>
+                <div class="dock-item"><span class="dock-pill">Node.js</span></div>
+                <div class="dock-item"><span class="dock-pill">PL/SQL</span></div>
+                <div class="dock-item"><span class="dock-pill">Azure Face API</span></div>
+                <div class="dock-item"><span class="dock-pill">Azure Blob Storage</span></div>
+                <div class="dock-item"><span class="dock-pill">Raspberry Pi</span></div>
+                <div class="dock-item"><span class="dock-pill">DSA</span></div>
+            </div>
         </div>
 
         <!-- Project Details -->
@@ -1001,6 +1312,75 @@
         // Call handleScroll on initial load to set correct state if page reloads not at top
         window.addEventListener('load', handleScroll);
         // --- End scroll indicator visibility logic ---
+        // --- EmailJS Contact Form ---
+        const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Replace with your EmailJS Public Key
+        const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Replace with your EmailJS Service ID
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Replace with your EmailJS Template ID
+
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name      = document.getElementById('name').value.trim();
+            const fromEmail = document.getElementById('email').value.trim();
+            const message   = document.getElementById('message').value.trim();
+            const btn       = this.querySelector('button[type="submit"]');
+            const feedback  = document.getElementById('form-feedback');
+
+            // Loading state
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            feedback.className = 'mt-4 text-center text-sm hidden';
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                from_name:    name,
+                from_email:   fromEmail,
+                message:      message,
+                to_email:     'sridattamadhira1919@gmail.com',
+            })
+            .then(() => {
+                feedback.textContent = '✅ Message sent! I\'ll get back to you soon.';
+                feedback.className = 'mt-4 text-center text-sm text-green-400';
+                this.reset();
+            })
+            .catch((err) => {
+                console.error('EmailJS error:', err);
+                feedback.textContent = '❌ Something went wrong. Please try again or email me directly.';
+                feedback.className = 'mt-4 text-center text-sm text-red-400';
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.textContent = 'Send Message';
+            });
+        });
+        // --- End EmailJS handler ---
+        function calcDuration(startStr, endStr) {
+            const [sy, sm] = startStr.split('-').map(Number);
+            let ey, em;
+            if (endStr === 'present') {
+                const now = new Date();
+                ey = now.getFullYear();
+                em = now.getMonth() + 1;
+            } else {
+                [ey, em] = endStr.split('-').map(Number);
+            }
+            let months = (ey - sy) * 12 + (em - sm);
+            // Round to nearest 0.5 years if >= 12 months, else show months
+            if (months < 12) {
+                return months === 1 ? '1 mo' : `${months} mos`;
+            }
+            const years = months / 12;
+            const rounded = Math.round(years * 2) / 2;
+            return rounded === 1 ? '1 yr' : `${rounded} yrs`;
+        }
+
+        document.querySelectorAll('.exp-duration').forEach(el => {
+            const start = el.dataset.start;
+            const end = el.dataset.end;
+            el.textContent = '· ' + calcDuration(start, end);
+        });
+        // --- End Duration Calculation ---
     </script>
 </body>
 </html>
