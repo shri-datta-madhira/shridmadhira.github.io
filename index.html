@@ -288,6 +288,73 @@
             color: #F7FAFC; /* white */
         }
 
+        /* Edge-fade + chevron scroll hint system */
+        .scroll-fade-wrap {
+            position: relative;
+        }
+
+        /* Gradient fades */
+        .scroll-fade-wrap::before,
+        .scroll-fade-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 80px;
+            pointer-events: none;
+            z-index: 2;
+            transition: opacity 0.4s ease;
+        }
+        .scroll-fade-wrap::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(15,23,42,0.85), transparent);
+        }
+        .scroll-fade-wrap::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(15,23,42,0.85), transparent);
+        }
+        .scroll-fade-wrap.at-start::before { opacity: 0; }
+        .scroll-fade-wrap.at-end::after    { opacity: 0; }
+
+        /* Chevron arrows */
+        .scroll-chevron {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            color: rgba(165, 180, 252, 0.75);
+            transition: opacity 0.4s ease;
+        }
+        .scroll-chevron svg {
+            width: 18px;
+            height: 18px;
+            filter: drop-shadow(0 0 4px rgba(99,102,241,0.6));
+        }
+        .scroll-chevron.left  { left: 10px; }
+        .scroll-chevron.right { right: 10px; }
+
+        /* Pulse animation on the chevrons */
+        .scroll-chevron.left svg  { animation: nudge-left  1.6s ease-in-out infinite; }
+        .scroll-chevron.right svg { animation: nudge-right 1.6s ease-in-out infinite; }
+
+        @keyframes nudge-right {
+            0%, 100% { transform: translateX(0);    opacity: 0.6; }
+            50%       { transform: translateX(5px);  opacity: 1;   }
+        }
+        @keyframes nudge-left {
+            0%, 100% { transform: translateX(0);    opacity: 0.6; }
+            50%       { transform: translateX(-5px); opacity: 1;   }
+        }
+
+        /* Hide chevrons at the respective ends */
+        .scroll-fade-wrap.at-start .scroll-chevron.left  { opacity: 0; }
+        .scroll-fade-wrap.at-end   .scroll-chevron.right { opacity: 0; }
+
         /* Updated skill-icon and work experience logo size */
         .skill-icon {
             width: 80px; /* Increased from 60px */
@@ -532,7 +599,7 @@
     <!-- Home Page Work Experience Section -->
     <section id="experience-home" class="container mx-auto py-16 px-6 md:px-12 bg-gray-800 rounded-lg shadow-lg my-8">
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">Work Experience</h2>
-        <div class="horizontal-scroll-container flex space-x-6">
+        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container flex space-x-6">
             <!-- Fifth Third Bank Card -->
             <div class="card bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300" data-modal-target="fifth-third-modal-content">
                 <img src="./images/exp/ftb.png" alt="Fifth Third Bank" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
@@ -587,13 +654,13 @@
                     <p class="text-sm text-white mt-4 italic relative z-10">Click for more</p>
                 </div>
             </div>
-        </div>
+        </div></div>
     </section>
 
     <!-- Home Page Core Skills Section -->
     <section id="skills-home" class="bg-gray-950 py-16 px-6 md:px-12 rounded-lg mx-auto container my-8 shadow-lg">
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">Core Skills</h2>
-        <div class="horizontal-scroll-container flex space-x-6">
+        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container flex space-x-6">
             <!-- Programming Languages Skill Card -->
             <div class="card bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
                 <h4 class="text-xl font-semibold text-indigo-400 mb-4">Programming Languages</h4>
@@ -743,12 +810,12 @@
                     <span class="skill-bubble">SDLC</span>
                 </div>
             </div>
-        </div>
+        </div></div>
         <p class="text-sm text-gray-500 text-center mt-4 italic">* Familiar / exposure-level experience</p>
     </section>
     <section id="projects-home" class="bg-gray-800 py-16 px-6 md:px-12 rounded-lg mx-auto container my-8 shadow-lg">
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">My Projects</h2>
-        <div class="horizontal-scroll-container flex space-x-6">
+        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container flex space-x-6">
             <!-- Project 1: Topical Search Engine -->
             <div class="project-card">
                 <p class="proj-title">Real-time Topical Search Engine</p>
@@ -816,7 +883,7 @@
             <!-- Project 5: Employee Attendance using Face Detection -->
             <div class="project-card">
                 <p class="proj-title">Employee Attendance via Face Detection</p>
-                <p class="proj-impact">Raspberry Pi + Azure Face API system that <strong>cut check-in bottlenecks by 30%+</strong> — later scaled and deployed across multiple office locations. 🎉</p>
+                <p class="proj-impact">Raspberry Pi + Azure Face API system that <strong>cut check-in bottlenecks by 30%+</strong> — later scaled and deployed across multiple office locations.</p>
                 <div class="proj-skills">
                     <span class="proj-skill-tag">Python</span>
                     <span class="proj-skill-tag">Azure</span>
@@ -844,13 +911,13 @@
                     <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
                 </a>
             </div>
-        </div>
+        </div></div>
     </section>
 
     <!-- Interests & Hobbies Section -->
     <section id="hobbies" class="container mx-auto py-10 px-6 md:px-12 bg-gray-950 rounded-lg shadow-lg my-8">
         <h2 class="text-4xl font-bold text-center text-gray-100 mb-12">Interests & Hobbies</h2>
-        <div class="horizontal-scroll-container">
+        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container">
             <!-- Hobby Card: Soccer -->
             <div class="card bg-gray-800 p-10 rounded-lg shadow-md hover:shadow-xl transition duration-300">
                 <img src="./images/hobbies/football.png" alt="Soccer Icon" class="rounded-full mb-3 border border-indigo-800 hobby-icon">
@@ -876,7 +943,7 @@
                 <img src="./images/hobbies/travelling.png" alt="Traveling Icon" class="rounded-full mb-3 border border-indigo-800 hobby-icon">
                 <p class="text-xl font-semibold text-indigo-400 mt-2">Traveling</p>
             </div>
-        </div>
+        </div></div>
     </section>
 
     <!-- Contact Section -->
@@ -1293,7 +1360,128 @@
             });
         });
 
-        // --- Scroll indicator visibility logic ---
+        // --- Edge-hover auto-scroll with chevrons + auto-nudge ---
+        const CHEVRON_SVG_RIGHT = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+        const CHEVRON_SVG_LEFT  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+
+        function setupEdgeScroll(el, edgeZone = 80, maxSpeed = 12) {
+            let rafId = null;
+
+            // Inject chevrons into the parent scroll-fade-wrap
+            const wrap = el.closest('.scroll-fade-wrap');
+            if (wrap && !wrap.querySelector('.scroll-chevron')) {
+                const leftChev  = document.createElement('div');
+                leftChev.className  = 'scroll-chevron left';
+                leftChev.innerHTML  = CHEVRON_SVG_LEFT;
+                const rightChev = document.createElement('div');
+                rightChev.className = 'scroll-chevron right';
+                rightChev.innerHTML = CHEVRON_SVG_RIGHT;
+                wrap.appendChild(leftChev);
+                wrap.appendChild(rightChev);
+            }
+
+            // Fade tracker
+            function updateFades() {
+                if (!wrap) return;
+                wrap.classList.toggle('at-start', el.scrollLeft <= 2);
+                wrap.classList.toggle('at-end',   el.scrollLeft >= el.scrollWidth - el.clientWidth - 2);
+            }
+            el.addEventListener('scroll', updateFades, { passive: true });
+            requestAnimationFrame(updateFades);
+
+            // Edge speed calculator
+            function getSpeed(mouseX, rect) {
+                const left  = mouseX - rect.left;
+                const right = rect.right - mouseX;
+                if (left < edgeZone)  return -maxSpeed * (1 - left  / edgeZone);
+                if (right < edgeZone) return  maxSpeed * (1 - right / edgeZone);
+                return 0;
+            }
+
+            function onMove(e) {
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const rect    = el.getBoundingClientRect();
+                const speed   = getSpeed(clientX, rect);
+                cancelAnimationFrame(rafId);
+                if (speed !== 0) {
+                    function step() {
+                        el.scrollLeft += speed;
+                        rafId = requestAnimationFrame(step);
+                    }
+                    rafId = requestAnimationFrame(step);
+                }
+            }
+
+            function onLeave() { cancelAnimationFrame(rafId); }
+
+            el.addEventListener('mousemove',  onMove);
+            el.addEventListener('mouseleave', onLeave);
+            el.addEventListener('touchmove',  onMove,  { passive: true });
+            el.addEventListener('touchend',   onLeave);
+
+            // Auto-nudge on load: scroll right then back, like an Apple peek
+            function autoNudge() {
+                // Only nudge if user hasn't scrolled yet
+                if (el.scrollLeft > 0) return;
+                const peekDist = 90;
+                const duration = 600; // ms each way
+                let start = null;
+
+                function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+                function animateOut(ts) {
+                    if (!start) start = ts;
+                    const progress = Math.min((ts - start) / duration, 1);
+                    el.scrollLeft = peekDist * easeInOut(progress);
+                    if (progress < 1) requestAnimationFrame(animateOut);
+                    else { start = null; requestAnimationFrame(animateBack); }
+                }
+
+                function animateBack(ts) {
+                    if (!start) start = ts;
+                    const progress = Math.min((ts - start) / duration, 1);
+                    el.scrollLeft = peekDist * (1 - easeInOut(progress));
+                    if (progress < 1) requestAnimationFrame(animateBack);
+                }
+
+                // Stagger nudge so sections don't all fire at once
+                const delay = Array.from(document.querySelectorAll('.horizontal-scroll-container')).indexOf(el) * 200;
+                setTimeout(() => requestAnimationFrame(animateOut), 600 + delay);
+            }
+
+            window.addEventListener('load', autoNudge, { once: true });
+        }
+
+        // Apply to all section-level horizontal scroll containers
+        document.querySelectorAll('.horizontal-scroll-container').forEach(el => {
+            setupEdgeScroll(el, 100, 10);
+        });
+
+        // Apply to tech docks inside modals — patch the existing openModal
+        const _origOpenModal = openModal.bind({});
+        // Reassign using a variable, not a hoisted function declaration
+        const openModalWithDock = function(contentId) {
+            _origOpenModal(contentId);
+            requestAnimationFrame(() => {
+                document.querySelectorAll('#modal-body .tech-dock').forEach(dock => {
+                    setupEdgeScroll(dock, 60, 8);
+                });
+            });
+        };
+        // Re-wire card click listeners to use openModalWithDock
+        document.querySelectorAll('.card[data-modal-target]').forEach(card => {
+            const clone = card.cloneNode(true);
+            card.replaceWith(clone);
+        });
+        document.querySelectorAll('.card[data-modal-target]').forEach(card => {
+            card.addEventListener('click', function() {
+                const targetId = this.dataset.modalTarget;
+                if (!this.closest('#skills-home')) {
+                    openModalWithDock(targetId);
+                }
+            });
+        });
+        // --- End edge-hover auto-scroll ---
         const scrollIndicator = document.getElementById('scroll-indicator');
         
         function handleScroll() {
