@@ -27,10 +27,7 @@
    EmailJS keys:     Get at https://www.emailjs.com
    ───────────────────────────────────────────────────────────── */
 const CONFIG = {
-  // No API key here — it lives in Netlify environment variables
-  // All sports data goes through /.netlify/functions/sports
-
-  SPORTS_PROXY: '1fb2394a5ccd4382ab94c8fd9949d85d',
+  SPORTS_PROXY: '/.netlify/functions/sports',
   EMAILJS_PUBLIC_KEY:  'mrzIQKi35AKDjkUVL',
   EMAILJS_SERVICE_ID:  'service_rt72dtj',
   EMAILJS_TEMPLATE_ID: 'template_o9z0m4t',
@@ -370,33 +367,30 @@ function initHobbies() {
   makeSlideshow('travel-slideshow', 'travel-dots');
 
   // Drawing horizontal carousel
-  const carousel  = document.getElementById('drawing-carousel');
-  const prevBtn   = document.getElementById('drawing-prev');
-  const nextBtn   = document.getElementById('drawing-next');
+  const carousel = document.getElementById('drawing-carousel');
+  const prevBtn  = document.getElementById('drawing-prev');
+  const nextBtn  = document.getElementById('drawing-next');
 
   if (carousel && prevBtn && nextBtn) {
     const cards   = carousel.querySelectorAll('.drawing-card');
     const total   = cards.length;
     const visible = 3;
+    const CARD_W  = 150; // matches CSS width
+    const GAP     = 12;  // 0.75rem gap
+    const STEP    = CARD_W + GAP;
     const max     = total - visible;
     let current   = 0;
 
     function goTo(n) {
       current = Math.max(0, Math.min(n, max));
-      // Calculate card width including gap (0.75rem = 12px)
-      const cardW = cards[0].offsetWidth + 12;
-      carousel.style.transform = `translateX(-${current * cardW}px)`;
+      carousel.style.transform = `translateX(-${current * STEP}px)`;
       prevBtn.disabled = current === 0;
       nextBtn.disabled = current >= max;
     }
 
-    // Make carousel a flex row that slides via transform
-    carousel.style.transition = 'transform 0.4s ease';
-    carousel.style.willChange = 'transform';
-
     prevBtn.addEventListener('click', () => goTo(current - 1));
     nextBtn.addEventListener('click', () => goTo(current + 1));
-    prevBtn.disabled = true;
+    goTo(0);
 
     // Auto-advance every 3s when Drawing panel is active
     setInterval(() => {
