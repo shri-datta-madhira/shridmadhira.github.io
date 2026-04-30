@@ -204,13 +204,19 @@ body.light-mode .hobby-next-card {
     background: rgba(255,255,255,0.12) !important;
     border-color: rgba(255,255,255,0.15) !important;
 }
-body.light-mode .hobby-result-label { color: #94a3b8 !important; }
-body.light-mode .hobby-result-team { color: #f1f5f9 !important; }
+body.light-mode .hobby-result-label { color: #cbd5e1 !important; }
+body.light-mode .hobby-result-team { color: #ffffff !important; }
 body.light-mode .hobby-result-nums { color: #a5b4fc !important; }
 body.light-mode .hobby-result-date { color: #94a3b8 !important; }
-body.light-mode .hobby-next-text { color: #f1f5f9 !important; }
-body.light-mode .hobby-season-stat { color: #cbd5e1 !important; }
-body.light-mode .hobby-f1-row { color: #f1f5f9 !important; }
+body.light-mode .hobby-next-text { color: #ffffff !important; }
+body.light-mode .hobby-season-stat { color: #e2e8f0 !important; }
+body.light-mode .hobby-f1-row { color: #ffffff !important; }
+body.light-mode .hobby-f1-row span { color: #ffffff !important; }
+body.light-mode .hobby-f1-pos.p-other {
+    background: rgba(255,255,255,0.2) !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(255,255,255,0.3) !important;
+}
 body.light-mode .hobby-game-chip {
     background: rgba(255,255,255,0.12) !important;
     border-color: rgba(255,255,255,0.2) !important;
@@ -1203,7 +1209,7 @@ body.light-mode .hobby-result-winner { color: #a5b4fc !important; }
     position: relative;
     border-radius: 0.875rem;
     overflow: hidden;
-    aspect-ratio: 16/9;
+    height: 260px;
     background: var(--bg-card);
     margin-bottom: 0.5rem;
 }
@@ -1317,7 +1323,6 @@ body.light-mode .hobby-result-winner { color: #a5b4fc !important; }
 .hobby-f1-pos.p2 { background: rgba(192,192,192,0.2); color: #c0c0c0; border: 1px solid rgba(192,192,192,0.4); }
 .hobby-f1-pos.p-other { background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-card); }
 
-/* ── Drawing horizontal carousel ── */
 .drawing-carousel-wrap {
     position: relative;
     display: flex;
@@ -1329,12 +1334,12 @@ body.light-mode .hobby-result-winner { color: #a5b4fc !important; }
     display: flex;
     gap: 0.75rem;
     overflow: hidden;
-    scroll-behavior: smooth;
     flex: 1;
+    /* Clip so only 3 cards are visible */
 }
 .drawing-card {
     flex-shrink: 0;
-    width: 140px;
+    width: calc((100% - 1.5rem) / 3);
     aspect-ratio: 9/16;
     border-radius: 0.75rem;
     overflow: hidden;
@@ -1370,15 +1375,5 @@ body.light-mode .hobby-result-winner { color: #a5b4fc !important; }
 }
 .drawing-carousel-btn:hover { background: rgba(255,255,255,0.3); }
 .drawing-carousel-btn:disabled { opacity: 0.25; cursor: default; }
-.drawing-carousel-dots {
-    display: flex;
-    gap: 0.35rem;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-}
-.drawing-carousel-dots .hobby-dot {
-    background: rgba(255,255,255,0.3);
-}
-.drawing-carousel-dots .hobby-dot.active {
-    background: #fff;
-}
+/* No dots for drawing carousel */
+.drawing-carousel-dots { display: none; }
