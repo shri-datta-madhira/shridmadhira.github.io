@@ -186,6 +186,43 @@ body.light-mode .bg-gray-800,
 body.light-mode .bg-gray-950,
 body.light-mode .bg-gray-900 { background-color: #ffffff !important; }
 
+/* ── Hobby panels — keep dark/translucent in BOTH modes ── */
+body.light-mode .hobby-panel { background: transparent !important; }
+body.light-mode .hobby-panel-bg { opacity: 1 !important; }
+body.light-mode .hobby-panel-bg::after {
+    background: linear-gradient(135deg, rgba(10,10,20,0.88) 40%, rgba(10,10,20,0.55)) !important;
+}
+body.light-mode .hobby-panel-content { color: #f1f5f9 !important; }
+body.light-mode .hobby-panel-content h3,
+body.light-mode .hobby-panel-content p,
+body.light-mode .hobby-panel-content span { color: inherit !important; }
+body.light-mode .hobby-panel-title { color: #f1f5f9 !important; }
+body.light-mode .hobby-panel-sub { color: #cbd5e1 !important; }
+body.light-mode .hobby-panel-desc { color: #cbd5e1 !important; }
+body.light-mode .hobby-result-card,
+body.light-mode .hobby-next-card {
+    background: rgba(255,255,255,0.12) !important;
+    border-color: rgba(255,255,255,0.15) !important;
+}
+body.light-mode .hobby-result-label { color: #94a3b8 !important; }
+body.light-mode .hobby-result-team { color: #f1f5f9 !important; }
+body.light-mode .hobby-result-nums { color: #a5b4fc !important; }
+body.light-mode .hobby-result-date { color: #94a3b8 !important; }
+body.light-mode .hobby-next-text { color: #f1f5f9 !important; }
+body.light-mode .hobby-season-stat { color: #cbd5e1 !important; }
+body.light-mode .hobby-f1-row { color: #f1f5f9 !important; }
+body.light-mode .hobby-game-chip {
+    background: rgba(255,255,255,0.12) !important;
+    border-color: rgba(255,255,255,0.2) !important;
+    color: #f1f5f9 !important;
+}
+body.light-mode .hobby-panel-badge {
+    background: rgba(99,102,241,0.3) !important;
+    border-color: rgba(165,180,252,0.4) !important;
+    color: #e0e7ff !important;
+}
+body.light-mode .hobby-result-winner { color: #a5b4fc !important; }
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--scrollbar-track); border-radius: 10px; }
@@ -1279,3 +1316,69 @@ body.light-mode .bg-gray-900 { background-color: #ffffff !important; }
 .hobby-f1-pos.p1 { background: rgba(255,215,0,0.2); color: #ffd700; border: 1px solid rgba(255,215,0,0.4); }
 .hobby-f1-pos.p2 { background: rgba(192,192,192,0.2); color: #c0c0c0; border: 1px solid rgba(192,192,192,0.4); }
 .hobby-f1-pos.p-other { background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-card); }
+
+/* ── Drawing horizontal carousel ── */
+.drawing-carousel-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.75rem 0 0.5rem;
+}
+.drawing-carousel {
+    display: flex;
+    gap: 0.75rem;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    flex: 1;
+}
+.drawing-card {
+    flex-shrink: 0;
+    width: 140px;
+    aspect-ratio: 9/16;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.drawing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+.drawing-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.drawing-carousel-btn {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    z-index: 2;
+}
+.drawing-carousel-btn:hover { background: rgba(255,255,255,0.3); }
+.drawing-carousel-btn:disabled { opacity: 0.25; cursor: default; }
+.drawing-carousel-dots {
+    display: flex;
+    gap: 0.35rem;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+.drawing-carousel-dots .hobby-dot {
+    background: rgba(255,255,255,0.3);
+}
+.drawing-carousel-dots .hobby-dot.active {
+    background: #fff;
+}
