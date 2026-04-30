@@ -29,6 +29,7 @@
 const CONFIG = {
   // No API key here — it lives in Netlify environment variables
   // All sports data goes through /.netlify/functions/sports
+
   SPORTS_PROXY: '1fb2394a5ccd4382ab94c8fd9949d85d',
   EMAILJS_PUBLIC_KEY:  'mrzIQKi35AKDjkUVL',
   EMAILJS_SERVICE_ID:  'service_rt72dtj',
@@ -372,41 +373,35 @@ function initHobbies() {
   const carousel  = document.getElementById('drawing-carousel');
   const prevBtn   = document.getElementById('drawing-prev');
   const nextBtn   = document.getElementById('drawing-next');
-  const dotsWrap  = document.getElementById('drawing-dots');
 
-  if (carousel && prevBtn && nextBtn && dotsWrap) {
-    const cards       = carousel.querySelectorAll('.drawing-card');
-    const total       = cards.length;
-    const visible     = 3; // cards visible at a time
-    let current       = 0;
-
-    // Build dots
-    for (let i = 0; i < total; i++) {
-      const d = document.createElement('div');
-      d.className = 'hobby-dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(d);
-    }
+  if (carousel && prevBtn && nextBtn) {
+    const cards   = carousel.querySelectorAll('.drawing-card');
+    const total   = cards.length;
+    const visible = 3;
+    const max     = total - visible;
+    let current   = 0;
 
     function goTo(n) {
-      current = Math.max(0, Math.min(n, total - 1));
-      const cardWidth = cards[0].offsetWidth + 12; // card + gap
-      carousel.scrollLeft = current * cardWidth;
-      dotsWrap.querySelectorAll('.hobby-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      current = Math.max(0, Math.min(n, max));
+      // Calculate card width including gap (0.75rem = 12px)
+      const cardW = cards[0].offsetWidth + 12;
+      carousel.style.transform = `translateX(-${current * cardW}px)`;
       prevBtn.disabled = current === 0;
-      nextBtn.disabled = current >= total - visible;
+      nextBtn.disabled = current >= max;
     }
+
+    // Make carousel a flex row that slides via transform
+    carousel.style.transition = 'transform 0.4s ease';
+    carousel.style.willChange = 'transform';
 
     prevBtn.addEventListener('click', () => goTo(current - 1));
     nextBtn.addEventListener('click', () => goTo(current + 1));
-
-    // Init state
     prevBtn.disabled = true;
 
-    // Auto-advance every 3s when panel active
+    // Auto-advance every 3s when Drawing panel is active
     setInterval(() => {
       if (!document.getElementById('panel-drawing')?.classList.contains('active')) return;
-      goTo(current >= total - visible ? 0 : current + 1);
+      goTo(current >= max ? 0 : current + 1);
     }, 3000);
   }
 }
