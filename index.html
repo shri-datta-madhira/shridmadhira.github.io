@@ -275,7 +275,7 @@
             <div class="project-card" style="width:300px; min-height:0;">
                 <span class="proj-year">2019</span>
                 <div class="flex items-center gap-3 mb-3 mt-1">
-                    <img src="./images/exp/klu.jpg" alt="KL Education Foundation" class="w-10 h-10 rounded-full border border-indigo-700 object-cover flex-shrink-0">
+                    <img src="./images/exp/kl.png" alt="KL Education Foundation" class="w-10 h-10 rounded-full border border-indigo-700 object-cover flex-shrink-0">
                     <div>
                         <p class="proj-title mb-0" style="font-size:0.95rem;">KL Education Foundation</p>
                         <p class="text-xs text-gray-500">Guntur, India</p>
@@ -632,13 +632,19 @@
 
                 <!-- Soccer -->
                 <div class="hobby-panel active" id="panel-soccer">
-                    <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1568624686964-76cf5f2a5b87?w=900&q=80')"></div>
+                    <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/barca-stadium.jpg')"></div>
                     <div class="hobby-panel-content">
+                        <!-- Barca badge — top right, no shape -->
+                        <img src="./images/hobbies/barca.png" alt="FC Barcelona" class="hobby-club-badge" id="barca-badge">
                         <div class="hobby-panel-badge">⚽ FC Barcelona</div>
                         <h3 class="hobby-panel-title">FC Barcelona</h3>
                         <p class="hobby-panel-sub">La Liga · Camp Nou</p>
+                        <!-- La Liga result -->
                         <div class="hobby-result-card" id="soccer-ll-result">
-                            <p class="hobby-result-label">Latest Result · La Liga</p>
+                            <div class="hobby-result-header">
+                                <img src="./images/hobbies/LaLiga.jpg" alt="La Liga" class="hobby-league-logo">
+                                <p class="hobby-result-label">Latest · La Liga</p>
+                            </div>
                             <div class="hobby-result-score">
                                 <span class="hobby-result-team">Getafe CF</span>
                                 <span class="hobby-result-nums">0 – <strong>2</strong></span>
@@ -646,27 +652,33 @@
                             </div>
                             <p class="hobby-result-date">Apr 25, 2026</p>
                         </div>
-                        <div class="hobby-result-card" id="soccer-ucl-result">
-                            <p class="hobby-result-label">Latest UCL Result</p>
-                            <div class="hobby-result-score">
-                                <span class="hobby-result-team">Atletico Madrid</span>
-                                <span class="hobby-result-nums">1 – <strong>2</strong></span>
-                                <span class="hobby-result-team hobby-result-winner">FC Barcelona</span>
+                        <!-- UCL result — hidden until JS confirms one exists -->
+                        <div class="hobby-result-card" id="soccer-ucl-result" style="display:none;">
+                            <div class="hobby-result-header">
+                                <img src="./images/hobbies/ucl.jpg" alt="Champions League" class="hobby-league-logo">
+                                <p class="hobby-result-label">Latest · Champions League</p>
                             </div>
-                            <p class="hobby-result-date">Apr 14, 2026 · UCL QF 2nd Leg — Advanced to semis! 🔵🔴</p>
+                            <div class="hobby-result-score">
+                                <span class="hobby-result-team" id="ucl-home-team">—</span>
+                                <span class="hobby-result-nums" id="ucl-score">— – —</span>
+                                <span class="hobby-result-team" id="ucl-away-team">—</span>
+                            </div>
+                            <p class="hobby-result-date" id="ucl-date"></p>
+                            <p class="hobby-aggregate-score" id="ucl-aggregate" style="display:none;"></p>
                         </div>
                         <div class="hobby-next-card" id="soccer-next">
                             <p class="hobby-result-label">Next Up · La Liga</p>
                             <p class="hobby-next-text">CA Osasuna <span style="opacity:0.5">vs</span> FC Barcelona — May 2, 2026</p>
-                            <p class="hobby-win-prob">Win probability: <strong>54.4%</strong></p>
                         </div>
                     </div>
                 </div>
 
                 <!-- F1 -->
                 <div class="hobby-panel" id="panel-f1">
-                    <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1562911791-c7a97b729ec5?w=900&q=80')"></div>
+                    <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/f1-track.jpg')"></div>
                     <div class="hobby-panel-content">
+                        <!-- Ferrari badge — top right, no shape -->
+                        <img src="./images/hobbies/sf.jpg" alt="Ferrari" class="hobby-club-badge" id="ferrari-badge">
                         <div class="hobby-panel-badge">🏎 Scuderia Ferrari</div>
                         <h3 class="hobby-panel-title">Scuderia Ferrari HP</h3>
                         <p class="hobby-panel-sub">Drivers: Charles Leclerc · Lewis Hamilton</p>
@@ -688,6 +700,7 @@
 
                 <!-- Drawing -->
                 <div class="hobby-panel" id="panel-drawing">
+                    <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80')"></div>
                     <div class="hobby-panel-content">
                         <div class="hobby-panel-badge">✏️ Original Artwork</div>
                         <h3 class="hobby-panel-title">My Drawings</h3>
@@ -708,8 +721,8 @@
                             <div class="hobby-slide">
                                 <img src="./images/hobbies/drawings/drawing-5.jpg" alt="Drawing 5">
                             </div>
-                            <button class="hobby-slide-btn prev" data-ss="drawing-slideshow">&#8592;</button>
-                            <button class="hobby-slide-btn next" data-ss="drawing-slideshow">&#8594;</button>
+                            <button class="hobby-slide-btn prev">&#8592;</button>
+                            <button class="hobby-slide-btn next">&#8594;</button>
                             <div class="hobby-slide-dots" id="drawing-dots"></div>
                         </div>
                         <p class="hobby-slide-hint">Add drawings to <code>./images/hobbies/drawings/</code></p>
@@ -735,6 +748,7 @@
 
                 <!-- Travel -->
                 <div class="hobby-panel" id="panel-travel">
+                    <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80')"></div>
                     <div class="hobby-panel-content">
                         <div class="hobby-panel-badge">✈️ Recent Adventures</div>
                         <h3 class="hobby-panel-title">Traveling</h3>
@@ -755,8 +769,8 @@
                             <div class="hobby-slide">
                                 <img src="./images/hobbies/travel/photo-5.jpg" alt="Travel Photo 5">
                             </div>
-                            <button class="hobby-slide-btn prev" data-ss="travel-slideshow">&#8592;</button>
-                            <button class="hobby-slide-btn next" data-ss="travel-slideshow">&#8594;</button>
+                            <button class="hobby-slide-btn prev">&#8592;</button>
+                            <button class="hobby-slide-btn next">&#8594;</button>
                             <div class="hobby-slide-dots" id="travel-dots"></div>
                         </div>
                         <p class="hobby-slide-hint">Add photos to <code>./images/hobbies/travel/</code></p>
