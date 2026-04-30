@@ -27,10 +27,14 @@
    EmailJS keys:     Get at https://www.emailjs.com
    ───────────────────────────────────────────────────────────── */
 const CONFIG = {
-  FOOTBALL_API_KEY:  'YOUR_FOOTBALL_DATA_ORG_KEY',
-  EMAILJS_PUBLIC_KEY:  'YOUR_PUBLIC_KEY',
-  EMAILJS_SERVICE_ID:  'YOUR_SERVICE_ID',
-  EMAILJS_TEMPLATE_ID: 'YOUR_TEMPLATE_ID',
+  // No API key here — it lives in Netlify environment variables
+  // All sports data goes through /.netlify/functions/sports
+  SPORTS_PROXY: '1fb2394a5ccd4382ab94c8fd9949d85d',
+
+  EMAILJS_PUBLIC_KEY:  'mrzIQKi35AKDjkUVL',
+  EMAILJS_SERVICE_ID:  'service_rt72dtj',
+  EMAILJS_TEMPLATE_ID: 'template_o9z0m4t',
+
   BARCA_TEAM_ID: 81,
 };
 
@@ -82,8 +86,13 @@ function initNav() {
 
   // Hide nav links bar on scroll
   const navBar = document.getElementById('nav-links-bar');
+
+  // Hide scroll-down indicator once user scrolls past ~80px
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+
   window.addEventListener('scroll', () => {
     if (navBar) navBar.classList.toggle('hidden-nav', window.scrollY > 60);
+    if (scrollIndicator) scrollIndicator.classList.toggle('hidden-on-scroll', window.scrollY > 80);
   }, { passive: true });
 }
 
@@ -381,30 +390,19 @@ function initHobbies() {
    If the API key is missing, the static fallback text is shown.
    ───────────────────────────────────────────────────────────── */
 
-// ── Utilities ────────────────────────────
+// ── Date formatter ────────────────────────
 function fmtDate(iso) {
   return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
-function winLoss(match, teamId) {
-  const home = match.homeTeam.id === teamId;
-  const gs = home ? match.score.fullTime.home  : match.score.fullTime.away;
-  const ga = home ? match.score.fullTime.away  : match.score.fullTime.home;
-  if (gs === null) return null;
-  return gs > ga ? 'W' : gs < ga ? 'L' : 'D';
-}
 
-// ── football-data.org fetch ───────────────
-async function footballFetch(path) {
-  const key = CONFIG.FOOTBALL_API_KEY;
-  if (!key || key === 'YOUR_FOOTBALL_DATA_ORG_KEY') return null;
+// ── Proxy fetch helper ────────────────────
+async function sportsFetch(type) {
   try {
-    const res = await fetch(`https://api.football-data.org/v4/${path}`, {
-      headers: { 'X-Auth-Token': key }
-    });
+    const res = await fetch(`${CONFIG.SPORTS_PROXY}?type=${type}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   } catch (e) {
-    console.warn('football-data.org:', e.message);
+    console.warn(`sportsFetch(${type}):`, e.message);
     return null;
   }
 }
@@ -412,8 +410,8 @@ async function footballFetch(path) {
 // ── Barcelona ─────────────────────────────
 async function updateBarcelona() {
   const [recentData, nextData] = await Promise.all([
-    footballFetch(`teams/${CONFIG.BARCA_TEAM_ID}/matches?status=FINISHED&limit=10`),
-    footballFetch(`teams/${CONFIG.BARCA_TEAM_ID}/matches?status=SCHEDULED&limit=1`),
+    sportsFetch('barcelona_recent'),
+    sportsFetch('barcelona_next'),
   ]);
   if (!recentData?.matches) return;
 
@@ -429,12 +427,10 @@ async function updateBarcelona() {
     const bG      = home ? match.score.fullTime.home : match.score.fullTime.away;
     const oG      = home ? match.score.fullTime.away : match.score.fullTime.home;
     const bWon    = bG > oG;
-    const barcaClass = bWon ? 'hobby-result-winner' : '';
-    const oppClass   = !bWon && bG !== oG ? 'hobby-result-winner' : '';
     return {
-      score: `<span class="hobby-result-team ${barcaClass}">FC Barcelona</span>
+      score: `<span class="hobby-result-team ${bWon ? 'hobby-result-winner' : ''}">FC Barcelona</span>
               <span class="hobby-result-nums">${bG} – <strong>${oG}</strong></span>
-              <span class="hobby-result-team ${oppClass}">${opp}</span>`,
+              <span class="hobby-result-team ${!bWon && bG !== oG ? 'hobby-result-winner' : ''}">${opp}</span>`,
       date: fmtDate(match.utcDate),
     };
   }
@@ -443,87 +439,96 @@ async function updateBarcelona() {
   const uclInfo = buildScoreHTML(ucl);
 
   if (llInfo) {
-    document.getElementById('soccer-ll-result')?.querySelector('.hobby-result-score')
-      ?.insertAdjacentHTML('afterend', '');
-    const llCard = document.getElementById('soccer-ll-result');
-    if (llCard) {
-      llCard.querySelector('.hobby-result-score').innerHTML = llInfo.score;
-      llCard.querySelector('.hobby-result-date').textContent = llInfo.date;
+    const card = document.getElementById('soccer-ll-result');
+    if (card) {
+      card.querySelector('.hobby-result-score').innerHTML = llInfo.score;
+      card.querySelector('.hobby-result-date').textContent = llInfo.date;
     }
   }
 
-  if (uclInfo) {
-    const uclCard = document.getElementById('soccer-ucl-result');
-    if (uclCard) {
-      uclCard.querySelector('.hobby-result-score').innerHTML = uclInfo.score;
-      const detail = ucl.stage ? ` · ${ucl.stage.replace(/_/g,' ')}` : '';
-      uclCard.querySelector('.hobby-result-date').textContent = uclInfo.date + detail;
+  // UCL — only show card if a UCL match exists
+  const uclCard = document.getElementById('soccer-ucl-result');
+  if (uclCard) {
+    if (uclInfo && ucl) {
+      uclCard.style.display = '';
+      document.getElementById('ucl-home-team').textContent  = ucl.homeTeam.name;
+      document.getElementById('ucl-away-team').textContent  = ucl.awayTeam.name;
+      document.getElementById('ucl-score').innerHTML        =
+        `${ucl.score.fullTime.home} – <strong>${ucl.score.fullTime.away}</strong>`;
+      document.getElementById('ucl-date').textContent       = uclInfo.date + (ucl.stage ? ` · ${ucl.stage.replace(/_/g, ' ')}` : '');
+
+      // Aggregate score if available
+      const aggEl = document.getElementById('ucl-aggregate');
+      if (ucl.score.aggregateHome != null && ucl.score.aggregateAway != null) {
+        aggEl.textContent = `Aggregate: ${ucl.score.aggregateHome} – ${ucl.score.aggregateAway}`;
+        aggEl.style.display = '';
+      }
+
+      // Apply winner class
+      const homeEl = document.getElementById('ucl-home-team');
+      const awayEl = document.getElementById('ucl-away-team');
+      const homeG  = ucl.score.fullTime.home;
+      const awayG  = ucl.score.fullTime.away;
+      if (homeG > awayG) homeEl.classList.add('hobby-result-winner');
+      else if (awayG > homeG) awayEl.classList.add('hobby-result-winner');
+    } else {
+      uclCard.style.display = 'none';
     }
   }
 
   if (next) {
     const home = next.homeTeam.id === CONFIG.BARCA_TEAM_ID;
     const opp  = home ? next.awayTeam.name : next.homeTeam.name;
-    const nextCard = document.getElementById('soccer-next');
-    if (nextCard) {
-      nextCard.querySelector('.hobby-next-text').innerHTML =
+    const card = document.getElementById('soccer-next');
+    if (card) {
+      card.querySelector('.hobby-next-text').innerHTML =
         `${home ? 'FC Barcelona' : opp} <span style="opacity:0.5">vs</span> ${home ? opp : 'FC Barcelona'} — ${fmtDate(next.utcDate)}`;
-      const probEl = nextCard.querySelector('.hobby-win-prob');
-      if (probEl) probEl.style.display = 'none'; // live API doesn't give odds on free tier
+      const probEl = card.querySelector('.hobby-win-prob');
+      if (probEl) probEl.style.display = 'none';
     }
   }
 }
 
-// ── Ferrari F1 (Jolpica — no key needed) ──
+// ── Ferrari F1 ────────────────────────────
 async function updateFerrari() {
-  try {
-    const [raceRes, standRes] = await Promise.all([
-      fetch('https://api.jolpi.ca/ergast/f1/current/last/results.json'),
-      fetch('https://api.jolpi.ca/ergast/f1/current/constructorStandings.json'),
-    ]);
+  const [raceData, standData] = await Promise.all([
+    sportsFetch('f1_results'),
+    sportsFetch('f1_standings'),
+  ]);
 
-    // Race result
-    if (raceRes.ok) {
-      const raceData = await raceRes.json();
-      const race     = raceData?.MRData?.RaceTable?.Races?.[0];
-      if (race) {
-        const results    = race.Results || [];
-        const leclerc    = results.find(r => r.Driver.familyName === 'Leclerc');
-        const hamilton   = results.find(r => r.Driver.familyName === 'Hamilton');
+  // Race result
+  const race = raceData?.MRData?.RaceTable?.Races?.[0];
+  if (race) {
+    const results  = race.Results || [];
+    const leclerc  = results.find(r => r.Driver.familyName === 'Leclerc');
+    const hamilton = results.find(r => r.Driver.familyName === 'Hamilton');
 
-        const labelEl = document.getElementById('f1-race-label');
-        if (labelEl) labelEl.textContent = `Latest Race · ${race.raceName}`;
+    const labelEl = document.getElementById('f1-race-label');
+    if (labelEl) labelEl.textContent = `Latest Race · ${race.raceName}`;
 
-        const dateEl = document.getElementById('f1-race-date');
-        if (dateEl) dateEl.textContent = fmtDate(race.date);
+    const dateEl = document.getElementById('f1-race-date');
+    if (dateEl) dateEl.textContent = fmtDate(race.date);
 
-        const resultsEl = document.getElementById('f1-results');
-        if (resultsEl) {
-          const rows = [leclerc, hamilton].filter(Boolean).map(d => {
-            const pos = parseInt(d.position);
-            const cls = pos === 1 ? 'p1' : pos === 2 ? 'p2' : pos === 3 ? 'p3' : 'p-other';
-            return `<div class="hobby-f1-row">
-                      <span class="hobby-f1-pos ${cls}">P${pos}</span>
-                      <span>${d.Driver.familyName}</span>
-                    </div>`;
-          }).join('');
-          if (rows) resultsEl.innerHTML = rows;
-        }
-      }
+    const resultsEl = document.getElementById('f1-results');
+    if (resultsEl) {
+      const rows = [leclerc, hamilton].filter(Boolean).map(d => {
+        const pos = parseInt(d.position);
+        const cls = pos === 1 ? 'p1' : pos === 2 ? 'p2' : pos === 3 ? 'p3' : 'p-other';
+        return `<div class="hobby-f1-row">
+                  <span class="hobby-f1-pos ${cls}">P${pos}</span>
+                  <span>${d.Driver.familyName}</span>
+                </div>`;
+      }).join('');
+      if (rows) resultsEl.innerHTML = rows;
     }
+  }
 
-    // Constructor standing
-    if (standRes.ok) {
-      const standData  = await standRes.json();
-      const standings  = standData?.MRData?.StandingsTable?.StandingsLists?.[0]?.ConstructorStandings || [];
-      const ferrari    = standings.find(s => s.Constructor.name === 'Ferrari');
-      const standEl    = document.getElementById('f1-constructor-standing');
-      if (ferrari && standEl) {
-        standEl.textContent = `P${ferrari.position} in Constructors · ${ferrari.points} pts`;
-      }
-    }
-  } catch (e) {
-    console.warn('F1 update failed:', e.message);
+  // Constructor standing
+  const standings = standData?.MRData?.StandingsTable?.StandingsLists?.[0]?.ConstructorStandings || [];
+  const ferrari   = standings.find(s => s.Constructor.name === 'Ferrari');
+  const standEl   = document.getElementById('f1-constructor-standing');
+  if (ferrari && standEl) {
+    standEl.textContent = `P${ferrari.position} in Constructors · ${ferrari.points} pts`;
   }
 }
 
