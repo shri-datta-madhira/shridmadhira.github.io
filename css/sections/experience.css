@@ -1,0 +1,117 @@
+/* ============================================================
+   experience.css — work experience timeline panel
+   ============================================================ */
+
+.xp-rowline { position: relative; }
+
+/* Horizontal connector line behind the cards */
+.xp-rowline::before {
+  content: '';
+  position: absolute;
+  top: 44px;
+  left: 2%;
+  right: 2%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-strong) 12%, var(--border-strong) 88%, transparent);
+  z-index: 0;
+}
+
+.xp-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.9rem;
+  z-index: 1;
+}
+
+.xp-card {
+  padding: 1.1rem 0.95rem 1.2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.xp-card .logo-wrap {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 0.8rem;
+}
+
+.xp-card .logo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: var(--gradient);
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.35s ease;
+}
+
+.xp-card:hover .logo-wrap::before { opacity: 0.75; }
+
+.xp-card .logo-wrap img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-strong);
+  background: #fff;
+}
+
+.xp-card h4 {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 0.15rem;
+}
+
+.xp-card .role { font-size: 0.8rem; color: var(--accent); font-weight: 500; margin-bottom: 0.1rem; }
+.xp-card .dates { font-size: 0.72rem; color: var(--ink-3); margin-bottom: 0.65rem; }
+.xp-card .dates .dur { color: var(--accent); font-weight: 600; }
+
+.xp-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 0.9rem;
+}
+
+.xp-card .tags .chip { font-size: 0.62rem; padding: 0.18rem 0.5rem; }
+
+.xp-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.xp-more svg { width: 13px; height: 13px; transition: transform 0.25s ease; }
+
+.xp-card:hover .xp-more { color: var(--accent); gap: 0.55rem; }
+.xp-card:hover .xp-more svg { transform: rotate(90deg); }
+
+.xp-note {
+  margin-top: 1.1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.xp-note .k { color: var(--accent); font-weight: 600; }
+
+@media (max-width: 1180px) {
+  .xp-track { grid-template-columns: repeat(3, 1fr); }
+  .xp-rowline::before { display: none; }
+}
+
+@media (max-width: 960px) {
+  .xp-track { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+}

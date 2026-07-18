@@ -1,0 +1,85 @@
+/* ============================================================
+   projects.css — projects panel
+   ============================================================ */
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.proj-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.3rem;
+  cursor: pointer;
+}
+
+.proj-card .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+
+.proj-card .year {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.proj-card .arrow {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--ink-3);
+  transition: all 0.3s var(--reveal-ease);
+}
+
+.proj-card .arrow svg { width: 14px; height: 14px; }
+
+.proj-card:hover .arrow {
+  color: #fff;
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  transform: rotate(45deg);
+}
+
+.proj-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.45rem;
+  transition: color 0.25s ease;
+}
+
+.proj-card:hover h3 { color: var(--accent); }
+
+.proj-card .impact {
+  font-size: 0.83rem;
+  color: var(--ink-2);
+  flex: 1;
+  margin-bottom: 0.85rem;
+}
+
+.proj-card .impact strong { color: var(--ink); }
+
+.proj-card .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.proj-card .tags .chip { font-size: 0.64rem; padding: 0.18rem 0.55rem; }
+
+@media (max-width: 1180px) {
+  .proj-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .proj-grid { grid-template-columns: 1fr; }
+}

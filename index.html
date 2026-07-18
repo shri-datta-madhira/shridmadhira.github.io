@@ -4,30 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ═══════════════════════════════════════════════
-         SEO & META  — update these whenever you change
-         your title, summary, or deploy to a new domain
-         ═══════════════════════════════════════════════ -->
+    <!-- ═══ SEO & META ═══ -->
     <title>Shri Datta Madhira | Software Engineer — Fintech, Cloud & Distributed Systems</title>
     <meta name="description" content="Software Engineer with 4+ years building fault-tolerant, cloud-native systems processing 400M+ events/day. Specialising in Java, Kafka, AWS, and microservices. Open to SWE and PM roles globally.">
     <meta name="keywords" content="Shri Datta Madhira, Software Engineer, Java, Kafka, AWS, Microservices, Cloud Native, Distributed Systems, Fintech, Portfolio">
     <meta name="author" content="Shri Datta Madhira">
-    <link rel="canonical" href="https://shri-datta-madhira.github.io/"><!-- ← update to your real URL -->
+    <link rel="canonical" href="https://shri-datta-madhira.github.io/">
 
-    <!-- Open Graph (LinkedIn, Slack, iMessage previews) -->
+    <!-- Open Graph -->
     <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://shri-datta-madhira.github.io/"><!-- ← update -->
+    <meta property="og:url"         content="https://shri-datta-madhira.github.io/">
     <meta property="og:title"       content="Shri Datta Madhira | Software Engineer">
     <meta property="og:description" content="4+ years building fault-tolerant, cloud-native systems — fintech, logistics, biotech. Open to SWE & PM roles globally.">
-    <meta property="og:image"       content="https://shri-datta-madhira.github.io/images/ShriDattaMadhira_2x2.jpg"><!-- ← update -->
+    <meta property="og:image"       content="https://shri-datta-madhira.github.io/images/ShriDattaMadhira_2x2.jpg">
 
     <!-- Twitter / X card -->
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="Shri Datta Madhira | Software Engineer">
     <meta name="twitter:description" content="4+ years building fault-tolerant, cloud-native systems — fintech, logistics, biotech.">
-    <meta name="twitter:image"       content="https://shri-datta-madhira.github.io/images/ShriDattaMadhira_2x2.jpg"><!-- ← update -->
+    <meta name="twitter:image"       content="https://shri-datta-madhira.github.io/images/ShriDattaMadhira_2x2.jpg">
 
-    <!-- Structured data (Google rich results) -->
+    <!-- Structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -45,1144 +42,742 @@
       ]
     }
     </script>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Portfolio styles -->
-    <link rel="stylesheet" href="portfolio_style.css">
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-</head>
-<body class="bg-gray-950 text-gray-100">
 
-    <!-- Name bar — always visible, sticky -->
-    <div class="sticky top-0 z-50 bg-gray-900 px-6 md:px-12 pt-4 pb-3 flex justify-between items-center shadow-lg rounded-b-lg" id="name-bar">
-        <a href="#about" class="text-2xl font-bold text-indigo-400 hover:text-indigo-300 transition duration-300">Shri Datta Madhira</a>
-        <div class="flex items-center gap-3">
-            <!-- Theme toggle — always visible -->
-            <button id="theme-toggle" aria-label="Toggle light/dark mode">
-                <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-                <svg id="icon-sun" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            </button>
-            <!-- Resume — desktop only -->
-            <a href="./ShriDattaMadhiraResume.pdf" download class="resume-btn hidden md:inline-flex">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                Resume
-            </a>
-            <!-- Hamburger — mobile only, inside same group -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
-        </div>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236366f1'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections/hero.css">
+    <link rel="stylesheet" href="css/sections/experience.css">
+    <link rel="stylesheet" href="css/sections/education.css">
+    <link rel="stylesheet" href="css/sections/skills.css">
+    <link rel="stylesheet" href="css/sections/projects.css">
+    <link rel="stylesheet" href="css/sections/hobbies.css">
+    <link rel="stylesheet" href="css/sections/contact.css">
+
+    <!-- EmailJS SDK -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+    <!-- Animated aurora background -->
+    <div class="aurora" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
 
-    <!-- Nav links bar — scrolls away, centered -->
-    <nav id="nav-links-bar" class="bg-gray-900/80 backdrop-blur px-6 md:px-12 py-2 shadow-sm">
-        <div class="hidden md:flex justify-center items-center space-x-7">
-            <a href="#about"           class="nav-link text-gray-300 hover:text-indigo-400 font-medium transition duration-300 text-sm" data-section="about">About</a>
-            <a href="#experience-home" class="nav-link text-gray-300 hover:text-indigo-400 font-medium transition duration-300 text-sm" data-section="experience-home">Experience</a>
-            <a href="#education"       class="nav-link text-gray-300 hover:text-indigo-400 font-medium transition duration-300 text-sm" data-section="education">Education</a>
-            <a href="#skills-home"     class="nav-link text-gray-300 hover:text-indigo-400 font-medium transition duration-300 text-sm" data-section="skills-home">Skills</a>
-            <a href="#projects-home"   class="nav-link text-gray-300 hover:text-indigo-400 font-medium transition duration-300 text-sm" data-section="projects-home">Projects</a>
-            <a href="#hobbies"         class="nav-link text-gray-300 hover:text-indigo-400 font-medium transition duration-300 text-sm" data-section="hobbies">Hobbies</a>
-            <a href="#contact"         class="nav-link text-gray-300 hover:text-indigo-400 font-medium transition duration-300 text-sm" data-section="contact">Contact</a>
+    <!-- ═══ Mobile top bar ═══ -->
+    <header class="mobile-bar">
+        <a href="#about" class="brand gradient-text">Shri Datta Madhira</a>
+        <div class="actions">
+            <button class="theme-toggle" data-theme-toggle aria-label="Toggle light/dark mode">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                <svg class="icon-sun hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden mt-2 space-y-1 pb-2">
-            <a href="#about"           class="block text-gray-300 hover:text-indigo-400 font-medium py-2 px-4 rounded-md transition duration-300 text-sm">About</a>
-            <a href="#experience-home" class="block text-gray-300 hover:text-indigo-400 font-medium py-2 px-4 rounded-md transition duration-300 text-sm">Experience</a>
-            <a href="#education"       class="block text-gray-300 hover:text-indigo-400 font-medium py-2 px-4 rounded-md transition duration-300 text-sm">Education</a>
-            <a href="#skills-home"     class="block text-gray-300 hover:text-indigo-400 font-medium py-2 px-4 rounded-md transition duration-300 text-sm">Skills</a>
-            <a href="#projects-home"   class="block text-gray-300 hover:text-indigo-400 font-medium py-2 px-4 rounded-md transition duration-300 text-sm">Projects</a>
-            <a href="#hobbies"         class="block text-gray-300 hover:text-indigo-400 font-medium py-2 px-4 rounded-md transition duration-300 text-sm">Hobbies</a>
-            <a href="#contact"         class="block text-gray-300 hover:text-indigo-400 font-medium py-2 px-4 rounded-md transition duration-300 text-sm">Contact</a>
-            <a href="./ShriDattaMadhiraResume.pdf" download class="resume-btn mx-4 mt-1 justify-center">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                Download Resume
-            </a>
-        </div>
+    </header>
+
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+        <button class="drawer-close" id="drawer-close" aria-label="Close menu">&times;</button>
+        <a href="#about" data-nav="about">About</a>
+        <a href="#experience" data-nav="experience">Experience</a>
+        <a href="#education" data-nav="education">Education</a>
+        <a href="#skills" data-nav="skills">Skills</a>
+        <a href="#projects" data-nav="projects">Projects</a>
+        <a href="#hobbies" data-nav="hobbies">Hobbies</a>
+        <a href="#contact" data-nav="contact">Contact</a>
     </nav>
 
-    <!-- Floating section indicator — fixed, JS-driven -->
-    <div id="section-indicator">
-        <span class="ind-dot"></span>
-        <span class="ind-text" id="section-indicator-text"></span>
-    </div>
+    <!-- ═══ Left rail ═══ -->
+    <aside class="rail">
+        <a href="#about" class="rail-brand" data-deck-link="about">
+            <span class="gradient-text">Shri Datta<br>Madhira</span>
+            <small>Software Engineer</small>
+        </a>
 
-    <!-- About Section -->
-    <section id="about" class="container bg-gray-950 mx-auto py-16 px-6 md:px-12 flex flex-col md:flex-row items-center justify-center min-h-screen relative">
-        <!-- Image Div -->
-        <div class="md:w-1/2 flex justify-center md:justify-start mb-8 md:mb-0 md:pr-12">
-            <div class="hero-photo-wrap">
-                <img src="./images/ShriDattaMadhira_2x2.jpg" alt="Shri D. Madhira" class="rounded-full shadow-xl w-64 h-64 md:w-80 md:h-80 object-cover">
+        <nav class="rail-nav" aria-label="Section navigation">
+            <a href="#about"      class="rail-link" data-deck-link="about"><span class="bar"></span><span class="idx">01</span>About</a>
+            <a href="#experience" class="rail-link" data-deck-link="experience"><span class="bar"></span><span class="idx">02</span>Experience</a>
+            <a href="#education"  class="rail-link" data-deck-link="education"><span class="bar"></span><span class="idx">03</span>Education</a>
+            <a href="#skills"     class="rail-link" data-deck-link="skills"><span class="bar"></span><span class="idx">04</span>Skills</a>
+            <a href="#projects"   class="rail-link" data-deck-link="projects"><span class="bar"></span><span class="idx">05</span>Projects</a>
+            <a href="#hobbies"    class="rail-link" data-deck-link="hobbies"><span class="bar"></span><span class="idx">06</span>Hobbies</a>
+            <a href="#contact"    class="rail-link" data-deck-link="contact"><span class="bar"></span><span class="idx">07</span>Contact</a>
+        </nav>
+
+        <div class="rail-foot">
+            <div class="rail-progress">
+                <span id="deck-counter">01 / 07</span>
+                <span class="track"><span class="fill" id="deck-progress"></span></span>
+            </div>
+            <div class="rail-socials">
+                <a href="https://github.com/shri-datta-madhira" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.499.09.682-.217.682-.483 0-.237-.007-.866-.012-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.835.09-.647.35-1.089.636-1.338-2.22-.253-4.555-1.119-4.555-4.935 0-1.09.39-1.984 1.029-2.685-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.428 9.428 0 0112 6.844c.85.004 1.7.114 2.504.337 1.909-1.295 2.747-1.025 2.747-1.025.546 1.379.202 2.398.099 2.65.64.701 1.028 1.595 1.028 2.685 0 3.823-2.339 4.681-4.569 4.92.359.309.678.917.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C21.137 20.218 24 16.46 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/shridattamadhira/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="./ShriDattaMadhira-Resume.pdf" download aria-label="Download resume">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                </a>
+                <button class="theme-toggle" data-theme-toggle aria-label="Toggle light/dark mode">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    <svg class="icon-sun hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
             </div>
         </div>
-        <!-- Description and Buttons Div -->
-        <div class="md:w-1/2 text-center md:text-left">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-100 leading-tight mb-4">
-                Hey, I'm <span class="text-indigo-400">Shri!</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-6">
-                A passionate Software Engineer specializing in cloud-native development and microservices.
-            </p>
-            <p class="text-lg text-gray-200 leading-relaxed mb-4">
-                Software Engineer with 4+ years of building fault-tolerant, eventually-consistent cloud-native systems that process 400M+ events/day, leveraging AI-assisted development practices to ship faster and think bigger — spanning fintech, logistics, and biotech.
-            </p>
-            <p class="text-lg text-indigo-300 font-semibold leading-relaxed border-l-4 border-indigo-500 pl-4 italic">
-                What sets me apart: I think like a PM and build like an engineer — asking <em>why</em> before <em>how</em>, and turning business problems into systems that scale.
-            </p>
-            <div class="mt-8 flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 items-center md:items-start">
-                <a href="#experience-home" class="block w-full md:w-auto bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg text-center">
-                    View Experience
-                </a>
-                <a href="#skills-home" class="block w-full md:w-auto border border-indigo-600 text-indigo-400 px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-900 transition duration-300 text-center">
-                    View Skills
-                </a>
-            </div>
-        </div>
-    </section>
+    </aside>
 
-    <!-- Scroll Indicator (now fixed to the viewport, outside the section) -->
-    <div class="scroll-indicator" id="scroll-indicator">
-        <span>Scroll down</span>
-        <div class="arrow">&#8595;</div>
-    </div>
+    <!-- ═══ Deck ═══ -->
+    <main class="deck" id="deck">
 
-    <!-- Home Page Work Experience Section -->
-    <section id="experience-home" class="container mx-auto py-10 px-6 md:px-12 my-4">
-        <h2 class="text-4xl font-bold text-left text-gray-100 mb-8">Work Experience</h2>
-        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container">
-            <!-- Fifth Third Bank Card -->
-            <div class="card" data-modal-target="fifth-third-modal-content">
-                <img src="./images/exp/ftb.png" alt="Fifth Third Bank" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Fifth Third Bank</h4>
-                <p class="text-md text-gray-300 text-center">Software Engineer</p>
-                <p class="text-sm text-gray-400 text-center">Dec 2023 – Present <span class="text-indigo-300 font-medium exp-duration" data-start="2023-12" data-end="present"></span></p>
-                <div class="card-skills">
-                    <span class="card-skill-dot">Java</span>
-                    <span class="card-skill-dot">Apache Kafka</span>
-                    <span class="card-skill-dot">AWS</span>
-                    <span class="card-skill-dot">Spring Boot</span>
-                    <span class="card-skill-dot">Terraform</span>
-                    <span class="card-skill-dot">Docker</span>
-                </div>
-                <button class="card-plus-btn" aria-label="View details">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                </button>
-            </div>
-
-            <!-- Matson Inc Card -->
-            <div class="card" data-modal-target="matson-modal-content">
-                <img src="./images/exp/matson.png" alt="Matson Inc" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Matson Inc</h4>
-                <p class="text-md text-gray-300 text-center">Software Developer</p>
-                <p class="text-sm text-gray-400 text-center">May 2023 – Dec 2023 <span class="text-indigo-300 font-medium exp-duration" data-start="2023-05" data-end="2023-12"></span></p>
-                <div class="card-skills">
-                    <span class="card-skill-dot">Groovy</span>
-                    <span class="card-skill-dot">ActiveMQ</span>
-                    <span class="card-skill-dot">AWS Secrets Manager</span>
-                    <span class="card-skill-dot">Jasper Reports</span>
-                    <span class="card-skill-dot">Java</span>
-                </div>
-                <button class="card-plus-btn" aria-label="View details">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                </button>
-            </div>
-
-            <!-- Vor Biopharma Card -->
-            <div class="card" data-modal-target="vor-modal-content">
-                <img src="./images/exp/vor.png" alt="Vor Biopharma" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Vor Biopharma</h4>
-                <p class="text-md text-gray-300 text-center">Software Engineering Co-op</p>
-                <p class="text-sm text-gray-400 text-center">Jan 2022 – Jun 2022 <span class="text-indigo-300 font-medium exp-duration" data-start="2022-01" data-end="2022-06"></span></p>
-                <div class="card-skills">
-                    <span class="card-skill-dot">Python</span>
-                    <span class="card-skill-dot">Shell Scripting</span>
-                    <span class="card-skill-dot">In-Memory Store</span>
-                    <span class="card-skill-dot">Data Pipelines</span>
-                </div>
-                <button class="card-plus-btn" aria-label="View details">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                </button>
-            </div>
-
-            <!-- Northeastern University Card -->
-            <div class="card" data-modal-target="northeastern-modal-content">
-                <img src="./images/exp/neu.jpg" alt="Northeastern University" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
-                <h4 class="text-md font-semibold text-indigo-400 mb-1 text-center">Northeastern University</h4>
-                <p class="text-md text-gray-300 text-center">GRA & TA</p>
-                <p class="text-sm text-gray-400 text-center">Sept 2021 – May 2023 <span class="text-indigo-300 font-medium exp-duration" data-start="2021-09" data-end="2023-05"></span></p>
-                <div class="card-skills">
-                    <span class="card-skill-dot">Python</span>
-                    <span class="card-skill-dot">802.11ad Wi-Fi</span>
-                    <span class="card-skill-dot">Data Visualization</span>
-                    <span class="card-skill-dot">Teaching</span>
-                </div>
-                <button class="card-plus-btn" aria-label="View details">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                </button>
-            </div>
-
-            <!-- Infosys Limited Card -->
-            <div class="card" data-modal-target="infosys-modal-content">
-                <img src="./images/exp/infosys.jpg" alt="Infosys Limited" class="rounded-full mb-3 border border-indigo-800 out-experience-logo">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-1 text-center">Infosys Limited</h4>
-                <p class="text-sm text-gray-300 text-center">Software Development Engineer</p>
-                <p class="text-sm text-gray-400 text-center">Dec 2018 – Feb 2020 <span class="text-indigo-300 font-medium exp-duration" data-start="2018-12" data-end="2020-02"></span></p>
-                <div class="card-skills">
-                    <span class="card-skill-dot">Java</span>
-                    <span class="card-skill-dot">PL/SQL</span>
-                    <span class="card-skill-dot">Azure</span>
-                    <span class="card-skill-dot">Node.js</span>
-                    <span class="card-skill-dot">Python</span>
-                </div>
-                <button class="card-plus-btn" aria-label="View details">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                </button>
-            </div>
-        </div></div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="container mx-auto py-10 px-6 md:px-12 my-4">
-        <h2 class="text-4xl font-bold text-left text-gray-100 mb-8">Education</h2>
-        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container">
-
-            <!-- Northeastern University -->
-            <div class="project-card" style="width:300px; min-height:0;">
-                <span class="proj-year">2023</span>
-                <div class="flex items-center gap-3 mb-3 mt-1">
-                    <img src="./images/exp/neu.jpg" alt="Northeastern University" class="w-10 h-10 rounded-full border border-indigo-700 object-cover flex-shrink-0">
+        <!-- 01 · About -->
+        <section class="panel" id="about" data-title="About">
+            <div class="panel-scroll">
+                <div class="panel-inner hero-grid">
                     <div>
-                        <p class="proj-title mb-0" style="font-size:0.95rem;">Northeastern University</p>
-                        <p class="text-xs text-gray-500">Boston, MA</p>
-                    </div>
-                </div>
-                <p class="text-sm font-semibold text-gray-200 mb-1">M.S. Computer Science</p>
-                <p class="text-xs text-gray-500 mb-3">Khoury College of Computer Sciences</p>
-                <div class="flex items-baseline gap-1 mb-3">
-                    <span style="font-size:1.6rem; font-weight:800; color:#a5b4fc;">3.79</span>
-                    <span class="text-xs text-gray-500">/ 4.0 GPA</span>
-                </div>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">Teaching Assistant · 200+ students</span>
-                    <span class="proj-skill-tag">Research Assistant · 802.11ad Wi-Fi</span>
-                </div>
-            </div>
-
-            <!-- KL University -->
-            <div class="project-card" style="width:300px; min-height:0;">
-                <span class="proj-year">2019</span>
-                <div class="flex items-center gap-3 mb-3 mt-1">
-                    <img src="./images/exp/klu.jpg" alt="KL Education Foundation" class="w-10 h-10 rounded-full border border-indigo-700 object-cover flex-shrink-0">
-                    <div>
-                        <p class="proj-title mb-0" style="font-size:0.95rem;">KL Education Foundation</p>
-                        <p class="text-xs text-gray-500">Guntur, India</p>
-                    </div>
-                </div>
-                <p class="text-sm font-semibold text-gray-200 mb-1">B.Tech. Computer Science & Engineering</p>
-                <p class="text-xs text-gray-500 mb-3">Koneru Lakshmaiah Education Foundation</p>
-                <div class="flex items-baseline gap-1 mb-3">
-                    <span style="font-size:1.6rem; font-weight:800; color:#a5b4fc;">9.1</span>
-                    <span class="text-xs text-gray-500">/ 10 GPA</span>
-                </div>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">Top 1% of graduating class</span>
-                </div>
-            </div>
-
-        </div></div>
-    </section>
-
-    <!-- Home Page Core Skills Section -->
-    <section id="skills-home" class="container mx-auto py-10 px-6 md:px-12 my-4">
-        <h2 class="text-4xl font-bold text-left text-gray-100 mb-8">Core Skills</h2>
-        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container">
-            <!-- Programming Languages Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Programming Languages</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Java (8–21)</span>
-                    <span class="skill-bubble">Python</span>
-                    <span class="skill-bubble">JavaScript</span>
-                    <span class="skill-bubble">TypeScript</span>
-                    <span class="skill-bubble">Groovy</span>
-                    <span class="skill-bubble">Shell Scripting</span>
-                    <span class="skill-bubble">Go*</span>
-                    <span class="skill-bubble">C++*</span>
-                </div>
-            </div>
-
-            <!-- Web Technologies Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Web & APIs</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Node.js</span>
-                    <span class="skill-bubble">React.js</span>
-                    <span class="skill-bubble">REST</span>
-                    <span class="skill-bubble">GraphQL</span>
-                    <span class="skill-bubble">gRPC</span>
-                    <span class="skill-bubble">HTML/CSS</span>
-                    <span class="skill-bubble">Redux</span>
-                    <span class="skill-bubble">Protobuf*</span>
-                    <span class="skill-bubble">Thrift*</span>
-                </div>
-            </div>
-
-            <!-- AWS Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">AWS</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Lambda</span>
-                    <span class="skill-bubble">ECS / ECR</span>
-                    <span class="skill-bubble">S3</span>
-                    <span class="skill-bubble">RDS</span>
-                    <span class="skill-bubble">SQS</span>
-                    <span class="skill-bubble">VPC</span>
-                    <span class="skill-bubble">API Gateway</span>
-                    <span class="skill-bubble">Secrets Manager</span>
-                    <span class="skill-bubble">CodeArtifact</span>
-                    <span class="skill-bubble">DynamoDB*</span>
-                    <span class="skill-bubble">Kinesis*</span>
-                </div>
-            </div>
-
-            <!-- DevOps & CI/CD Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">DevOps & CI/CD</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Docker</span>
-                    <span class="skill-bubble">Kubernetes</span>
-                    <span class="skill-bubble">Terraform</span>
-                    <span class="skill-bubble">Jenkins</span>
-                    <span class="skill-bubble">CI/CD</span>
-                    <span class="skill-bubble">Git</span>
-                    <span class="skill-bubble">LaunchDarkly</span>
-                    <span class="skill-bubble">Azure</span>
-                    <span class="skill-bubble">GCP</span>
-                </div>
-            </div>
-
-            <!-- Observability Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Observability</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Prometheus</span>
-                    <span class="skill-bubble">Splunk</span>
-                    <span class="skill-bubble">Grafana*</span>
-                    <span class="skill-bubble">OpenTelemetry*</span>
-                    <span class="skill-bubble">Datadog*</span>
-                </div>
-            </div>
-
-            <!-- Database Technologies Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Databases</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">PostgreSQL</span>
-                    <span class="skill-bubble">IBM DB2</span>
-                    <span class="skill-bubble">Oracle (PL/SQL)</span>
-                    <span class="skill-bubble">MongoDB</span>
-                    <span class="skill-bubble">SQL Server</span>
-                    <span class="skill-bubble">Snowflake</span>
-                    <span class="skill-bubble">Cassandra*</span>
-                    <span class="skill-bubble">Redis*</span>
-                    <span class="skill-bubble">Elasticsearch*</span>
-                </div>
-            </div>
-
-            <!-- Java Frameworks Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Java Frameworks</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Spring Boot</span>
-                    <span class="skill-bubble">Hibernate</span>
-                    <span class="skill-bubble">JPA</span>
-                    <span class="skill-bubble">Gradle</span>
-                    <span class="skill-bubble">Maven</span>
-                    <span class="skill-bubble">MapStruct</span>
-                    <span class="skill-bubble">Liquibase</span>
-                    <span class="skill-bubble">HashiCorp Vault</span>
-                </div>
-            </div>
-
-            <!-- Testing & AI Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Testing & AI/ML</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Mockito</span>
-                    <span class="skill-bubble">JUnit</span>
-                    <span class="skill-bubble">Cucumber</span>
-                    <span class="skill-bubble">GitHub Copilot</span>
-                    <span class="skill-bubble">PyTorch</span>
-                    <span class="skill-bubble">TensorFlow</span>
-                </div>
-            </div>
-
-            <!-- Messaging Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Messaging</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Apache Kafka</span>
-                    <span class="skill-bubble">ActiveMQ</span>
-                    <span class="skill-bubble">RabbitMQ</span>
-                    <span class="skill-bubble">Apache Flink*</span>
-                </div>
-            </div>
-
-            <!-- Methodologies Skill Card -->
-            <div class="card">
-                <h4 class="text-xl font-semibold text-indigo-400 mb-4">Architecture & Methodologies</h4>
-                <div class="flex flex-wrap justify-center">
-                    <span class="skill-bubble">Microservices</span>
-                    <span class="skill-bubble">Event-Driven</span>
-                    <span class="skill-bubble">Distributed Systems</span>
-                    <span class="skill-bubble">TDD</span>
-                    <span class="skill-bubble">Agile/Scrum</span>
-                    <span class="skill-bubble">IaC</span>
-                    <span class="skill-bubble">SLI/SLO</span>
-                    <span class="skill-bubble">SRE*</span>
-                    <span class="skill-bubble">FinOps*</span>
-                    <span class="skill-bubble">OOP</span>
-                    <span class="skill-bubble">SDLC</span>
-                </div>
-            </div>
-        </div></div>
-        <p class="text-sm text-gray-500 text-center mt-4 italic">* Familiar / exposure-level experience</p>
-    </section>
-    <section id="projects-home" class="container mx-auto py-10 px-6 md:px-12 my-4">
-        <h2 class="text-4xl font-bold text-left text-gray-100 mb-8">My Projects</h2>
-        <div class="scroll-fade-wrap"><div class="horizontal-scroll-container">
-            <!-- Project 1: Topical Search Engine -->
-            <div class="project-card">
-                <span class="proj-year">2022</span><!-- update year -->
-                <p class="proj-title">Real-time Topical Search Engine</p>
-                <p class="proj-impact">Engineered a web crawler that indexed <strong>80K websites in 18 hours</strong> using graph-based traversal, PageRank scoring, and Elasticsearch for sub-second topical queries.</p>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">Python</span>
-                    <span class="proj-skill-tag">Elasticsearch</span>
-                    <span class="proj-skill-tag">Docker</span>
-                    <span class="proj-skill-tag">PageRank</span>
-                    <span class="proj-skill-tag">Priority Queues</span>
-                </div>
-                <a href="https://github.com/shri-datta-madhira/Information-Retrieval/tree/main/HW-3" target="_blank" class="proj-github-btn">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
-                </a>
-            </div>
-
-            <!-- Project 2: Text Summarization in NLP -->
-            <div class="project-card">
-                <span class="proj-year">2022</span><!-- update year -->
-                <p class="proj-title">Text Summarization in NLP</p>
-                <p class="proj-impact">Built encoder-decoder models with LSTM units and attention mechanisms for abstractive summarization, achieving a <strong>BLEU score of 0.85</strong>.</p>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">Python</span>
-                    <span class="proj-skill-tag">Google Colab</span>
-                    <span class="proj-skill-tag">RNN</span>
-                    <span class="proj-skill-tag">LSTM</span>
-                    <span class="proj-skill-tag">Attention</span>
-                </div>
-                <a href="https://github.com/shri-datta-madhira/text-summarization-nlp" target="_blank" class="proj-github-btn">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
-                </a>
-            </div>
-
-            <!-- Project 3: Anidb -->
-            <div class="project-card">
-                <span class="proj-year">2022</span><!-- update year -->
-                <p class="proj-title">Anidb — Anime Info Website</p>
-                <p class="proj-impact">Full-stack website with data on <strong>23K+ anime</strong> — featuring user reviews, ratings, follow system, and bookmarking built on a React + Node + MongoDB stack.</p>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">React.js</span>
-                    <span class="proj-skill-tag">Node.js</span>
-                    <span class="proj-skill-tag">MongoDB</span>
-                    <span class="proj-skill-tag">Express</span>
-                    <span class="proj-skill-tag">REST APIs</span>
-                    <span class="proj-skill-tag">Bootstrap</span>
-                </div>
-                <a href="https://github.com/CantFindThisProject" target="_blank" class="proj-github-btn">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
-                </a>
-            </div>
-
-            <!-- Project 4: Game of Dungeons -->
-            <div class="project-card">
-                <span class="proj-year">2022</span><!-- update year -->
-                <p class="proj-title">Game of Dungeons</p>
-                <p class="proj-impact">Text-based dungeon adventure game with a procedurally connected cave network — featuring treasure, monsters, arrows, and a player who must escape alive.</p>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">Java</span>
-                    <span class="proj-skill-tag">MVC</span>
-                    <span class="proj-skill-tag">JUnit4</span>
-                    <span class="proj-skill-tag">Swing</span>
-                </div>
-                <a href="https://github.com/shri-datta-madhira/game-of-dungeons" target="_blank" class="proj-github-btn">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
-                </a>
-            </div>
-
-            <!-- Project 5: Employee Attendance using Face Detection -->
-            <div class="project-card">
-                <span class="proj-year">2019</span><!-- update year -->
-                <p class="proj-title">Employee Attendance via Face Detection</p>
-                <p class="proj-impact">Raspberry Pi + Azure Face API system that <strong>cut check-in bottlenecks by 30%+</strong> — later scaled and deployed across multiple office locations.</p>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">Python</span>
-                    <span class="proj-skill-tag">Azure</span>
-                    <span class="proj-skill-tag">PL/SQL</span>
-                    <span class="proj-skill-tag">Node.js</span>
-                    <span class="proj-skill-tag">Raspberry Pi</span>
-                </div>
-                <a href="https://github.com/shri-datta-madhira/employee-attendance-using-face-recognition" target="_blank" class="proj-github-btn">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
-                </a>
-            </div>
-
-            <!-- Project 6: Arctic Sea Ice Prediction -->
-            <div class="project-card">
-                <span class="proj-year">2022</span><!-- update year -->
-                <p class="proj-title">Arctic Sea Ice Levels Prediction</p>
-                <p class="proj-impact">End-to-end data mining pipeline — from raw climate data through cleaning, EDA, and ML prediction — exploring how sea ice extent correlates with global temperature shifts.</p>
-                <div class="proj-skills">
-                    <span class="proj-skill-tag">Python</span>
-                    <span class="proj-skill-tag">Pandas</span>
-                    <span class="proj-skill-tag">Numpy</span>
-                    <span class="proj-skill-tag">Sklearn</span>
-                    <span class="proj-skill-tag">Data Mining</span>
-                </div>
-                <a href="https://github.com/shri-datta-madhira/arctic-sea-ice-prediction" target="_blank" class="proj-github-btn">
-                    <img src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png" alt="GitHub"> View on GitHub
-                </a>
-            </div>
-        </div></div>
-    </section>
-
-    <!-- Interests & Hobbies Section -->
-    <section id="hobbies" class="container mx-auto py-8 px-6 md:px-12 my-4">
-        <h2 class="text-4xl font-bold text-left text-gray-100 mb-8">Interests & Hobbies</h2>
-
-        <div class="hobby-layout">
-            <!-- Left: selector list -->
-            <div class="hobby-list" id="hobby-list">
-
-                <div class="hobby-item active" data-hobby="soccer">
-                    <div class="hobby-item-icon">
-                        <img src="./images/hobbies/football.png" alt="Soccer">
-                    </div>
-                    <div class="hobby-item-text">
-                        <p class="hobby-item-title">Soccer</p>
-                        <p class="hobby-item-sub">Visca Barça ❤️💙</p>
-                    </div>
-                    <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
-                </div>
-                <div class="hobby-divider"></div>
-
-                <div class="hobby-item" data-hobby="f1">
-                    <div class="hobby-item-icon">
-                        <img src="./images/hobbies/f1.png" alt="Car Racing">
-                    </div>
-                    <div class="hobby-item-text">
-                        <p class="hobby-item-title">Car Racing</p>
-                        <p class="hobby-item-sub">Forza Ferrari 🔴🏎</p>
-                    </div>
-                    <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
-                </div>
-                <div class="hobby-divider"></div>
-
-                <div class="hobby-item" data-hobby="drawing">
-                    <div class="hobby-item-icon">
-                        <img src="./images/hobbies/drawing.png" alt="Drawing">
-                    </div>
-                    <div class="hobby-item-text">
-                        <p class="hobby-item-title">Drawing</p>
-                        <p class="hobby-item-sub">Escaping into another world through sketching</p>
-                    </div>
-                    <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
-                </div>
-                <div class="hobby-divider"></div>
-
-                <div class="hobby-item" data-hobby="gaming">
-                    <div class="hobby-item-icon">
-                        <img src="./images/hobbies/video-games.jpg" alt="Video Games">
-                    </div>
-                    <div class="hobby-item-text">
-                        <p class="hobby-item-title">Video Games</p>
-                        <p class="hobby-item-sub">Controller in hand, world on pause</p>
-                    </div>
-                    <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
-                </div>
-                <div class="hobby-divider"></div>
-
-                <div class="hobby-item" data-hobby="travel">
-                    <div class="hobby-item-icon">
-                        <img src="./images/hobbies/travelling.png" alt="Traveling">
-                    </div>
-                    <div class="hobby-item-text">
-                        <p class="hobby-item-title">Traveling</p>
-                        <p class="hobby-item-sub">Every photo tells a story</p>
-                    </div>
-                    <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
-                </div>
-
-            </div>
-
-            <!-- Right: content panels -->
-            <div class="hobby-panel-wrap">
-
-                <!-- Soccer -->
-                <div class="hobby-panel active" id="panel-soccer">
-                    <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/barca-stadium.jpg')"></div>
-                    <div class="hobby-panel-content">
-                        <!-- Barca badge — top right, no shape -->
-                        <img src="./images/hobbies/barca.png" alt="FC Barcelona" class="hobby-club-badge" id="barca-badge">
-                        <div class="hobby-panel-badge">⚽ FC Barcelona</div>
-                        <h3 class="hobby-panel-title">FC Barcelona</h3>
-                        <p class="hobby-panel-sub">La Liga · Camp Nou</p>
-                        <!-- La Liga result -->
-                        <div class="hobby-result-card" id="soccer-ll-result">
-                            <div class="hobby-result-header">
-                                <img src="./images/hobbies/LaLiga.jpg" alt="La Liga" class="hobby-league-logo">
-                                <p class="hobby-result-label">Latest · La Liga</p>
-                            </div>
-                            <div class="hobby-result-score">
-                                <span class="hobby-result-team">Getafe CF</span>
-                                <span class="hobby-result-nums">0 – <strong>2</strong></span>
-                                <span class="hobby-result-team hobby-result-winner">FC Barcelona</span>
-                            </div>
-                            <p class="hobby-result-date">Apr 25, 2026</p>
+                        <span class="hero-eyebrow" data-reveal><span class="dot"></span>Open to SWE &amp; PM roles globally</span>
+                        <h1 class="hero-title" data-reveal>Hey, I'm <span class="gradient-text">Shri!</span></h1>
+                        <p class="hero-type-row" data-reveal>I build <span class="typed" id="typed"></span><span class="caret"></span></p>
+                        <p class="hero-desc" data-reveal>
+                            Software Engineer with 4+ years of building fault-tolerant, eventually-consistent cloud-native
+                            systems that process 400M+ events/day, leveraging AI-assisted development practices to ship
+                            faster and think bigger — spanning fintech, logistics, and biotech.
+                        </p>
+                        <p class="hero-quote" data-reveal>
+                            What sets me apart: I think like a PM and build like an engineer — asking <em>why</em>
+                            before <em>how</em>, and turning business problems into systems that scale.
+                        </p>
+                        <div class="hero-ctas" data-reveal>
+                            <a href="#experience" class="btn btn-primary" data-deck-link="experience">
+                                View Experience
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                            <a href="./ShriDattaMadhira-Resume.pdf" download class="btn btn-ghost">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                Resume
+                            </a>
                         </div>
-                        <!-- UCL result — hidden until JS confirms one exists -->
-                        <div class="hobby-result-card" id="soccer-ucl-result" style="display:none;">
-                            <div class="hobby-result-header">
-                                <img src="./images/hobbies/ucl.jpg" alt="Champions League" class="hobby-league-logo">
-                                <p class="hobby-result-label">Latest · Champions League</p>
-                            </div>
-                            <div class="hobby-result-score">
-                                <span class="hobby-result-team" id="ucl-home-team">—</span>
-                                <span class="hobby-result-nums" id="ucl-score">— – —</span>
-                                <span class="hobby-result-team" id="ucl-away-team">—</span>
-                            </div>
-                            <p class="hobby-result-date" id="ucl-date"></p>
-                            <p class="hobby-aggregate-score" id="ucl-aggregate" style="display:none;"></p>
-                        </div>
-                        <div class="hobby-next-card" id="soccer-next">
-                            <p class="hobby-result-label">Next Up · La Liga</p>
-                            <p class="hobby-next-text">CA Osasuna <span style="opacity:0.5">vs</span> FC Barcelona — May 2, 2026</p>
+                    </div>
+                    <div class="hero-photo-col" data-reveal>
+                        <div class="hero-photo">
+                            <span class="halo"></span>
+                            <span class="ring"></span>
+                            <img src="./images/ShriDattaMadhira_2x2.jpg" alt="Shri Datta Madhira">
+                            <div class="hero-stat s1"><span class="v" data-count data-target="400" data-suffix="M+">0</span><span class="l">events / day</span></div>
+                            <div class="hero-stat s2"><span class="v" data-count data-target="4" data-suffix="+ yrs">0</span><span class="l">experience</span></div>
+                            <div class="hero-stat s3"><span class="v" data-count data-target="2" data-prefix="$" data-suffix="B+">0</span><span class="l">daily transactions</span></div>
                         </div>
                     </div>
                 </div>
+                <div class="scroll-hint">
+                    <div class="mouse"></div>
+                    <span>Scroll</span>
+                </div>
+            </div>
+        </section>
 
-                <!-- F1 -->
-                <div class="hobby-panel" id="panel-f1">
-                    <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/f1-track.jpg')"></div>
-                    <div class="hobby-panel-content">
-                        <!-- Ferrari badge — top right, no shape -->
-                        <img src="./images/hobbies/sf.jpg" alt="Ferrari" class="hobby-club-badge" id="ferrari-badge">
-                        <div class="hobby-panel-badge">🏎 Scuderia Ferrari</div>
-                        <h3 class="hobby-panel-title">Scuderia Ferrari HP</h3>
-                        <p class="hobby-panel-sub">Drivers: Charles Leclerc · Lewis Hamilton</p>
-                        <div class="hobby-result-card">
-                            <p class="hobby-result-label" id="f1-race-label">Latest Race · Japanese GP</p>
-                            <div class="hobby-f1-results" id="f1-results">
-                                <div class="hobby-f1-row"><span class="hobby-f1-pos p3">P3</span><span>Leclerc</span></div>
-                                <div class="hobby-f1-row"><span class="hobby-f1-pos p6">P6</span><span>Hamilton</span></div>
+        <!-- 02 · Experience -->
+        <section class="panel" id="experience" data-title="Experience">
+            <div class="panel-scroll">
+                <div class="panel-inner">
+                    <div class="sec-head" data-reveal>
+                        <span class="sec-eyebrow">Where I've been</span>
+                        <h2 class="sec-title">Work <span class="gradient-text">Experience</span></h2>
+                        <span class="sec-ghost">02</span>
+                    </div>
+                    <div class="xp-rowline" data-reveal>
+                        <div class="xp-track">
+                            <div class="xp-card glass spotlight" data-modal-target="fifth-third-modal-content" tabindex="0" role="button" aria-label="Fifth Third Bank details">
+                                <div class="logo-wrap"><img src="./images/exp/ftb.png" alt="Fifth Third Bank"></div>
+                                <h4>Fifth Third Bank</h4>
+                                <p class="role">Software Engineer</p>
+                                <p class="dates">Dec 2023 – Present <span class="dur exp-duration" data-start="2023-12" data-end="present"></span></p>
+                                <div class="tags"><span class="chip">Java</span><span class="chip">Kafka</span><span class="chip">AWS</span><span class="chip">Spring Boot</span></div>
+                                <span class="xp-more">Details <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
                             </div>
-                            <p class="hobby-result-date" id="f1-race-date"></p>
-                        </div>
-                        <div class="hobby-result-card">
-                            <p class="hobby-result-label">2026 Season</p>
-                            <p class="hobby-season-stat" id="f1-constructor-standing">3 podiums from 3 races — Mercedes' closest rival</p>
-                            <p class="hobby-season-stat">Best starts on the grid 🔥</p>
+                            <div class="xp-card glass spotlight" data-modal-target="matson-modal-content" tabindex="0" role="button" aria-label="Matson Inc details">
+                                <div class="logo-wrap"><img src="./images/exp/matson.png" alt="Matson Inc"></div>
+                                <h4>Matson Inc</h4>
+                                <p class="role">Software Developer</p>
+                                <p class="dates">May 2023 – Dec 2023 <span class="dur exp-duration" data-start="2023-05" data-end="2023-12"></span></p>
+                                <div class="tags"><span class="chip">Groovy</span><span class="chip">ActiveMQ</span><span class="chip">Java</span></div>
+                                <span class="xp-more">Details <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                            </div>
+                            <div class="xp-card glass spotlight" data-modal-target="vor-modal-content" tabindex="0" role="button" aria-label="Vor Biopharma details">
+                                <div class="logo-wrap"><img src="./images/exp/vor.png" alt="Vor Biopharma"></div>
+                                <h4>Vor Biopharma</h4>
+                                <p class="role">SWE Co-op</p>
+                                <p class="dates">Jan 2022 – Jun 2022 <span class="dur exp-duration" data-start="2022-01" data-end="2022-06"></span></p>
+                                <div class="tags"><span class="chip">Python</span><span class="chip">Pipelines</span><span class="chip">Shell</span></div>
+                                <span class="xp-more">Details <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                            </div>
+                            <div class="xp-card glass spotlight" data-modal-target="northeastern-modal-content" tabindex="0" role="button" aria-label="Northeastern University details">
+                                <div class="logo-wrap"><img src="./images/exp/neu.jpg" alt="Northeastern University"></div>
+                                <h4>Northeastern University</h4>
+                                <p class="role">GRA &amp; TA</p>
+                                <p class="dates">Sep 2021 – May 2023 <span class="dur exp-duration" data-start="2021-09" data-end="2023-05"></span></p>
+                                <div class="tags"><span class="chip">Python</span><span class="chip">802.11ad</span><span class="chip">Teaching</span></div>
+                                <span class="xp-more">Details <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                            </div>
+                            <div class="xp-card glass spotlight" data-modal-target="infosys-modal-content" tabindex="0" role="button" aria-label="Infosys Limited details">
+                                <div class="logo-wrap"><img src="./images/exp/infosys.jpg" alt="Infosys Limited"></div>
+                                <h4>Infosys Limited</h4>
+                                <p class="role">Software Dev Engineer</p>
+                                <p class="dates">Dec 2018 – Feb 2020 <span class="dur exp-duration" data-start="2018-12" data-end="2020-02"></span></p>
+                                <div class="tags"><span class="chip">Java</span><span class="chip">PL/SQL</span><span class="chip">Azure</span></div>
+                                <span class="xp-more">Details <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></span>
+                            </div>
                         </div>
                     </div>
+                    <p class="xp-note" data-reveal>Click any card for the <span class="k">full story</span> — impact stats, tech stack, and highlights.</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Drawing -->
-                <div class="hobby-panel" id="panel-drawing">
-                    <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80')"></div>
-                    <div class="hobby-panel-content">
-                        <div class="hobby-panel-badge">✏️ Original Artwork</div>
-                        <h3 class="hobby-panel-title">My Drawings</h3>
-                        <p class="hobby-panel-sub">Mostly portraits and sketches</p>
-                        <!-- Horizontal drawing carousel -->
-                        <div class="drawing-carousel-wrap">
-                            <button class="drawing-carousel-btn prev" id="drawing-prev">&#8592;</button>
-                            <div class="drawing-carousel" id="drawing-carousel">
-                                <div class="drawing-card">
-                                    <img src="./images/hobbies/drawings/drawing-1.HEIC" alt="Drawing 1">
-                                </div>
-                                <div class="drawing-card">
-                                    <img src="./images/hobbies/drawings/drawing-2.HEIC" alt="Drawing 2">
-                                </div>
-                                <div class="drawing-card">
-                                    <img src="./images/hobbies/drawings/drawing-3.HEIC" alt="Drawing 3">
-                                </div>
-                                <div class="drawing-card">
-                                    <img src="./images/hobbies/drawings/drawing-4.HEIC" alt="Drawing 4">
-                                </div>
-                                <div class="drawing-card">
-                                    <img src="./images/hobbies/drawings/drawing-5.HEIC" alt="Drawing 5">
-                                </div>
-                                <div class="drawing-card">
-                                    <img src="./images/hobbies/drawings/drawing-6.HEIC" alt="Drawing 6">
-                                </div>
-                                <div class="drawing-card">
-                                    <img src="./images/hobbies/drawings/drawing-7.HEIC" alt="Drawing 7">
+        <!-- 03 · Education -->
+        <section class="panel" id="education" data-title="Education">
+            <div class="panel-scroll">
+                <div class="panel-inner">
+                    <div class="sec-head" data-reveal>
+                        <span class="sec-eyebrow">Where I learned</span>
+                        <h2 class="sec-title">Educa<span class="gradient-text">tion</span></h2>
+                        <span class="sec-ghost">03</span>
+                    </div>
+                    <div class="edu-grid">
+                        <div class="edu-card glass spotlight" data-reveal>
+                            <span class="year-badge">2023</span>
+                            <div class="school">
+                                <img src="./images/exp/neu.jpg" alt="Northeastern University">
+                                <div>
+                                    <h3>Northeastern University</h3>
+                                    <p class="loc">Boston, MA</p>
                                 </div>
                             </div>
-                            <button class="drawing-carousel-btn next" id="drawing-next">&#8594;</button>
+                            <p class="degree">M.S. Computer Science</p>
+                            <p class="college">Khoury College of Computer Sciences</p>
+                            <div class="gpa-row">
+                                <span class="gpa" data-count data-target="3.79" data-decimals="2">0</span>
+                                <span class="gpa-of">/ 4.0 GPA</span>
+                            </div>
+                            <div class="honors">
+                                <span class="chip chip-accent">Teaching Assistant · 200+ students</span>
+                                <span class="chip chip-accent">Research Assistant · 802.11ad Wi-Fi</span>
+                            </div>
                         </div>
-                        <div class="drawing-carousel-dots" id="drawing-dots"></div>
+                        <div class="edu-card glass spotlight" data-reveal>
+                            <span class="year-badge">2019</span>
+                            <div class="school">
+                                <img src="./images/exp/klu.jpg" alt="KL Education Foundation">
+                                <div>
+                                    <h3>KL Education Foundation</h3>
+                                    <p class="loc">Guntur, India</p>
+                                </div>
+                            </div>
+                            <p class="degree">B.Tech. Computer Science &amp; Engineering</p>
+                            <p class="college">Koneru Lakshmaiah Education Foundation</p>
+                            <div class="gpa-row">
+                                <span class="gpa" data-count data-target="9.1" data-decimals="1">0</span>
+                                <span class="gpa-of">/ 10 GPA</span>
+                            </div>
+                            <div class="honors">
+                                <span class="chip chip-accent">Top 1% of graduating class</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Gaming -->
-                <div class="hobby-panel" id="panel-gaming">
-                    <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&q=80')"></div>
-                    <div class="hobby-panel-content">
-                        <div class="hobby-panel-badge">🎮 Currently Playing</div>
-                        <h3 class="hobby-panel-title">Red Dead Redemption 2</h3>
-                        <p class="hobby-panel-sub">Rockstar Games · Open World Epic</p>
-                        <p class="hobby-panel-desc">One of the greatest games ever made. The story of Arthur Morgan is unmatched — the world, the characters, the detail. Never gets old.</p>
-                        <div class="hobby-games-grid">
-                            <div class="hobby-game-chip">Red Dead 2 ❤️</div>
-                            <div class="hobby-game-chip">GTA V</div>
-                            <div class="hobby-game-chip">Ghost of Tsushima</div>
-                            <div class="hobby-game-chip">FIFA</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Travel -->
-                <div class="hobby-panel" id="panel-travel">
-                    <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80')"></div>
-                    <div class="hobby-panel-content">
-                        <div class="hobby-panel-badge">✈️ Recent Adventures</div>
-                        <h3 class="hobby-panel-title">Traveling</h3>
-                        <p class="hobby-panel-sub">Drop your travel photos in to see them here</p>
-                        <div class="hobby-slideshow" id="travel-slideshow">
-                            <div class="hobby-slide active">
-                                <img src="./images/hobbies/travel/photo-1.jpg" alt="Travel Photo 1">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-2.jpg" alt="Travel Photo 2">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-3.jpg" alt="Travel Photo 3">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-4.jpg" alt="Travel Photo 4">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-5.jpg" alt="Travel Photo 5">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-6.heic" alt="Travel Photo 5">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-7.DNG" alt="Travel Photo 5">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-8.HEIC" alt="Travel Photo 5">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-9.JPG" alt="Travel Photo 5">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-10.jpg" alt="Travel Photo 5">
-                            </div>
-                            <div class="hobby-slide">
-                                <img src="./images/hobbies/travel/photo-11.jpg" alt="Travel Photo 5">
-                            </div>
-                            <button class="hobby-slide-btn prev">&#8592;</button>
-                            <button class="hobby-slide-btn next">&#8594;</button>
-                            <div class="hobby-slide-dots" id="travel-dots"></div>
-                        </div>
-                        <p class="hobby-slide-hint">Add photos to <code>./images/hobbies/travel/</code></p>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="container mx-auto py-8 px-6 md:px-12 my-4 bg-gray-800 rounded-xl">
-        <h2 class="text-2xl font-bold text-center text-indigo-400 mb-2">Get In Touch</h2>
-        <p class="text-sm text-gray-400 text-center mb-6">Open to new opportunities and collaborations — feel free to reach out.</p>
-        <div class="max-w-lg mx-auto">
-            <form id="contact-form" class="space-y-4">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-                    <input type="text" id="name" name="name" required class="w-full px-3 py-2 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100 text-sm" placeholder="Your Name">
+        <!-- 04 · Skills -->
+        <section class="panel" id="skills" data-title="Skills">
+            <div class="panel-scroll">
+                <div class="panel-inner">
+                    <div class="sec-head" data-reveal>
+                        <span class="sec-eyebrow">What I work with</span>
+                        <h2 class="sec-title">Core <span class="gradient-text">Skills</span></h2>
+                        <span class="sec-ghost">04</span>
+                    </div>
+                    <div class="skills-layout" data-reveal>
+                        <div class="skill-cats" id="skill-cats" role="tablist" aria-label="Skill categories"></div>
+                        <div class="skill-cloud-wrap glass">
+                            <p class="skill-cloud-title" id="skill-cloud-title"></p>
+                            <div class="skill-cloud" id="skill-cloud"></div>
+                            <p class="skill-foot">* Familiar / exposure-level experience</p>
+                        </div>
+                    </div>
+                    <div class="skill-marquee" data-reveal aria-hidden="true">
+                        <div class="lane" id="skill-marquee-lane"></div>
+                    </div>
                 </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                    <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100 text-sm" placeholder="your.email@example.com">
-                </div>
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-                    <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 border border-gray-600 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-gray-800 text-gray-100 text-sm" placeholder="Your message..."></textarea>
-                </div>
-                <div class="text-center pt-1">
-                    <button type="submit" class="bg-indigo-600 text-white px-8 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed">
-                        Send Message
-                    </button>
-                    <p id="form-feedback" class="hidden mt-3 text-center text-sm"></p>
-                </div>
-            </form>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <!-- Modal Structure (Hidden by default) -->
+        <!-- 05 · Projects -->
+        <section class="panel" id="projects" data-title="Projects">
+            <div class="panel-scroll">
+                <div class="panel-inner">
+                    <div class="sec-head" data-reveal>
+                        <span class="sec-eyebrow">What I've built</span>
+                        <h2 class="sec-title">My <span class="gradient-text">Projects</span></h2>
+                        <span class="sec-ghost">05</span>
+                    </div>
+                    <div class="proj-grid">
+                        <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/shri-datta-madhira/Information-Retrieval/tree/main/HW-3" target="_blank" rel="noopener">
+                            <div class="top"><span class="year">2022</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
+                            <h3>Real-time Topical Search Engine</h3>
+                            <p class="impact">Engineered a web crawler that indexed <strong>80K websites in 18 hours</strong> using graph-based traversal, PageRank scoring, and Elasticsearch for sub-second topical queries.</p>
+                            <div class="tags"><span class="chip">Python</span><span class="chip">Elasticsearch</span><span class="chip">Docker</span><span class="chip">PageRank</span></div>
+                        </a>
+                        <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/shri-datta-madhira/text-summarization-nlp" target="_blank" rel="noopener">
+                            <div class="top"><span class="year">2022</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
+                            <h3>Text Summarization in NLP</h3>
+                            <p class="impact">Built encoder-decoder models with LSTM units and attention mechanisms for abstractive summarization, achieving a <strong>BLEU score of 0.85</strong>.</p>
+                            <div class="tags"><span class="chip">Python</span><span class="chip">RNN</span><span class="chip">LSTM</span><span class="chip">Attention</span></div>
+                        </a>
+                        <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/CantFindThisProject" target="_blank" rel="noopener">
+                            <div class="top"><span class="year">2022</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
+                            <h3>Anidb — Anime Info Website</h3>
+                            <p class="impact">Full-stack website with data on <strong>23K+ anime</strong> — user reviews, ratings, follow system, and bookmarking on a React + Node + MongoDB stack.</p>
+                            <div class="tags"><span class="chip">React.js</span><span class="chip">Node.js</span><span class="chip">MongoDB</span><span class="chip">Express</span></div>
+                        </a>
+                        <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/shri-datta-madhira/game-of-dungeons" target="_blank" rel="noopener">
+                            <div class="top"><span class="year">2022</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
+                            <h3>Game of Dungeons</h3>
+                            <p class="impact">Text-based dungeon adventure with a procedurally connected cave network — treasure, monsters, arrows, and a player who must escape alive.</p>
+                            <div class="tags"><span class="chip">Java</span><span class="chip">MVC</span><span class="chip">JUnit4</span><span class="chip">Swing</span></div>
+                        </a>
+                        <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/shri-datta-madhira/employee-attendance-using-face-recognition" target="_blank" rel="noopener">
+                            <div class="top"><span class="year">2019</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
+                            <h3>Employee Attendance via Face Detection</h3>
+                            <p class="impact">Raspberry Pi + Azure Face API system that <strong>cut check-in bottlenecks by 30%+</strong> — later scaled and deployed across multiple office locations.</p>
+                            <div class="tags"><span class="chip">Python</span><span class="chip">Azure</span><span class="chip">Raspberry Pi</span><span class="chip">Node.js</span></div>
+                        </a>
+                        <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/shri-datta-madhira/arctic-sea-ice-prediction" target="_blank" rel="noopener">
+                            <div class="top"><span class="year">2022</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
+                            <h3>Arctic Sea Ice Levels Prediction</h3>
+                            <p class="impact">End-to-end data mining pipeline — raw climate data through cleaning, EDA, and ML prediction — exploring how sea ice extent tracks global temperature shifts.</p>
+                            <div class="tags"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Sklearn</span><span class="chip">Data Mining</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 · Hobbies -->
+        <section class="panel" id="hobbies" data-title="Hobbies">
+            <div class="panel-scroll">
+                <div class="panel-inner">
+                    <div class="sec-head" data-reveal>
+                        <span class="sec-eyebrow">Beyond the keyboard</span>
+                        <h2 class="sec-title">Interests &amp; <span class="gradient-text">Hobbies</span></h2>
+                        <span class="sec-ghost">06</span>
+                    </div>
+                    <div class="hobby-layout" data-reveal>
+                        <div class="hobby-list" id="hobby-list">
+                            <div class="hobby-item active" data-hobby="soccer" role="button" tabindex="0">
+                                <div class="hobby-item-icon"><img src="./images/hobbies/football.png" alt="Soccer"></div>
+                                <div>
+                                    <p class="hobby-item-title">Soccer</p>
+                                    <p class="hobby-item-sub">Visca Barça ❤️💙</p>
+                                </div>
+                                <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
+                            </div>
+                            <div class="hobby-item" data-hobby="f1" role="button" tabindex="0">
+                                <div class="hobby-item-icon"><img src="./images/hobbies/f1.png" alt="Car Racing"></div>
+                                <div>
+                                    <p class="hobby-item-title">Car Racing</p>
+                                    <p class="hobby-item-sub">Forza Ferrari 🔴🏎</p>
+                                </div>
+                                <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
+                            </div>
+                            <div class="hobby-item" data-hobby="drawing" role="button" tabindex="0">
+                                <div class="hobby-item-icon"><img src="./images/hobbies/drawing.png" alt="Drawing"></div>
+                                <div>
+                                    <p class="hobby-item-title">Drawing</p>
+                                    <p class="hobby-item-sub">Escaping into another world through sketching</p>
+                                </div>
+                                <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
+                            </div>
+                            <div class="hobby-item" data-hobby="gaming" role="button" tabindex="0">
+                                <div class="hobby-item-icon"><img src="./images/hobbies/video-games.jpg" alt="Video Games"></div>
+                                <div>
+                                    <p class="hobby-item-title">Video Games</p>
+                                    <p class="hobby-item-sub">Controller in hand, world on pause</p>
+                                </div>
+                                <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
+                            </div>
+                            <div class="hobby-item" data-hobby="travel" role="button" tabindex="0">
+                                <div class="hobby-item-icon"><img src="./images/hobbies/travelling.png" alt="Traveling"></div>
+                                <div>
+                                    <p class="hobby-item-title">Traveling</p>
+                                    <p class="hobby-item-sub">Every photo tells a story</p>
+                                </div>
+                                <svg class="hobby-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="hobby-panel-wrap">
+                            <!-- Soccer -->
+                            <div class="hobby-panel active" id="panel-soccer">
+                                <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/barca-stadium.jpg')"></div>
+                                <div class="hobby-panel-content">
+                                    <img src="./images/hobbies/barca.png" alt="FC Barcelona" class="hobby-club-badge">
+                                    <div class="hobby-panel-badge">⚽ FC Barcelona</div>
+                                    <h3 class="hobby-panel-title">FC Barcelona</h3>
+                                    <p class="hobby-panel-sub">La Liga · Camp Nou</p>
+                                    <div class="hobby-result-card" id="soccer-ll-result">
+                                        <div class="hobby-result-header">
+                                            <img src="./images/hobbies/LaLiga.jpg" alt="La Liga" class="hobby-league-logo">
+                                            <p class="hobby-result-label">Latest · La Liga</p>
+                                        </div>
+                                        <div class="hobby-result-score">
+                                            <span class="hobby-result-team">Getafe CF</span>
+                                            <span class="hobby-result-nums">0 – <strong>2</strong></span>
+                                            <span class="hobby-result-team hobby-result-winner">FC Barcelona</span>
+                                        </div>
+                                        <p class="hobby-result-date">Apr 25, 2026</p>
+                                    </div>
+                                    <div class="hobby-result-card" id="soccer-ucl-result" style="display:none;">
+                                        <div class="hobby-result-header">
+                                            <img src="./images/hobbies/ucl.jpg" alt="Champions League" class="hobby-league-logo">
+                                            <p class="hobby-result-label">Latest · Champions League</p>
+                                        </div>
+                                        <div class="hobby-result-score">
+                                            <span class="hobby-result-team" id="ucl-home-team">—</span>
+                                            <span class="hobby-result-nums" id="ucl-score">— – —</span>
+                                            <span class="hobby-result-team" id="ucl-away-team">—</span>
+                                        </div>
+                                        <p class="hobby-result-date" id="ucl-date"></p>
+                                        <p class="hobby-aggregate-score" id="ucl-aggregate" style="display:none;"></p>
+                                    </div>
+                                    <div class="hobby-next-card" id="soccer-next">
+                                        <p class="hobby-result-label">Next Up · La Liga</p>
+                                        <p class="hobby-next-text">CA Osasuna <span style="opacity:0.5">vs</span> FC Barcelona — May 2, 2026</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- F1 -->
+                            <div class="hobby-panel" id="panel-f1">
+                                <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/f1-track.jpg')"></div>
+                                <div class="hobby-panel-content">
+                                    <img src="./images/hobbies/sf.jpg" alt="Ferrari" class="hobby-club-badge">
+                                    <div class="hobby-panel-badge">🏎 Scuderia Ferrari</div>
+                                    <h3 class="hobby-panel-title">Scuderia Ferrari HP</h3>
+                                    <p class="hobby-panel-sub">Drivers: Charles Leclerc · Lewis Hamilton</p>
+                                    <div class="hobby-result-card">
+                                        <p class="hobby-result-label" id="f1-race-label">Latest Race · Japanese GP</p>
+                                        <div class="hobby-f1-results" id="f1-results">
+                                            <div class="hobby-f1-row"><span class="hobby-f1-pos p3">P3</span><span>Leclerc</span></div>
+                                            <div class="hobby-f1-row"><span class="hobby-f1-pos p-other">P6</span><span>Hamilton</span></div>
+                                        </div>
+                                        <p class="hobby-result-date" id="f1-race-date"></p>
+                                    </div>
+                                    <div class="hobby-result-card">
+                                        <p class="hobby-result-label">2026 Season</p>
+                                        <p class="hobby-season-stat" id="f1-constructor-standing">3 podiums from 3 races — Mercedes' closest rival</p>
+                                        <p class="hobby-season-stat">Best starts on the grid 🔥</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Drawing -->
+                            <div class="hobby-panel" id="panel-drawing">
+                                <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80')"></div>
+                                <div class="hobby-panel-content">
+                                    <div class="hobby-panel-badge">✏️ Original Artwork</div>
+                                    <h3 class="hobby-panel-title">My Drawings</h3>
+                                    <p class="hobby-panel-sub">Mostly portraits and sketches</p>
+                                    <div class="drawing-carousel-wrap">
+                                        <button class="carousel-btn" id="drawing-prev" aria-label="Previous drawings"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+                                        <div class="drawing-carousel" id="drawing-carousel">
+                                            <div class="drawing-card"><img src="./images/hobbies/drawings/drawing-1.jpg" alt="Drawing 1"></div>
+                                            <div class="drawing-card"><img src="./images/hobbies/drawings/drawing-2.jpg" alt="Drawing 2"></div>
+                                            <div class="drawing-card"><img src="./images/hobbies/drawings/drawing-3.jpg" alt="Drawing 3"></div>
+                                            <div class="drawing-card"><img src="./images/hobbies/drawings/drawing-4.jpg" alt="Drawing 4"></div>
+                                            <div class="drawing-card"><img src="./images/hobbies/drawings/drawing-5.jpg" alt="Drawing 5"></div>
+                                            <div class="drawing-card"><img src="./images/hobbies/drawings/drawing-6.jpg" alt="Drawing 6"></div>
+                                            <div class="drawing-card"><img src="./images/hobbies/drawings/drawing-7.jpg" alt="Drawing 7"></div>
+                                        </div>
+                                        <button class="carousel-btn" id="drawing-next" aria-label="Next drawings"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+                                    </div>
+                                    <div class="drawing-carousel-dots" id="drawing-dots"></div>
+                                </div>
+                            </div>
+
+                            <!-- Gaming -->
+                            <div class="hobby-panel" id="panel-gaming">
+                                <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&q=80')"></div>
+                                <div class="hobby-panel-content">
+                                    <div class="hobby-panel-badge">🎮 Currently Playing</div>
+                                    <h3 class="hobby-panel-title">Red Dead Redemption 2</h3>
+                                    <p class="hobby-panel-sub">Rockstar Games · Open World Epic</p>
+                                    <p class="hobby-panel-desc">One of the greatest games ever made. The story of Arthur Morgan is unmatched — the world, the characters, the detail. Never gets old.</p>
+                                    <div class="hobby-games-grid">
+                                        <div class="hobby-game-chip">Red Dead 2 ❤️</div>
+                                        <div class="hobby-game-chip">GTA V</div>
+                                        <div class="hobby-game-chip">Ghost of Tsushima</div>
+                                        <div class="hobby-game-chip">FIFA</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Travel -->
+                            <div class="hobby-panel" id="panel-travel">
+                                <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80')"></div>
+                                <div class="hobby-panel-content">
+                                    <div class="hobby-panel-badge">✈️ Recent Adventures</div>
+                                    <h3 class="hobby-panel-title">Traveling</h3>
+                                    <p class="hobby-panel-sub">Every photo tells a story</p>
+                                    <div class="hobby-slideshow" id="travel-slideshow">
+                                        <div class="hobby-slide active"><img src="./images/hobbies/travel/photo-1.jpg" alt="Travel photo 1"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-2.jpg" alt="Travel photo 2"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-3.jpg" alt="Travel photo 3"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-4.jpg" alt="Travel photo 4"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-5.jpg" alt="Travel photo 5"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-6.jpg" alt="Travel photo 6"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-7.jpg" alt="Travel photo 7"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-8.jpg" alt="Travel photo 8"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-9.JPG" alt="Travel photo 9"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-10.jpg" alt="Travel photo 10"></div>
+                                        <div class="hobby-slide"><img src="./images/hobbies/travel/photo-11.jpg" alt="Travel photo 11"></div>
+                                        <button class="hobby-slide-btn prev" aria-label="Previous photo"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+                                        <button class="hobby-slide-btn next" aria-label="Next photo"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+                                        <div class="hobby-slide-dots" id="travel-dots"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 · Contact -->
+        <section class="panel" id="contact" data-title="Contact">
+            <div class="panel-scroll">
+                <div class="panel-inner">
+                    <div class="sec-head" data-reveal>
+                        <span class="sec-eyebrow">Get in touch</span>
+                        <h2 class="sec-title">Let's build <span class="gradient-text">something</span></h2>
+                        <span class="sec-ghost">07</span>
+                    </div>
+                    <div class="contact-grid">
+                        <div data-reveal>
+                            <p class="contact-lede">Open to new opportunities and collaborations.</p>
+                            <p class="contact-copy">Whether it's a role, a project, or just a conversation about distributed systems (or Barça) — my inbox is open.</p>
+                            <div class="contact-links">
+                                <a class="contact-link" href="mailto:sridattamadhira1919@gmail.com">
+                                    <span class="ic"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span>
+                                    sridattamadhira1919@gmail.com
+                                </a>
+                                <a class="contact-link" href="https://www.linkedin.com/in/shridattamadhira/" target="_blank" rel="noopener">
+                                    <span class="ic"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></span>
+                                    linkedin.com/in/shridattamadhira
+                                </a>
+                                <a class="contact-link" href="https://github.com/shri-datta-madhira" target="_blank" rel="noopener">
+                                    <span class="ic"><svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.499.09.682-.217.682-.483 0-.237-.007-.866-.012-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.835.09-.647.35-1.089.636-1.338-2.22-.253-4.555-1.119-4.555-4.935 0-1.09.39-1.984 1.029-2.685-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.428 9.428 0 0112 6.844c.85.004 1.7.114 2.504.337 1.909-1.295 2.747-1.025 2.747-1.025.546 1.379.202 2.398.099 2.65.64.701 1.028 1.595 1.028 2.685 0 3.823-2.339 4.681-4.569 4.92.359.309.678.917.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C21.137 20.218 24 16.46 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"/></svg></span>
+                                    github.com/shri-datta-madhira
+                                </a>
+                            </div>
+                            <a href="./ShriDattaMadhira-Resume.pdf" download class="btn btn-ghost btn-sm">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                Download Resume
+                            </a>
+                        </div>
+                        <div class="contact-form-card glass" data-reveal>
+                            <p class="form-title">Send me a message</p>
+                            <form id="contact-form">
+                                <div class="field">
+                                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="field">
+                                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="field">
+                                    <textarea id="message" name="message" rows="4" required placeholder="Your message..."></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+                                <p id="form-feedback" class="form-feedback hidden"></p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer-strip" data-reveal>
+                        <span>&copy; <span id="footer-year"></span> Shri Datta Madhira. All rights reserved.</span>
+                        <span class="made">Designed &amp; built with <span style="color:var(--accent)">◆</span> — no frameworks, just the web.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══ Modal ═══ -->
     <div id="details-modal" class="modal-overlay">
         <div class="modal-content">
-            <button class="modal-close-button" id="modal-close">&times;</button>
-            <div id="modal-body" class="text-left">
-                <!-- Content will be dynamically loaded here -->
-            </div>
+            <button class="modal-close-button" id="modal-close" aria-label="Close">&times;</button>
+            <div id="modal-body"></div>
         </div>
     </div>
 
-    <!-- Hidden Content for Modals -->
-    <div class="hidden">
-        <!-- Experience Details -->
+    <!-- Hidden modal content -->
+    <div hidden>
         <div id="fifth-third-modal-content">
-            <!-- Header -->
-            <div class="flex items-center mb-5 pt-2">
-                <img src="./images/exp/ftb.png" alt="Fifth Third Bank Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
+            <div class="xp-head">
+                <img src="./images/exp/ftb.png" alt="Fifth Third Bank logo">
                 <div>
-                    <h3 class="text-2xl font-bold text-indigo-400">Fifth Third Bank</h3>
-                    <p class="text-base font-semibold text-gray-300">Software Engineer</p>
-                    <p class="text-sm text-gray-500">Dec 2023 – Present · Remote</p>
+                    <h3>Fifth Third Bank</h3>
+                    <p class="role">Software Engineer</p>
+                    <p class="dates">Dec 2023 – Present · Remote</p>
                 </div>
             </div>
-            <!-- Headline -->
-            <p class="exp-headline">
-                Rebuilt Zelle's core payment infrastructure from a monolith into event-driven microservices — now handling <strong>$2B+ in daily transactions</strong> across millions of users with zero critical production failures.
+            <p class="xp-headline">
+                Rebuilt Zelle's core payment infrastructure from a monolith into event-driven microservices — now handling
+                <strong>$2B+ in daily transactions</strong> across millions of users with zero critical production failures.
             </p>
-            <!-- Stats -->
-            <p class="modal-section-label">Impact</p>
-            <div class="stat-chips-grid">
-                <div class="stat-chip"><div class="stat-value">400M+</div><div class="stat-label">events / day</div></div>
-                <div class="stat-chip"><div class="stat-value">~5ms</div><div class="stat-label">avg latency</div></div>
-                <div class="stat-chip"><div class="stat-value">99%+</div><div class="stat-label">success rate</div></div>
-                <div class="stat-chip"><div class="stat-value">91%</div><div class="stat-label">code coverage</div></div>
-                <div class="stat-chip"><div class="stat-value">500K+</div><div class="stat-label">daily reminders</div></div>
-                <div class="stat-chip"><div class="stat-value">10/12</div><div class="stat-label">clean releases</div></div>
+            <p class="xp-label">Impact</p>
+            <div class="stat-grid">
+                <div class="stat-cell"><div class="v">400M+</div><div class="l">events / day</div></div>
+                <div class="stat-cell"><div class="v">~5ms</div><div class="l">avg latency</div></div>
+                <div class="stat-cell"><div class="v">99%+</div><div class="l">success rate</div></div>
+                <div class="stat-cell"><div class="v">91%</div><div class="l">code coverage</div></div>
+                <div class="stat-cell"><div class="v">500K+</div><div class="l">daily reminders</div></div>
+                <div class="stat-cell"><div class="v">10/12</div><div class="l">clean releases</div></div>
             </div>
-            <!-- Tech Dock -->
-            <p class="modal-section-label">Technologies</p>
-            <div class="tech-dock">
-                <div class="dock-item"><span class="dock-pill">Java</span></div>
-                <div class="dock-item"><span class="dock-pill">Spring Boot</span></div>
-                <div class="dock-item"><span class="dock-pill">Apache Kafka</span></div>
-                <div class="dock-item"><span class="dock-pill">IBM DB2</span></div>
-                <div class="dock-item"><span class="dock-pill">AWS Lambda</span></div>
-                <div class="dock-item"><span class="dock-pill">AWS ECS</span></div>
-                <div class="dock-item"><span class="dock-pill">AWS S3</span></div>
-                <div class="dock-item"><span class="dock-pill">Terraform</span></div>
-                <div class="dock-item"><span class="dock-pill">Jenkins</span></div>
-                <div class="dock-item"><span class="dock-pill">Docker</span></div>
-                <div class="dock-item"><span class="dock-pill">HashiCorp Vault</span></div>
-                <div class="dock-item"><span class="dock-pill">LaunchDarkly</span></div>
-                <div class="dock-item"><span class="dock-pill">Splunk</span></div>
-                <div class="dock-item"><span class="dock-pill">Mockito</span></div>
-                <div class="dock-item"><span class="dock-pill">Newman</span></div>
-                <div class="dock-item"><span class="dock-pill">Cucumber</span></div>
-                <div class="dock-item"><span class="dock-pill">REST APIs</span></div>
-            </div>
-        </div>
-        <div id="matson-modal-content">
-            <!-- Header -->
-            <div class="flex items-center mb-5 pt-2">
-                <img src="./images/exp/matson.png" alt="Matson Inc Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
-                <div>
-                    <h3 class="text-2xl font-bold text-indigo-400">Matson Inc</h3>
-                    <p class="text-base font-semibold text-gray-300">Software Developer</p>
-                    <p class="text-sm text-gray-500">May 2023 – Dec 2023 · Phoenix, AZ</p>
-                </div>
-            </div>
-            <!-- Headline -->
-            <p class="exp-headline">
-                Modernized port operations software for one of the largest US shipping lines — improving throughput, security, and system resilience across <strong>4 major Pacific ports</strong>.
-            </p>
-            <!-- Stats -->
-            <p class="modal-section-label">Impact</p>
-            <div class="stat-chips-grid">
-                <div class="stat-chip"><div class="stat-value">500+</div><div class="stat-label">port workers</div></div>
-                <div class="stat-chip"><div class="stat-value">~25%</div><div class="stat-label">less downtime</div></div>
-                <div class="stat-chip"><div class="stat-value">10+</div><div class="stat-label">vulns fixed</div></div>
-                <div class="stat-chip"><div class="stat-value">4</div><div class="stat-label">ports covered</div></div>
-            </div>
-            <!-- Tech Dock -->
-            <p class="modal-section-label">Technologies</p>
-            <div class="tech-dock">
-                <div class="dock-item"><span class="dock-pill">Groovy</span></div>
-                <div class="dock-item"><span class="dock-pill">Java</span></div>
-                <div class="dock-item"><span class="dock-pill">Apache ActiveMQ</span></div>
-                <div class="dock-item"><span class="dock-pill">AWS Secrets Manager</span></div>
-                <div class="dock-item"><span class="dock-pill">Jasper Reports</span></div>
-                <div class="dock-item"><span class="dock-pill">SQL</span></div>
-                <div class="dock-item"><span class="dock-pill">REST APIs</span></div>
-                <div class="dock-item"><span class="dock-pill">Master-Slave Failover</span></div>
-            </div>
-        </div>
-        <div id="vor-modal-content">
-            <!-- Header -->
-            <div class="flex items-center mb-5 pt-2">
-                <img src="./images/exp/vor.png" alt="Vor Biopharma Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
-                <div>
-                    <h3 class="text-2xl font-bold text-indigo-400">Vor Biopharma</h3>
-                    <p class="text-base font-semibold text-gray-300">Software Engineering Co-op</p>
-                    <p class="text-sm text-gray-500">Jan 2022 – Jun 2022 · Cambridge, MA</p>
-                </div>
-            </div>
-            <!-- Headline -->
-            <p class="exp-headline">
-                Accelerated genomic research pipelines at a clinical-stage biotech — cutting gene analysis time from hours down to <strong>~30 minutes</strong> by building an in-memory data store from scratch.
-            </p>
-            <!-- Stats -->
-            <p class="modal-section-label">Impact</p>
-            <div class="stat-chips-grid">
-                <div class="stat-chip"><div class="stat-value">70%</div><div class="stat-label">latency reduction</div></div>
-                <div class="stat-chip"><div class="stat-value">~30 min</div><div class="stat-label">gene analysis</div></div>
-                <div class="stat-chip"><div class="stat-value">5+</div><div class="stat-label">pipelines enhanced</div></div>
-            </div>
-            <!-- Tech Dock -->
-            <p class="modal-section-label">Technologies</p>
-            <div class="tech-dock">
-                <div class="dock-item"><span class="dock-pill">Python</span></div>
-                <div class="dock-item"><span class="dock-pill">Shell Scripting</span></div>
-                <div class="dock-item"><span class="dock-pill">In-Memory Store</span></div>
-                <div class="dock-item"><span class="dock-pill">Data Pipelines</span></div>
-                <div class="dock-item"><span class="dock-pill">Genomic Data</span></div>
-            </div>
-        </div>
-        <div id="northeastern-modal-content">
-            <!-- Header -->
-            <div class="flex items-center mb-5 pt-2">
-                <img src="./images/exp/neu.jpg" alt="Northeastern University Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
-                <div>
-                    <h3 class="text-2xl font-bold text-indigo-400">Northeastern University</h3>
-                    <p class="text-base font-semibold text-gray-300">Research & Teaching Assistant</p>
-                    <p class="text-sm text-gray-500">Sept 2021 – May 2023 · Boston, MA</p>
-                </div>
-            </div>
-            <!-- Headline -->
-            <p class="exp-headline">
-                Contributed to cutting-edge Wi-Fi research while mentoring 200+ students across three CS courses — from introductory programming to graduate-level data mining.
-            </p>
-            <!-- Stats -->
-            <p class="modal-section-label">Impact</p>
-            <div class="stat-chips-grid">
-                <div class="stat-chip"><div class="stat-value">200+</div><div class="stat-label">students mentored</div></div>
-                <div class="stat-chip"><div class="stat-value">3</div><div class="stat-label">courses TA'd</div></div>
-                <div class="stat-chip"><div class="stat-value">802.11ad</div><div class="stat-label">Wi-Fi research</div></div>
-            </div>
-            <!-- Tech Dock -->
-            <p class="modal-section-label">Technologies & Courses</p>
-            <div class="tech-dock">
-                <div class="dock-item"><span class="dock-pill">Python</span></div>
-                <div class="dock-item"><span class="dock-pill">Data Visualization</span></div>
-                <div class="dock-item"><span class="dock-pill">802.11ad Wi-Fi</span></div>
-                <div class="dock-item"><span class="dock-pill">CS1100</span></div>
-                <div class="dock-item"><span class="dock-pill">CS4910</span></div>
-                <div class="dock-item"><span class="dock-pill">CS6220 Data Mining</span></div>
-            </div>
-        </div>
-        <div id="infosys-modal-content">
-            <!-- Header -->
-            <div class="flex items-center mb-5 pt-2">
-                <img src="./images/exp/infosys.jpg" alt="Infosys Limited Logo" class="rounded-full mr-4 border border-indigo-800 in-experience-logo">
-                <div>
-                    <h3 class="text-2xl font-bold text-indigo-400">Infosys Limited</h3>
-                    <p class="text-base font-semibold text-gray-300">Software Development Engineer</p>
-                    <p class="text-sm text-gray-500">Dec 2018 – Feb 2020 · Hyderabad, India</p>
-                </div>
-            </div>
-            <!-- Headline -->
-            <p class="exp-headline">
-                Started my engineering career building real products at scale — from a face recognition attendance system deployed across multiple office locations, to optimizing a bank trading application's backend performance.
-            </p>
-            <!-- Stats -->
-            <p class="modal-section-label">Impact</p>
-            <div class="stat-chips-grid">
-                <div class="stat-chip"><div class="stat-value">30%+</div><div class="stat-label">faster check-ins</div></div>
-                <div class="stat-chip"><div class="stat-value">6</div><div class="stat-label">person team led</div></div>
-                <div class="stat-chip"><div class="stat-value">Multi-site</div><div class="stat-label">deployment scale</div></div>
-            </div>
-            <!-- Tech Dock -->
-            <p class="modal-section-label">Technologies</p>
-            <div class="tech-dock">
-                <div class="dock-item"><span class="dock-pill">Java</span></div>
-                <div class="dock-item"><span class="dock-pill">Python</span></div>
-                <div class="dock-item"><span class="dock-pill">Node.js</span></div>
-                <div class="dock-item"><span class="dock-pill">PL/SQL</span></div>
-                <div class="dock-item"><span class="dock-pill">Azure Face API</span></div>
-                <div class="dock-item"><span class="dock-pill">Azure Blob Storage</span></div>
-                <div class="dock-item"><span class="dock-pill">Raspberry Pi</span></div>
-                <div class="dock-item"><span class="dock-pill">DSA</span></div>
+            <p class="xp-label">Technologies</p>
+            <div class="pill-row">
+                <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Apache Kafka</span>
+                <span class="chip">IBM DB2</span><span class="chip">AWS Lambda</span><span class="chip">AWS ECS</span>
+                <span class="chip">AWS S3</span><span class="chip">Terraform</span><span class="chip">Jenkins</span>
+                <span class="chip">Docker</span><span class="chip">HashiCorp Vault</span><span class="chip">LaunchDarkly</span>
+                <span class="chip">Splunk</span><span class="chip">Mockito</span><span class="chip">Newman</span>
+                <span class="chip">Cucumber</span><span class="chip">REST APIs</span>
             </div>
         </div>
 
-        <!-- Project Details -->
-        <div id="project-search-engine-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Topical Search Engine</h3>
-            <p class="text-lg text-gray-300 mb-4">
-                <span class="font-medium">Skills:</span> Python, Elasticsearch, Docker, PageRank, Priority Queues
+        <div id="matson-modal-content">
+            <div class="xp-head">
+                <img src="./images/exp/matson.png" alt="Matson Inc logo">
+                <div>
+                    <h3>Matson Inc</h3>
+                    <p class="role">Software Developer</p>
+                    <p class="dates">May 2023 – Dec 2023 · Phoenix, AZ</p>
+                </div>
+            </div>
+            <p class="xp-headline">
+                Modernized port operations software for one of the largest US shipping lines — improving throughput,
+                security, and system resilience across <strong>4 major Pacific ports</strong>.
             </p>
-            <p class="text-gray-200 mb-4">
-                <strong>Engineered</strong> a highly efficient web crawler using graphs to crawl and index <strong>80K websites in 18 hours</strong> for a topical search engine.
-            </p>
-            <a href="https://github.com/shri-datta-madhira/Information-Retrieval/tree/main/HW-3" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center">
-                View on GitHub
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
+            <p class="xp-label">Impact</p>
+            <div class="stat-grid">
+                <div class="stat-cell"><div class="v">500+</div><div class="l">port workers</div></div>
+                <div class="stat-cell"><div class="v">~25%</div><div class="l">less downtime</div></div>
+                <div class="stat-cell"><div class="v">10+</div><div class="l">vulns fixed</div></div>
+                <div class="stat-cell"><div class="v">4</div><div class="l">ports covered</div></div>
+            </div>
+            <p class="xp-label">Technologies</p>
+            <div class="pill-row">
+                <span class="chip">Groovy</span><span class="chip">Java</span><span class="chip">Apache ActiveMQ</span>
+                <span class="chip">AWS Secrets Manager</span><span class="chip">Jasper Reports</span><span class="chip">SQL</span>
+                <span class="chip">REST APIs</span><span class="chip">Master-Slave Failover</span>
+            </div>
         </div>
-        <div id="project-nlp-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Text Summarization in NLP</h3>
-            <p class="text-lg text-gray-300 mb-4">
-                <span class="font-medium">Skills:</span> Python, Google Colab, Recurrent Neural Networks, LSTM, Attention
+
+        <div id="vor-modal-content">
+            <div class="xp-head">
+                <img src="./images/exp/vor.png" alt="Vor Biopharma logo">
+                <div>
+                    <h3>Vor Biopharma</h3>
+                    <p class="role">Software Engineering Co-op</p>
+                    <p class="dates">Jan 2022 – Jun 2022 · Cambridge, MA</p>
+                </div>
+            </div>
+            <p class="xp-headline">
+                Accelerated genomic research pipelines at a clinical-stage biotech — cutting gene analysis time from hours
+                down to <strong>~30 minutes</strong> by building an in-memory data store from scratch.
             </p>
-            <p class="text-gray-200 mb-4">
-                <strong>Created</strong> encoder-decoder language models employing LSTM units and attention for summarization, achieving a <strong>BLEU score of 0.85</strong>.
-            </p>
-            <a href="https://github.com/shri-datta-madhira/text-summarization-nlp" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center">
-                View on GitHub
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
+            <p class="xp-label">Impact</p>
+            <div class="stat-grid">
+                <div class="stat-cell"><div class="v">70%</div><div class="l">latency reduction</div></div>
+                <div class="stat-cell"><div class="v">~30 min</div><div class="l">gene analysis</div></div>
+                <div class="stat-cell"><div class="v">5+</div><div class="l">pipelines enhanced</div></div>
+            </div>
+            <p class="xp-label">Technologies</p>
+            <div class="pill-row">
+                <span class="chip">Python</span><span class="chip">Shell Scripting</span><span class="chip">In-Memory Store</span>
+                <span class="chip">Data Pipelines</span><span class="chip">Genomic Data</span>
+            </div>
         </div>
-        <div id="project-anidb-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Anidb</h3>
-            <p class="text-lg text-gray-300 mb-4">
-                <span class="font-medium">Skills:</span> React.js, Node.js, MongoDB, Express, REST APIs, HTML, Bootstrap
+
+        <div id="northeastern-modal-content">
+            <div class="xp-head">
+                <img src="./images/exp/neu.jpg" alt="Northeastern University logo">
+                <div>
+                    <h3>Northeastern University</h3>
+                    <p class="role">Research &amp; Teaching Assistant</p>
+                    <p class="dates">Sept 2021 – May 2023 · Boston, MA</p>
+                </div>
+            </div>
+            <p class="xp-headline">
+                Contributed to cutting-edge Wi-Fi research while mentoring 200+ students across three CS courses — from
+                introductory programming to graduate-level data mining.
             </p>
-            <p class="text-gray-200 mb-4">
-                <strong>Developed</strong> a full-stack website providing information on <strong>23K anime</strong>, featuring review/rating posting, user follow, and bookmarking functionalities.
-            </p>
-            <a href="https://github.com/CantFindThisProject" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center">
-                View on GitHub
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
+            <p class="xp-label">Impact</p>
+            <div class="stat-grid">
+                <div class="stat-cell"><div class="v">200+</div><div class="l">students mentored</div></div>
+                <div class="stat-cell"><div class="v">3</div><div class="l">courses TA'd</div></div>
+                <div class="stat-cell"><div class="v">802.11ad</div><div class="l">Wi-Fi research</div></div>
+            </div>
+            <p class="xp-label">Technologies &amp; Courses</p>
+            <div class="pill-row">
+                <span class="chip">Python</span><span class="chip">Data Visualization</span><span class="chip">802.11ad Wi-Fi</span>
+                <span class="chip">CS1100</span><span class="chip">CS4910</span><span class="chip">CS6220 Data Mining</span>
+            </div>
         </div>
-        <div id="project-god-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Game of Dungeons</h3>
-            <p class="text-lg text-gray-300 mb-4">
-                <span class="font-medium">Skills:</span> Java, MVC, Junit4, Swing
+
+        <div id="infosys-modal-content">
+            <div class="xp-head">
+                <img src="./images/exp/infosys.jpg" alt="Infosys Limited logo">
+                <div>
+                    <h3>Infosys Limited</h3>
+                    <p class="role">Software Development Engineer</p>
+                    <p class="dates">Dec 2018 – Feb 2020 · Hyderabad, India</p>
+                </div>
+            </div>
+            <p class="xp-headline">
+                Started my engineering career building real products at scale — from a face recognition attendance system
+                deployed across multiple office locations, to optimizing a bank trading application's backend performance.
             </p>
-            <p class="text-gray-200 mb-4">
-                <strong>Developed</strong> a text based adventure game in which the player takes on the role of the protagonist in an interactive story driven by exploration and/or puzzle solving.
-                The world for our game consists of a dungeon, a network of tunnels and caves that are interconnected so that player can explore the entire world by traveling from cave to cave through the tunnels that connect them.
-                The dungeon will have treasure, arrows, and monsters in it. The player should successfully navigate through the dungeon and get out of it alive.
-            </p>
-            <a href="https://github.com/shri-datta-madhira/game-of-dungeons" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center">
-                View on GitHub
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
-        </div>
-        <div id="project-artic-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Arctic Sea Ice Levels Prediction</h3>
-            <p class="text-lg text-gray-300 mb-4">
-                <span class="font-medium">Skills:</span> Python, Pandas, Numpy, Data Mining
-            </p>
-            <p class="text-gray-200 mb-4">
-                A small project exploring the ideas of data mining, cleaning, and prediction process involving various libraries like MatplotLib for plotting, Sklearn for effective prediction algorithms, pandas for data handling.
-            </p>
-            <a href="https://github.com/shri-datta-madhira/arctic-sea-ice-prediction" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center">
-                View on GitHub
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
-        </div>
-        <div id="project-face-detect-modal-content">
-            <div class="rounded-lg absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-indigo-500 to-transparent z-0 pointer-events-none"></div>
-            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Employee Attendance using Face Detection</h3>
-            <p class="text-lg text-gray-300 mb-4">
-                <span class="font-medium">Skills:</span> Python, Azure, PL/SQL, Node.js, Raspberry Pie
-            </p>
-            <p class="text-gray-200 mb-4">
-                This project is used to sample the capabilities of taking employee card-in and card-out times using face detection to reduce bottleneck near entry ways during rush hours.
-                Raspberry Pie is used to which a small camera unit is connected. We took people's pictures and stored them in Azure blob storage, and use the face api to do face recognition.
-            </p>
-            <p>
-                Fun Fact: This was later on scaled up and implemented in couple of locations I think :)
-            </p>
-            <a href="https://github.com/shri-datta-madhira/employee-attendance-using-face-recognition" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center">
-                View on GitHub
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-            </a>
+            <p class="xp-label">Impact</p>
+            <div class="stat-grid">
+                <div class="stat-cell"><div class="v">30%+</div><div class="l">faster check-ins</div></div>
+                <div class="stat-cell"><div class="v">6</div><div class="l">person team led</div></div>
+                <div class="stat-cell"><div class="v">Multi-site</div><div class="l">deployment scale</div></div>
+            </div>
+            <p class="xp-label">Technologies</p>
+            <div class="pill-row">
+                <span class="chip">Java</span><span class="chip">Python</span><span class="chip">Node.js</span>
+                <span class="chip">PL/SQL</span><span class="chip">Azure Face API</span><span class="chip">Azure Blob Storage</span>
+                <span class="chip">Raspberry Pi</span><span class="chip">DSA</span>
+            </div>
         </div>
     </div>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" aria-label="Back to top">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
-        </svg>
-    </button>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 pt-12 pb-8 px-6 md:px-12 rounded-t-lg mt-8">
-        <div class="container mx-auto">
-            <!-- Brand row — full width on all screens -->
-            <div class="mb-8">
-                <p class="text-xl font-bold text-indigo-400 mb-2">Shri Datta Madhira</p>
-                <p class="text-sm text-gray-500 leading-relaxed mb-4">Software Engineer · Open to SWE & PM roles globally.</p>
-                <a href="./ShriDattaMadhiraResume.pdf" download class="resume-btn inline-flex">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                    Download Resume
-                </a>
-            </div>
-            <!-- Quick Links + Connect — always side by side (2 cols) -->
-            <div class="grid grid-cols-2 md:grid-cols-2 gap-8 mb-10">
-                <!-- Quick links col -->
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Quick Links</p>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#about"           class="hover:text-indigo-400 transition duration-200">About</a></li>
-                        <li><a href="#experience-home" class="hover:text-indigo-400 transition duration-200">Experience</a></li>
-                        <li><a href="#education"       class="hover:text-indigo-400 transition duration-200">Education</a></li>
-                        <li><a href="#skills-home"     class="hover:text-indigo-400 transition duration-200">Skills</a></li>
-                        <li><a href="#projects-home"   class="hover:text-indigo-400 transition duration-200">Projects</a></li>
-                        <li><a href="#contact"         class="hover:text-indigo-400 transition duration-200">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Connect col -->
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Connect</p>
-                    <div class="flex flex-col space-y-3">
-                        <a href="https://www.linkedin.com/in/shridattamadhira/" target="_blank"
-                           class="flex items-center gap-2 text-sm hover:text-indigo-400 transition duration-200">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/shri-datta-madhira" target="_blank"
-                           class="flex items-center gap-2 text-sm hover:text-indigo-400 transition duration-200">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.499.09.682-.217.682-.483 0-.237-.007-.866-.012-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.835.09-.647.35-1.089.636-1.338-2.22-.253-4.555-1.119-4.555-4.935 0-1.09.39-1.984 1.029-2.685-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.428 9.428 0 0112 6.844c.85.004 1.7.114 2.504.337 1.909-1.295 2.747-1.025 2.747-1.025.546 1.379.202 2.398.099 2.65.64.701 1.028 1.595 1.028 2.685 0 3.823-2.339 4.681-4.569 4.92.359.309.678.917.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C21.137 20.218 24 16.46 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"/></svg>
-                            GitHub
-                        </a>
-                        <a href="#contact"
-                           class="flex items-center gap-2 text-sm hover:text-indigo-400 transition duration-200">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            Send a Message
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-600">
-                <p>&copy; <span id="footer-year"></span> Shri Datta Madhira. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Portfolio scripts -->
-    <script src="portfolioJS.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

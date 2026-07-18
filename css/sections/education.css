@@ -1,0 +1,75 @@
+/* ============================================================
+   education.css — education panel
+   ============================================================ */
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+  max-width: 900px;
+}
+
+.edu-card { padding: 1.7rem 1.8rem; overflow: hidden; }
+
+.edu-card .year-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.edu-card .school {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.edu-card .school img {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  background: #fff;
+}
+
+.edu-card .school h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.edu-card .school .loc { font-size: 0.78rem; color: var(--ink-3); }
+
+.edu-card .degree { font-weight: 600; font-size: 0.98rem; margin-bottom: 0.15rem; }
+.edu-card .college { font-size: 0.8rem; color: var(--ink-3); margin-bottom: 1.1rem; }
+
+.edu-card .gpa-row { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 1.1rem; }
+
+.edu-card .gpa {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.edu-card .gpa-of { font-size: 0.8rem; color: var(--ink-3); }
+
+.edu-card .honors { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+@media (max-width: 760px) {
+  .edu-grid { grid-template-columns: 1fr; }
+}

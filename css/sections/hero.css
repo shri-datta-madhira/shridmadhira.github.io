@@ -1,0 +1,174 @@
+/* ============================================================
+   hero.css — About / landing panel
+   ============================================================ */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: 1.4rem;
+}
+
+.hero-eyebrow .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 10px var(--success);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  50% { opacity: 0.45; }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.hero-type-row {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--ink-2);
+  min-height: 1.6em;
+  margin-bottom: 1.3rem;
+}
+
+.hero-type-row .typed { color: var(--accent); }
+
+.hero-type-row .caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  margin-left: 2px;
+  animation: caret-blink 1s step-end infinite;
+}
+
+@keyframes caret-blink { 50% { opacity: 0; } }
+
+.hero-desc {
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin-bottom: 1.1rem;
+}
+
+.hero-quote {
+  position: relative;
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--ink);
+  padding-left: 1.1rem;
+  border-left: 3px solid;
+  border-image: var(--gradient) 1;
+  max-width: 52ch;
+  margin-bottom: 1.8rem;
+}
+
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
+
+/* Photo side */
+.hero-photo-col { display: flex; justify-content: center; }
+
+.hero-photo {
+  position: relative;
+  width: clamp(230px, 24vw, 330px);
+  aspect-ratio: 1;
+}
+
+.hero-photo .ring {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #6366f1, #c084fc, #22d3ee, #6366f1);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  animation: spin-ring 9s linear infinite;
+}
+
+@keyframes spin-ring { to { rotate: 360deg; } }
+
+.hero-photo .halo {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.28), transparent 65%);
+  z-index: -1;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--bg-1);
+  animation: float-photo 6s ease-in-out infinite;
+}
+
+@keyframes float-photo {
+  50% { transform: translateY(-9px); }
+}
+
+/* Floating stat chips around the photo */
+.hero-stat {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.55rem 0.95rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg-1) 82%, transparent);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+  animation: float-photo 6s ease-in-out infinite;
+}
+
+.hero-stat .v {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
+.hero-stat .l { font-size: 0.62rem; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+
+.hero-stat.s1 { top: -4%; right: -12%; animation-delay: 0.8s; }
+.hero-stat.s2 { bottom: 4%; left: -18%; animation-delay: 1.6s; }
+.hero-stat.s3 { bottom: -9%; right: -4%; animation-delay: 2.4s; }
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-photo-col { order: -1; }
+  .hero-desc, .hero-quote { margin-inline: auto; }
+  .hero-quote { text-align: left; }
+  .hero-ctas { justify-content: center; }
+  .hero-stat.s1 { right: -6%; }
+  .hero-stat.s2 { left: -8%; }
+}

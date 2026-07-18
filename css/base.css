@@ -1,0 +1,238 @@
+/* ============================================================
+   base.css — design tokens, reset, typography, shared utilities
+   ============================================================ */
+
+:root {
+  /* Palette — dark (default) */
+  --bg-0: #050614;
+  --bg-1: #0a0c1e;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  --ink: #eef0ff;
+  --ink-2: #a6adce;
+  --ink-3: #6b7194;
+
+  --accent: #818cf8;
+  --accent-strong: #6366f1;
+  --accent-2: #c084fc;
+  --accent-3: #22d3ee;
+  --accent-soft: rgba(99, 102, 241, 0.14);
+  --gradient: linear-gradient(100deg, #818cf8 0%, #c084fc 50%, #22d3ee 100%);
+
+  --success: #4ade80;
+  --danger: #f87171;
+
+  /* Layout */
+  --rail-w: 232px;
+  --panel-pad: clamp(1.5rem, 4vw, 4.5rem);
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Motion */
+  --deck-dur: 750ms;
+  --deck-ease: cubic-bezier(0.76, 0, 0.24, 1);
+  --reveal-dur: 650ms;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Elevation */
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --glow-accent: 0 0 32px rgba(99, 102, 241, 0.35);
+}
+
+body.light-mode {
+  --bg-0: #f4f5fb;
+  --bg-1: #ffffff;
+  --surface: rgba(20, 24, 60, 0.04);
+  --surface-2: rgba(20, 24, 60, 0.07);
+  --border: rgba(20, 24, 60, 0.1);
+  --border-strong: rgba(20, 24, 60, 0.22);
+
+  --ink: #171a2e;
+  --ink-2: #4a5072;
+  --ink-3: #858ba9;
+
+  --accent: #5157e0;
+  --accent-strong: #4338ca;
+  --accent-2: #9333ea;
+  --accent-3: #0891b2;
+  --accent-soft: rgba(81, 87, 224, 0.1);
+  --gradient: linear-gradient(100deg, #5157e0 0%, #9333ea 50%, #0891b2 100%);
+
+  --shadow-card: 0 12px 36px rgba(30, 34, 90, 0.12);
+  --glow-accent: 0 0 28px rgba(81, 87, 224, 0.22);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { height: 100%; }
+
+body {
+  min-height: 100%;
+  background: var(--bg-0);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+ul, ol { list-style: none; }
+
+::selection { background: var(--accent-strong); color: #fff; }
+
+/* Thin styled scrollbars for inner scrollers */
+.panel-scroll::-webkit-scrollbar { width: 6px; }
+.panel-scroll::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+.panel-scroll { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+
+/* ── Typography helpers ── */
+.display { font-family: var(--font-display); }
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Section heading block: eyebrow + title + ghost number */
+.sec-head { position: relative; margin-bottom: clamp(1.2rem, 2.5vh, 2.4rem); }
+
+.sec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.sec-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--gradient);
+}
+
+.sec-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.2vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.sec-ghost {
+  position: absolute;
+  top: -0.55em;
+  right: 0;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 11vw, 9rem);
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border-strong);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Aurora background ── */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--bg-0);
+  transition: background-color 0.4s ease;
+}
+
+.aurora .blob {
+  position: absolute;
+  width: 55vmax;
+  height: 55vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.32;
+  will-change: transform;
+}
+
+body.light-mode .aurora .blob { opacity: 0.16; }
+
+.aurora .blob-1 {
+  background: radial-gradient(circle at center, #6366f1, transparent 65%);
+  top: -18vmax; left: -12vmax;
+  animation: drift-1 26s ease-in-out infinite alternate;
+}
+
+.aurora .blob-2 {
+  background: radial-gradient(circle at center, #9333ea, transparent 65%);
+  bottom: -22vmax; right: -14vmax;
+  animation: drift-2 32s ease-in-out infinite alternate;
+}
+
+.aurora .blob-3 {
+  background: radial-gradient(circle at center, #0ea5e9, transparent 65%);
+  top: 30%; left: 55%;
+  width: 38vmax; height: 38vmax;
+  animation: drift-3 38s ease-in-out infinite alternate;
+}
+
+@keyframes drift-1 { to { transform: translate(14vmax, 10vmax) scale(1.15); } }
+@keyframes drift-2 { to { transform: translate(-12vmax, -8vmax) scale(1.1); } }
+@keyframes drift-3 { to { transform: translate(-16vmax, 8vmax) scale(0.85); } }
+
+/* Subtle grid overlay */
+.aurora::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.35;
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 0%, transparent 75%);
+}
+
+/* ── Reveal animation primitives ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity var(--reveal-dur) var(--reveal-ease) var(--d, 0ms),
+    transform var(--reveal-dur) var(--reveal-ease) var(--d, 0ms);
+}
+
+.panel.is-open [data-reveal],
+.panel.is-leaving [data-reveal],
+body.no-deck [data-reveal].in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
