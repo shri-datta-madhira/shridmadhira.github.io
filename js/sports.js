@@ -57,7 +57,7 @@ function renderUpcomingList(el, fixtures) {
   if (!el || !fixtures.length) return;
   el.innerHTML = fixtures.map(f => `
     <p class="hobby-next-text">
-      ${f.home} <span style="opacity:0.5">vs</span> ${f.away} — ${f.date}
+      ${f.home} <span style="opacity:0.5">vs</span> ${f.away} · ${f.date}
       ${f.league ? `<span class="hobby-next-league">${f.league}</span>` : ''}
     </p>`).join('');
 }
@@ -199,7 +199,7 @@ async function updateFerrari() {
       card.style.display = '';
       list.innerHTML = upcoming.map(r => `
         <p class="hobby-next-text">
-          ${r.raceName} <span style="opacity:0.6">· ${r.Circuit?.Location?.country || ''}</span> — ${fmtDate(r.date)}
+          ${r.raceName} <span style="opacity:0.6">· ${r.Circuit?.Location?.country || ''}</span> · ${fmtDate(r.date)}
           <span class="hobby-next-league">Round ${r.round}</span>
         </p>`).join('');
     }
@@ -215,7 +215,7 @@ async function updateFerrari() {
     standEl.textContent = `P${ferrari.position} in Constructors · ${ferrari.points} pts · ${ferrari.wins} wins`;
     if (seasonEl && table?.season) seasonEl.textContent = `${table.season} Season`;
   } else if (standEl) {
-    standEl.textContent = 'Forza Ferrari — sempre.';
+    standEl.textContent = 'Forza Ferrari, sempre.';
   }
 }
 

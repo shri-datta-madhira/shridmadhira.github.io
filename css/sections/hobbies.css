@@ -113,11 +113,11 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c7d2fe;
+  color: #c9ecf7;
   padding: 0.3rem 0.8rem;
   border-radius: 999px;
-  background: rgba(99, 102, 241, 0.25);
-  border: 1px solid rgba(129, 140, 248, 0.4);
+  background: rgba(78, 168, 222, 0.25);
+  border: 1px solid rgba(78, 168, 222, 0.45);
   backdrop-filter: blur(6px);
   margin-bottom: 0.8rem;
 }
@@ -166,7 +166,7 @@
 
 .hobby-result-team { flex: 1; }
 .hobby-result-team:last-child { text-align: right; }
-.hobby-result-winner { color: #a5b4fc; font-weight: 700; }
+.hobby-result-winner { color: #72efdd; font-weight: 700; }
 
 .hobby-result-nums {
   font-family: var(--font-display);
@@ -176,7 +176,7 @@
 }
 
 .hobby-result-date { font-size: 0.72rem; color: #8f96bd; }
-.hobby-aggregate-score { font-size: 0.75rem; color: #a5b4fc; margin-top: 0.3rem; }
+.hobby-aggregate-score { font-size: 0.75rem; color: #72efdd; margin-top: 0.3rem; }
 
 .hobby-next-text { font-size: 0.9rem; margin-top: 0.3rem; }
 

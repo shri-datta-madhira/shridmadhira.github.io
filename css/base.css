@@ -15,12 +15,12 @@
   --ink-2: #a6adce;
   --ink-3: #6b7194;
 
-  --accent: #818cf8;
-  --accent-strong: #6366f1;
-  --accent-2: #c084fc;
-  --accent-3: #22d3ee;
-  --accent-soft: rgba(99, 102, 241, 0.14);
-  --gradient: linear-gradient(100deg, #818cf8 0%, #c084fc 50%, #22d3ee 100%);
+  --accent: #4ea8de;
+  --accent-strong: #5e60ce;
+  --accent-2: #6930c3;
+  --accent-3: #64dfdf;
+  --accent-soft: rgba(94, 96, 206, 0.16);
+  --gradient: linear-gradient(100deg, #6930c3 0%, #5390d9 45%, #56cfe1 72%, #80ffdb 100%);
 
   --success: #4ade80;
   --danger: #f87171;
@@ -41,7 +41,7 @@
 
   /* Elevation */
   --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.35);
-  --glow-accent: 0 0 32px rgba(99, 102, 241, 0.35);
+  --glow-accent: 0 0 32px rgba(83, 144, 217, 0.35);
 }
 
 body.light-mode {
@@ -56,15 +56,15 @@ body.light-mode {
   --ink-2: #4a5072;
   --ink-3: #858ba9;
 
-  --accent: #5157e0;
-  --accent-strong: #4338ca;
-  --accent-2: #9333ea;
-  --accent-3: #0891b2;
-  --accent-soft: rgba(81, 87, 224, 0.1);
-  --gradient: linear-gradient(100deg, #5157e0 0%, #9333ea 50%, #0891b2 100%);
+  --accent: #6930c3;
+  --accent-strong: #5e60ce;
+  --accent-2: #7400b8;
+  --accent-3: #48bfe3;
+  --accent-soft: rgba(105, 48, 195, 0.1);
+  --gradient: linear-gradient(100deg, #7400b8 0%, #5e60ce 40%, #5390d9 70%, #48bfe3 100%);
 
   --shadow-card: 0 12px 36px rgba(30, 34, 90, 0.12);
-  --glow-accent: 0 0 28px rgba(81, 87, 224, 0.22);
+  --glow-accent: 0 0 28px rgba(94, 96, 206, 0.22);
 }
 
 /* ── Reset ── */
@@ -175,19 +175,19 @@ ul, ol { list-style: none; }
 body.light-mode .aurora .blob { opacity: 0.16; }
 
 .aurora .blob-1 {
-  background: radial-gradient(circle at center, #6366f1, transparent 65%);
+  background: radial-gradient(circle at center, #5e60ce, transparent 65%);
   top: -18vmax; left: -12vmax;
   animation: drift-1 26s ease-in-out infinite alternate;
 }
 
 .aurora .blob-2 {
-  background: radial-gradient(circle at center, #9333ea, transparent 65%);
+  background: radial-gradient(circle at center, #7400b8, transparent 65%);
   bottom: -22vmax; right: -14vmax;
   animation: drift-2 32s ease-in-out infinite alternate;
 }
 
 .aurora .blob-3 {
-  background: radial-gradient(circle at center, #0ea5e9, transparent 65%);
+  background: radial-gradient(circle at center, #48bfe3, transparent 65%);
   top: 30%; left: 55%;
   width: 38vmax; height: 38vmax;
   animation: drift-3 38s ease-in-out infinite alternate;
