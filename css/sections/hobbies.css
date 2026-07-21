@@ -57,7 +57,7 @@
 .hobby-item.active .hobby-chevron { color: var(--accent); transform: translateX(3px); }
 
 /* ── Panels ── */
-.hobby-panel-wrap { position: relative; min-height: 420px; }
+.hobby-panel-wrap { position: relative; min-height: 500px; }
 
 .hobby-panel {
   position: absolute;
@@ -84,7 +84,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5, 6, 20, 0.55) 0%, rgba(5, 6, 20, 0.88) 75%);
+  background: linear-gradient(180deg, rgba(0, 18, 25, 0.55) 0%, rgba(0, 18, 25, 0.88) 75%);
 }
 
 .hobby-panel-content {
@@ -95,7 +95,7 @@
   padding: 1.5rem 1.6rem;
   display: flex;
   flex-direction: column;
-  color: #eef0ff;
+  color: #eef6f2;
 }
 
 .hobby-club-badge {
@@ -113,11 +113,11 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c9ecf7;
+  color: #d8efe6;
   padding: 0.3rem 0.8rem;
   border-radius: 999px;
-  background: rgba(78, 168, 222, 0.25);
-  border: 1px solid rgba(78, 168, 222, 0.45);
+  background: rgba(10, 147, 150, 0.3);
+  border: 1px solid rgba(148, 210, 189, 0.4);
   backdrop-filter: blur(6px);
   margin-bottom: 0.8rem;
 }
@@ -129,13 +129,13 @@
   line-height: 1.15;
 }
 
-.hobby-panel-sub { font-size: 0.85rem; color: #b6bce0; margin-bottom: 1rem; }
-.hobby-panel-desc { font-size: 0.88rem; color: #d4d8f0; max-width: 48ch; margin-bottom: 1rem; }
+.hobby-panel-sub { font-size: 0.85rem; color: #b3ccc4; margin-bottom: 1rem; }
+.hobby-panel-desc { font-size: 0.88rem; color: #d8e6df; max-width: 48ch; margin-bottom: 1rem; }
 
 /* Result cards (shared soccer / f1) */
 .hobby-result-card,
 .hobby-next-card {
-  background: rgba(10, 12, 30, 0.72);
+  background: rgba(0, 22, 31, 0.74);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 14px;
   padding: 0.85rem 1rem;
@@ -152,7 +152,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #8f96bd;
+  color: #8aa5a2;
 }
 
 .hobby-result-score {
@@ -166,7 +166,7 @@
 
 .hobby-result-team { flex: 1; }
 .hobby-result-team:last-child { text-align: right; }
-.hobby-result-winner { color: #72efdd; font-weight: 700; }
+.hobby-result-winner { color: #94d2bd; font-weight: 700; }
 
 .hobby-result-nums {
   font-family: var(--font-display);
@@ -175,8 +175,8 @@
   white-space: nowrap;
 }
 
-.hobby-result-date { font-size: 0.72rem; color: #8f96bd; }
-.hobby-aggregate-score { font-size: 0.75rem; color: #72efdd; margin-top: 0.3rem; }
+.hobby-result-date { font-size: 0.72rem; color: #8aa5a2; }
+.hobby-aggregate-score { font-size: 0.75rem; color: #94d2bd; margin-top: 0.3rem; }
 
 .hobby-next-text { font-size: 0.9rem; margin-top: 0.3rem; }
 
@@ -193,7 +193,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #8f96bd;
+  color: #8aa5a2;
   padding: 0.12rem 0.5rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
@@ -218,7 +218,7 @@
 .hobby-f1-pos.p2 { background: #cbd5e1; color: #111; }
 .hobby-f1-pos.p3 { background: #b45309; color: #fff; }
 
-.hobby-season-stat { font-size: 0.85rem; color: #d4d8f0; margin-top: 0.25rem; }
+.hobby-season-stat { font-size: 0.85rem; color: #d8e6df; margin-top: 0.25rem; }
 
 /* Games chips */
 .hobby-games-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
@@ -228,7 +228,7 @@
   font-weight: 500;
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  background: rgba(10, 12, 30, 0.72);
+  background: rgba(0, 22, 31, 0.74);
   border: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(6px);
 }
@@ -251,8 +251,8 @@
 }
 
 .drawing-card {
-  flex: 0 0 150px;
-  height: 200px;
+  flex: 0 0 230px;
+  height: 300px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -268,8 +268,8 @@
   height: 34px;
   border-radius: 50%;
   flex-shrink: 0;
-  color: #eef0ff;
-  background: rgba(10, 12, 30, 0.75);
+  color: #eef6f2;
+  background: rgba(0, 22, 31, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.25s ease;
   z-index: 2;
@@ -310,8 +310,8 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  color: #eef0ff;
-  background: rgba(10, 12, 30, 0.65);
+  color: #eef6f2;
+  background: rgba(0, 22, 31, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.25);
   transition: background 0.25s ease;
 }
@@ -344,5 +344,5 @@
 
 @media (max-width: 960px) {
   .hobby-layout { grid-template-columns: 1fr; }
-  .hobby-panel-wrap { min-height: 480px; }
+  .hobby-panel-wrap { min-height: 560px; }
 }

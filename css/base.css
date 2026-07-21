@@ -4,23 +4,23 @@
 
 :root {
   /* Palette — dark (default) */
-  --bg-0: #050614;
-  --bg-1: #0a0c1e;
+  --bg-0: #001219;
+  --bg-1: #06222c;
   --surface: rgba(255, 255, 255, 0.04);
   --surface-2: rgba(255, 255, 255, 0.07);
   --border: rgba(255, 255, 255, 0.09);
   --border-strong: rgba(255, 255, 255, 0.18);
 
-  --ink: #eef0ff;
-  --ink-2: #a6adce;
-  --ink-3: #6b7194;
+  --ink: #f0f5f3;
+  --ink-2: #a9bfc0;
+  --ink-3: #6f8689;
 
-  --accent: #4ea8de;
-  --accent-strong: #5e60ce;
-  --accent-2: #6930c3;
-  --accent-3: #64dfdf;
-  --accent-soft: rgba(94, 96, 206, 0.16);
-  --gradient: linear-gradient(100deg, #6930c3 0%, #5390d9 45%, #56cfe1 72%, #80ffdb 100%);
+  --accent: #94d2bd;
+  --accent-strong: #0a9396;
+  --accent-2: #ee9b00;
+  --accent-3: #e9d8a6;
+  --accent-soft: rgba(10, 147, 150, 0.18);
+  --gradient: linear-gradient(100deg, #0a9396 0%, #94d2bd 40%, #e9d8a6 68%, #ee9b00 100%);
 
   --success: #4ade80;
   --danger: #f87171;
@@ -41,30 +41,30 @@
 
   /* Elevation */
   --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.35);
-  --glow-accent: 0 0 32px rgba(83, 144, 217, 0.35);
+  --glow-accent: 0 0 32px rgba(10, 147, 150, 0.4);
 }
 
 body.light-mode {
-  --bg-0: #f4f5fb;
+  --bg-0: #f6f4ea;
   --bg-1: #ffffff;
-  --surface: rgba(20, 24, 60, 0.04);
-  --surface-2: rgba(20, 24, 60, 0.07);
-  --border: rgba(20, 24, 60, 0.1);
-  --border-strong: rgba(20, 24, 60, 0.22);
+  --surface: rgba(8, 40, 50, 0.05);
+  --surface-2: rgba(8, 40, 50, 0.08);
+  --border: rgba(8, 40, 50, 0.12);
+  --border-strong: rgba(8, 40, 50, 0.24);
 
-  --ink: #171a2e;
-  --ink-2: #4a5072;
-  --ink-3: #858ba9;
+  --ink: #12232b;
+  --ink-2: #45585f;
+  --ink-3: #7d8d95;
 
-  --accent: #6930c3;
-  --accent-strong: #5e60ce;
-  --accent-2: #7400b8;
-  --accent-3: #48bfe3;
-  --accent-soft: rgba(105, 48, 195, 0.1);
-  --gradient: linear-gradient(100deg, #7400b8 0%, #5e60ce 40%, #5390d9 70%, #48bfe3 100%);
+  --accent: #005f73;
+  --accent-strong: #0a9396;
+  --accent-2: #ca6702;
+  --accent-3: #ee9b00;
+  --accent-soft: rgba(10, 147, 150, 0.12);
+  --gradient: linear-gradient(100deg, #005f73 0%, #0a9396 40%, #ee9b00 75%, #ca6702 100%);
 
-  --shadow-card: 0 12px 36px rgba(30, 34, 90, 0.12);
-  --glow-accent: 0 0 28px rgba(94, 96, 206, 0.22);
+  --shadow-card: 0 12px 36px rgba(15, 45, 55, 0.12);
+  --glow-accent: 0 0 28px rgba(10, 147, 150, 0.22);
 }
 
 /* ── Reset ── */
@@ -175,19 +175,19 @@ ul, ol { list-style: none; }
 body.light-mode .aurora .blob { opacity: 0.16; }
 
 .aurora .blob-1 {
-  background: radial-gradient(circle at center, #5e60ce, transparent 65%);
+  background: radial-gradient(circle at center, #005f73, transparent 65%);
   top: -18vmax; left: -12vmax;
   animation: drift-1 26s ease-in-out infinite alternate;
 }
 
 .aurora .blob-2 {
-  background: radial-gradient(circle at center, #7400b8, transparent 65%);
+  background: radial-gradient(circle at center, #0a9396, transparent 65%);
   bottom: -22vmax; right: -14vmax;
   animation: drift-2 32s ease-in-out infinite alternate;
 }
 
 .aurora .blob-3 {
-  background: radial-gradient(circle at center, #48bfe3, transparent 65%);
+  background: radial-gradient(circle at center, #ee9b00, transparent 65%);
   top: 30%; left: 55%;
   width: 38vmax; height: 38vmax;
   animation: drift-3 38s ease-in-out infinite alternate;

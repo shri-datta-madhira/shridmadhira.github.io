@@ -54,12 +54,15 @@ export function initHobbies() {
 
   if (carousel && prevBtn && nextBtn) {
     const cards = carousel.querySelectorAll('.drawing-card');
-    const STEP = 150 + 12; // card width + gap
     let current = 0;
     let max = 1;
 
+    function step() {
+      return cards[0].getBoundingClientRect().width + 12; // card width + gap
+    }
+
     function measure() {
-      const visible = Math.max(1, Math.floor(carousel.clientWidth / STEP));
+      const visible = Math.max(1, Math.floor(carousel.clientWidth / step()));
       max = Math.max(0, cards.length - visible);
       dots.innerHTML = '';
       for (let i = 0; i <= max; i++) {
@@ -72,7 +75,7 @@ export function initHobbies() {
 
     function go(n) {
       current = Math.max(0, Math.min(n, max));
-      carousel.scrollTo({ left: current * STEP, behavior: 'smooth' });
+      carousel.scrollTo({ left: current * step(), behavior: 'smooth' });
       prevBtn.disabled = current === 0;
       nextBtn.disabled = current >= max;
       [...dots.children].forEach((d, i) => d.classList.toggle('active', i === current));

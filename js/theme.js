@@ -1,5 +1,7 @@
 /* ============================================================
    theme.js — light / dark toggle (persisted in localStorage)
+   Light is the default; an inline script in index.html applies
+   the class before first paint. This module only wires toggles.
    ============================================================ */
 
 export function initTheme() {
@@ -13,9 +15,6 @@ export function initTheme() {
     });
   }
 
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-mode');
-  }
   render();
 
   toggles.forEach(t => t.addEventListener('click', () => {
