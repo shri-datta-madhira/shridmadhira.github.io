@@ -71,6 +71,11 @@
   color: var(--ink-3);
 }
 
+/* Copyright lives in the rail on desktop; this strip only shows on mobile,
+   where the rail is hidden. */
+.footer-strip--mobile { display: none; }
+
 @media (max-width: 960px) {
   .contact-grid { grid-template-columns: 1fr; }
+  .footer-strip--mobile { display: flex; }
 }

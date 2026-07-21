@@ -73,23 +73,21 @@
 
 .hobby-panel.active { opacity: 1; transform: none; pointer-events: auto; }
 
-/* Media panels (drawings, travel): no backdrop image or heading, the
-   pictures themselves fill the block */
-.hobby-panel--media { background: var(--bg-1); }
+/* Media panels (drawings, travel): themed backdrop, no heading, the
+   pictures fill the block on top of the dark background */
+.hobby-panel--media { background: #001219; }
 
 .hobby-panel--media .hobby-panel-content {
-  color: var(--ink);
   padding: 1rem 1.1rem;
 }
 
 .hobby-view-hint {
   font-size: 0.75rem;
-  color: var(--ink-3);
+  color: rgba(238, 246, 242, 0.68);
   text-align: center;
   margin-top: 0.6rem;
+  flex-shrink: 0;
 }
-
-.hobby-panel--media .hobby-view-hint { color: var(--ink-3); }
 
 .hobby-panel-bg {
   position: absolute;
@@ -342,7 +340,7 @@
 }
 
 .hobby-slide-dots { position: absolute; bottom: 0.7rem; left: 0; right: 0; z-index: 2; }
-.drawing-carousel-dots { margin-top: 0.7rem; }
+.drawing-carousel-dots { margin-top: 0.7rem; flex-shrink: 0; }
 
 .hobby-dot {
   width: 7px;

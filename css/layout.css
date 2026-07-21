@@ -136,6 +136,13 @@
 
 .rail-socials svg { width: 16px; height: 16px; }
 
+.rail-copyright {
+  font-size: 0.62rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+
 /* ── Deck ── */
 .deck {
   position: fixed;

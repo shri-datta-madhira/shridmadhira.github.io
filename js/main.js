@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initSports();
 
-  const yearEl = document.getElementById('footer-year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const year = new Date().getFullYear();
+  document.querySelectorAll('#footer-year, #footer-year-m').forEach(el => {
+    el.textContent = year;
+  });
 });
