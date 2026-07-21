@@ -2,6 +2,39 @@
    hobbies.js — hobby selector, drawing carousel, travel slides
    ============================================================ */
 
+/* ── Auto-advance pause ──
+   The drawing carousel and travel slideshow auto-advance on their own.
+   Once the user takes manual control (a nav button, a dot, or opening an
+   image), auto-advance stops and only resumes after a full minute of no
+   activity anywhere on the page. */
+const AUTO_RESUME_MS = 60000;
+let autoPaused = false;
+let resumeTimer = null;
+let lastActivity = 0;
+
+function scheduleResume() {
+  clearTimeout(resumeTimer);
+  resumeTimer = setTimeout(() => { autoPaused = false; }, AUTO_RESUME_MS);
+}
+
+function pauseAuto() {
+  autoPaused = true;
+  scheduleResume();
+}
+
+function bindActivityReset() {
+  const onActivity = () => {
+    if (!autoPaused) return;
+    const now = Date.now();
+    if (now - lastActivity < 1000) return; // throttle resets to ~1/s
+    lastActivity = now;
+    scheduleResume();
+  };
+  ['pointerdown', 'pointermove', 'keydown', 'wheel', 'touchstart'].forEach(ev => {
+    window.addEventListener(ev, onActivity, { passive: true });
+  });
+}
+
 function initLightbox() {
   const lb = document.getElementById('lightbox');
   const img = document.getElementById('lightbox-img');
@@ -20,7 +53,7 @@ function initLightbox() {
   }
 
   document.querySelectorAll('.drawing-card img, .hobby-slide img').forEach(el => {
-    el.addEventListener('click', () => open(el.src, el.alt));
+    el.addEventListener('click', () => { pauseAuto(); open(el.src, el.alt); });
   });
 
   lb.addEventListener('click', close);
@@ -32,6 +65,7 @@ function initLightbox() {
 
 export function initHobbies() {
   initLightbox();
+  bindActivityReset();
 
   // Panel selector
   document.querySelectorAll('.hobby-item').forEach(item => {
@@ -57,7 +91,7 @@ export function initHobbies() {
     slides.forEach((_, i) => {
       const d = document.createElement('div');
       d.className = 'hobby-dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', () => go(i));
+      d.addEventListener('click', () => { pauseAuto(); go(i); });
       dotsWrap.appendChild(d);
     });
 
@@ -69,9 +103,10 @@ export function initHobbies() {
       dotsWrap.children[cur].classList.add('active');
     }
 
-    ss.querySelector('.prev')?.addEventListener('click', () => go(cur - 1));
-    ss.querySelector('.next')?.addEventListener('click', () => go(cur + 1));
+    ss.querySelector('.prev')?.addEventListener('click', () => { pauseAuto(); go(cur - 1); });
+    ss.querySelector('.next')?.addEventListener('click', () => { pauseAuto(); go(cur + 1); });
     setInterval(() => {
+      if (autoPaused) return;
       if (ss.closest('.hobby-panel')?.classList.contains('active')) go(cur + 1);
     }, 4000);
   }
@@ -98,7 +133,7 @@ export function initHobbies() {
       for (let i = 0; i <= max; i++) {
         const d = document.createElement('div');
         d.className = 'hobby-dot' + (i === current ? ' active' : '');
-        d.addEventListener('click', () => go(i));
+        d.addEventListener('click', () => { pauseAuto(); go(i); });
         dots.appendChild(d);
       }
     }
@@ -111,13 +146,14 @@ export function initHobbies() {
       [...dots.children].forEach((d, i) => d.classList.toggle('active', i === current));
     }
 
-    prevBtn.addEventListener('click', () => go(current - 1));
-    nextBtn.addEventListener('click', () => go(current + 1));
+    prevBtn.addEventListener('click', () => { pauseAuto(); go(current - 1); });
+    nextBtn.addEventListener('click', () => { pauseAuto(); go(current + 1); });
     window.addEventListener('resize', () => { measure(); go(current); });
     measure();
     go(0);
 
     setInterval(() => {
+      if (autoPaused) return;
       if (!document.getElementById('panel-drawing')?.classList.contains('active')) return;
       go(current >= max ? 0 : current + 1);
     }, 3500);
