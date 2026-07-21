@@ -69,8 +69,17 @@
 <body>
 
     <!-- Light mode is the default; dark only when explicitly chosen.
-         Runs inline before first paint to avoid a theme flash. -->
-    <script>if (localStorage.getItem('theme') !== 'dark') document.body.classList.add('light-mode');</script>
+         Runs inline before first paint to avoid a theme flash. Bumping
+         THEME_DEFAULT_V clears any stale saved preference once, so a new
+         default takes effect for returning visitors too. -->
+    <script>(function () {
+      var THEME_DEFAULT_V = 'light-2026-07';
+      if (localStorage.getItem('themeDefaultV') !== THEME_DEFAULT_V) {
+        localStorage.removeItem('theme');
+        localStorage.setItem('themeDefaultV', THEME_DEFAULT_V);
+      }
+      if (localStorage.getItem('theme') !== 'dark') document.body.classList.add('light-mode');
+    })();</script>
 
     <!-- Animated aurora background -->
     <div class="aurora" aria-hidden="true">
