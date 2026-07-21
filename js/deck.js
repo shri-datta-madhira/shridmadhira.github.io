@@ -212,16 +212,19 @@ export function initDeck() {
 
   if (state.enabled) {
     apply(true);
-    // Replay the active panel's entrance animation on first load
+    // Replay the active panel's entrance animation on first load.
+    // setTimeout + forced reflow, NOT requestAnimationFrame — rAF never
+    // fires in a backgrounded tab, which would leave the panel hidden.
     const p = state.panels[initial];
     p.classList.remove('is-open', 'is-active');
     p.style.transition = 'none';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
+    void p.offsetHeight;
+    setTimeout(() => {
       p.classList.add('is-open', 'is-active');
       void p.offsetHeight;
       p.style.transition = '';
       document.dispatchEvent(new CustomEvent('panelchange', { detail: { id: p.id, index: initial } }));
-    }));
+    }, 60);
   } else {
     enableMobileMode();
     if (initial > 0) state.panels[initial].scrollIntoView();

@@ -180,6 +180,26 @@
 
 .hobby-next-text { font-size: 0.9rem; margin-top: 0.3rem; }
 
+.hobby-next-text + .hobby-next-text {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.hobby-next-league {
+  display: inline-block;
+  margin-left: 0.45rem;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8f96bd;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  vertical-align: middle;
+}
+
 /* F1 rows */
 .hobby-f1-results { display: flex; gap: 1.6rem; margin: 0.5rem 0; }
 

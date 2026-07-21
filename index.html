@@ -261,7 +261,7 @@
                         <div class="edu-card glass spotlight" data-reveal>
                             <span class="year-badge">2028</span>
                             <div class="school">
-                                <span class="logo-initials" aria-hidden="true">W</span>
+                                <img src="./images/exp/westcliff.png" alt="Westcliff University">
                                 <div>
                                     <h3>Westcliff University</h3>
                                     <p class="loc">Irvine, CA</p>
@@ -355,6 +355,12 @@
                         <span class="sec-ghost">05</span>
                     </div>
                     <div class="proj-grid">
+                        <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/shri-datta-madhira/f1" target="_blank" rel="noopener">
+                            <div class="top"><span class="year">2026 · Building</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
+                            <h3>F1 Race Predictor</h3>
+                            <p class="impact">Full-stack F1 analysis platform — a normalized <strong>PostgreSQL</strong> store bridging Ergast and OpenF1 data (1950–today), FastAPI backend, React + TypeScript frontend, and <strong>gradient-boosted top-5 finishing-order forecasts</strong> updated live during races.</p>
+                            <div class="tags"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React + TS</span><span class="chip">PostgreSQL</span><span class="chip">LightGBM</span></div>
+                        </a>
                         <a class="proj-card glass spotlight sheen" data-reveal href="https://github.com/shri-datta-madhira/Information-Retrieval/tree/main/HW-3" target="_blank" rel="noopener">
                             <div class="top"><span class="year">2022</span><span class="arrow"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8m9 0v9"/></svg></span></div>
                             <h3>Real-time Topical Search Engine</h3>
@@ -484,8 +490,10 @@
                                         <p class="hobby-aggregate-score" id="ucl-aggregate" style="display:none;"></p>
                                     </div>
                                     <div class="hobby-next-card" id="soccer-next">
-                                        <p class="hobby-result-label">Next Up · La Liga</p>
-                                        <p class="hobby-next-text">CA Osasuna <span style="opacity:0.5">vs</span> FC Barcelona — May 2, 2026</p>
+                                        <p class="hobby-result-label">Upcoming · FC Barcelona</p>
+                                        <div id="soccer-upcoming-list">
+                                            <p class="hobby-next-text">Loading fixtures…</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -506,10 +514,13 @@
                                         </div>
                                         <p class="hobby-result-date" id="f1-race-date"></p>
                                     </div>
+                                    <div class="hobby-next-card" id="f1-next-card" style="display:none;">
+                                        <p class="hobby-result-label">Upcoming · Races</p>
+                                        <div id="f1-next-list"></div>
+                                    </div>
                                     <div class="hobby-result-card">
-                                        <p class="hobby-result-label">2026 Season</p>
-                                        <p class="hobby-season-stat" id="f1-constructor-standing">3 podiums from 3 races — Mercedes' closest rival</p>
-                                        <p class="hobby-season-stat">Best starts on the grid 🔥</p>
+                                        <p class="hobby-result-label" id="f1-season-label">Season</p>
+                                        <p class="hobby-season-stat" id="f1-constructor-standing">Loading standings…</p>
                                     </div>
                                 </div>
                             </div>
