@@ -71,8 +71,6 @@
   color: var(--ink-3);
 }
 
-.footer-strip .made { display: inline-flex; align-items: center; gap: 0.4rem; }
-
 @media (max-width: 960px) {
   .contact-grid { grid-template-columns: 1fr; }
 }
