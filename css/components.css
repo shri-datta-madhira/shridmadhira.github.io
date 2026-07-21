@@ -196,6 +196,54 @@
 
 .modal-close-button:hover { color: var(--danger); border-color: var(--danger); transform: rotate(90deg); }
 
+/* ── Image lightbox ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: rgba(0, 9, 13, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active { opacity: 1; visibility: visible; }
+
+.lightbox img {
+  max-width: min(92vw, 1100px);
+  max-height: 86vh;
+  border-radius: 14px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  transform: scale(0.94);
+  transition: transform 0.35s var(--reveal-ease);
+  cursor: zoom-out;
+}
+
+.lightbox.active img { transform: none; }
+
+.lightbox-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #f0f5f3;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: all 0.25s ease;
+}
+
+.lightbox-close:hover { transform: rotate(90deg); border-color: #f0f5f3; }
+
 /* Modal inner content */
 .xp-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.3rem; }
 

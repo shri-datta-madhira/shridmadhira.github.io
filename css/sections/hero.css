@@ -87,6 +87,15 @@
   margin-bottom: 1.8rem;
 }
 
+.hero-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: -0.6rem 0 1.6rem;
+}
+
+.hero-domains .chip { font-size: 0.82rem; padding: 0.35rem 0.95rem; }
+
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; }
 
 /* Photo side */
@@ -168,6 +177,7 @@
   .hero-photo-col { order: -1; }
   .hero-desc, .hero-quote { margin-inline: auto; }
   .hero-quote { text-align: left; }
+  .hero-domains { justify-content: center; }
   .hero-ctas { justify-content: center; }
   .hero-stat.s1 { right: -6%; }
   .hero-stat.s2 { left: -8%; }

@@ -73,6 +73,24 @@
 
 .hobby-panel.active { opacity: 1; transform: none; pointer-events: auto; }
 
+/* Media panels (drawings, travel): no backdrop image or heading, the
+   pictures themselves fill the block */
+.hobby-panel--media { background: var(--bg-1); }
+
+.hobby-panel--media .hobby-panel-content {
+  color: var(--ink);
+  padding: 1rem 1.1rem;
+}
+
+.hobby-view-hint {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+.hobby-panel--media .hobby-view-hint { color: var(--ink-3); }
+
 .hobby-panel-bg {
   position: absolute;
   inset: 0;
@@ -105,21 +123,6 @@
   width: 52px;
   height: auto;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
-}
-
-.hobby-panel-badge {
-  align-self: flex-start;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #d8efe6;
-  padding: 0.3rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(10, 147, 150, 0.3);
-  border: 1px solid rgba(148, 210, 189, 0.4);
-  backdrop-filter: blur(6px);
-  margin-bottom: 0.8rem;
 }
 
 .hobby-panel-title {
@@ -239,26 +242,35 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.4rem;
+  flex: 1;
+  min-height: 0;
 }
 
 .drawing-carousel {
   display: flex;
+  align-items: stretch;
   gap: 0.75rem;
   overflow: hidden;
   scroll-behavior: smooth;
   flex: 1;
+  height: 100%;
 }
 
 .drawing-card {
-  flex: 0 0 230px;
-  height: 300px;
+  flex: 0 0 250px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--border-strong);
 }
 
-.drawing-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.drawing-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  cursor: zoom-in;
+}
+
 .drawing-card:hover img { transform: scale(1.06); }
 
 .carousel-btn {
@@ -294,11 +306,12 @@
   position: absolute;
   inset: 0;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.6s ease;
 }
 
-.hobby-slide.active { opacity: 1; }
-.hobby-slide img { width: 100%; height: 100%; object-fit: cover; }
+.hobby-slide.active { opacity: 1; pointer-events: auto; }
+.hobby-slide img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
 .hobby-slide-btn {
   position: absolute;

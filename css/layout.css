@@ -241,13 +241,14 @@ body.light-mode .panel:first-child::before {
   height: 7px;
   border-radius: 2px;
   background: var(--accent);
-  animation: wheel-drop 1.8s ease-in-out infinite;
+  animation: wheel-rise 1.8s ease-in-out infinite;
 }
 
-@keyframes wheel-drop {
-  0% { opacity: 0; transform: translateY(0); }
+/* Dot rises bottom-to-top, matching the upward swipe that advances the deck */
+@keyframes wheel-rise {
+  0% { opacity: 0; transform: translateY(10px); }
   30% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 0; transform: translateY(0); }
 }
 
 /* ── Mobile top bar + drawer (hidden on desktop) ── */

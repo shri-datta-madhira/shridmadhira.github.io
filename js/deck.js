@@ -89,9 +89,14 @@ function innerScrollConsumes(deltaY) {
   return (deltaY > 0 && !atBottom) || (deltaY < 0 && !atTop);
 }
 
+function overlayOpen() {
+  return document.getElementById('details-modal')?.classList.contains('active')
+      || document.getElementById('lightbox')?.classList.contains('active');
+}
+
 function onWheel(e) {
   if (!state.enabled) return;
-  if (e.target.closest('.modal-overlay')) return;
+  if (e.target.closest('.modal-overlay') || overlayOpen()) return;
   if (innerScrollConsumes(e.deltaY)) return;
   e.preventDefault();
   if (state.locked || Math.abs(e.deltaY) < 8) return;
@@ -105,7 +110,7 @@ function onTouchStart(e) {
 }
 
 function onTouchEnd(e) {
-  if (!state.enabled || touchStartY === null) return;
+  if (!state.enabled || touchStartY === null || overlayOpen()) return;
   const dy = touchStartY - e.changedTouches[0].clientY;
   touchStartY = null;
   if (Math.abs(dy) < 55 || innerScrollConsumes(dy)) return;
@@ -116,7 +121,7 @@ function onKey(e) {
   if (!state.enabled) return;
   const tag = document.activeElement?.tagName;
   if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-  if (document.getElementById('details-modal')?.classList.contains('active')) return;
+  if (overlayOpen()) return;
 
   const next = ['ArrowDown', 'PageDown'];
   const prev = ['ArrowUp', 'PageUp'];

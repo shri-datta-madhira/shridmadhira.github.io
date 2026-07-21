@@ -2,7 +2,37 @@
    hobbies.js — hobby selector, drawing carousel, travel slides
    ============================================================ */
 
+function initLightbox() {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  if (!lb || !img) return;
+
+  function open(src, alt) {
+    img.src = src;
+    img.alt = alt || 'Full size image';
+    lb.classList.add('active');
+  }
+
+  function close() {
+    lb.classList.remove('active');
+    setTimeout(() => { img.src = ''; }, 320);
+  }
+
+  document.querySelectorAll('.drawing-card img, .hobby-slide img').forEach(el => {
+    el.addEventListener('click', () => open(el.src, el.alt));
+  });
+
+  lb.addEventListener('click', close);
+  closeBtn?.addEventListener('click', close);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lb.classList.contains('active')) close();
+  });
+}
+
 export function initHobbies() {
+  initLightbox();
+
   // Panel selector
   document.querySelectorAll('.hobby-item').forEach(item => {
     function activate() {

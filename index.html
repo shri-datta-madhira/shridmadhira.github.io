@@ -165,6 +165,11 @@
                             What sets me apart: I think like a PM and build like an engineer: asking <em>why</em>
                             before <em>how</em>, and turning business problems into systems that scale.
                         </p>
+                        <div class="hero-domains" data-reveal>
+                            <span class="chip chip-accent">Fintech</span>
+                            <span class="chip chip-accent">Logistics</span>
+                            <span class="chip chip-accent">Biotech</span>
+                        </div>
                         <div class="hero-ctas" data-reveal>
                             <a href="#experience" class="btn btn-primary" data-deck-link="experience">
                                 View Experience
@@ -465,7 +470,6 @@
                                 <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/barca-stadium.jpg')"></div>
                                 <div class="hobby-panel-content">
                                     <img src="./images/hobbies/barca.png" alt="FC Barcelona" class="hobby-club-badge">
-                                    <div class="hobby-panel-badge">⚽ FC Barcelona</div>
                                     <h3 class="hobby-panel-title">FC Barcelona</h3>
                                     <p class="hobby-panel-sub">La Liga · Camp Nou</p>
                                     <div class="hobby-result-card" id="soccer-ll-result">
@@ -507,7 +511,6 @@
                                 <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/f1-track.jpg')"></div>
                                 <div class="hobby-panel-content">
                                     <img src="./images/hobbies/ferrari.png" alt="Ferrari" class="hobby-club-badge">
-                                    <div class="hobby-panel-badge">🏎 Scuderia Ferrari</div>
                                     <h3 class="hobby-panel-title">Scuderia Ferrari HP</h3>
                                     <p class="hobby-panel-sub">Drivers: Charles Leclerc · Lewis Hamilton</p>
                                     <div class="hobby-result-card">
@@ -530,12 +533,8 @@
                             </div>
 
                             <!-- Drawing -->
-                            <div class="hobby-panel" id="panel-drawing">
-                                <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80')"></div>
+                            <div class="hobby-panel hobby-panel--media" id="panel-drawing">
                                 <div class="hobby-panel-content">
-                                    <div class="hobby-panel-badge">✏️ Original Artwork</div>
-                                    <h3 class="hobby-panel-title">My Drawings</h3>
-                                    <p class="hobby-panel-sub">Mostly portraits and sketches</p>
                                     <div class="drawing-carousel-wrap">
                                         <button class="carousel-btn" id="drawing-prev" aria-label="Previous drawings"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
                                         <div class="drawing-carousel" id="drawing-carousel">
@@ -550,33 +549,31 @@
                                         <button class="carousel-btn" id="drawing-next" aria-label="Next drawings"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
                                     </div>
                                     <div class="drawing-carousel-dots" id="drawing-dots"></div>
+                                    <p class="hobby-view-hint">Click any drawing to see it up close.</p>
                                 </div>
                             </div>
 
                             <!-- Gaming -->
                             <div class="hobby-panel" id="panel-gaming">
-                                <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900&q=80')"></div>
+                                <div class="hobby-panel-bg" style="background-image: url('./images/hobbies/007-first-light.jpg')"></div>
                                 <div class="hobby-panel-content">
-                                    <div class="hobby-panel-badge">🎮 Currently Playing</div>
-                                    <h3 class="hobby-panel-title">Red Dead Redemption 2</h3>
-                                    <p class="hobby-panel-sub">Rockstar Games · Open World Epic</p>
-                                    <p class="hobby-panel-desc">One of the greatest games ever made. The story of Arthur Morgan is unmatched: the world, the characters, the detail. Never gets old.</p>
+                                    <h3 class="hobby-panel-title">007: First Light</h3>
+                                    <p class="hobby-panel-sub">Currently playing · IO Interactive</p>
+                                    <p class="hobby-panel-desc">A young James Bond earning his double-O status: stealth, gadgets, and pure spy fantasy from the studio behind Hitman.</p>
                                     <div class="hobby-games-grid">
                                         <div class="hobby-game-chip">Red Dead 2 ❤️</div>
                                         <div class="hobby-game-chip">GTA V</div>
                                         <div class="hobby-game-chip">Ghost of Tsushima</div>
                                         <div class="hobby-game-chip">FIFA</div>
+                                        <div class="hobby-game-chip">Spider-Man games</div>
+                                        <div class="hobby-game-chip">007: First Light</div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Travel -->
-                            <div class="hobby-panel" id="panel-travel">
-                                <div class="hobby-panel-bg" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80')"></div>
+                            <div class="hobby-panel hobby-panel--media" id="panel-travel">
                                 <div class="hobby-panel-content">
-                                    <div class="hobby-panel-badge">✈️ Recent Adventures</div>
-                                    <h3 class="hobby-panel-title">Traveling</h3>
-                                    <p class="hobby-panel-sub">Every photo tells a story</p>
                                     <div class="hobby-slideshow" id="travel-slideshow">
                                         <div class="hobby-slide active"><img src="./images/hobbies/travel/photo-1.jpg" alt="Travel photo 1"></div>
                                         <div class="hobby-slide"><img src="./images/hobbies/travel/photo-2.jpg" alt="Travel photo 2"></div>
@@ -593,6 +590,7 @@
                                         <button class="hobby-slide-btn next" aria-label="Next photo"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
                                         <div class="hobby-slide-dots" id="travel-dots"></div>
                                     </div>
+                                    <p class="hobby-view-hint">Click any photo to see it up close.</p>
                                 </div>
                             </div>
                         </div>
@@ -661,6 +659,12 @@
         </section>
     </main>
 
+    <!-- ═══ Image lightbox ═══ -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
     <!-- ═══ Modal ═══ -->
     <div id="details-modal" class="modal-overlay">
         <div class="modal-content">
@@ -692,6 +696,7 @@
                 <div class="stat-cell"><div class="v">91%</div><div class="l">code coverage</div></div>
                 <div class="stat-cell"><div class="v">500K+</div><div class="l">daily reminders</div></div>
                 <div class="stat-cell"><div class="v">10/12</div><div class="l">clean releases</div></div>
+                <div class="stat-cell"><div class="v">3</div><div class="l">end-to-end features</div></div>
             </div>
             <p class="xp-label">Technologies</p>
             <div class="pill-row">
