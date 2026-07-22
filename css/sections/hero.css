@@ -43,6 +43,7 @@
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: 1rem;
+  color: var(--section-accent, var(--accent));
 }
 
 .hero-type-row {

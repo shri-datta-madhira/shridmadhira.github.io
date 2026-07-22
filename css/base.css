@@ -153,6 +153,7 @@ body.light-mode #contact    { --section-accent: #005f73; }
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  color: var(--section-accent, var(--accent));
 }
 
 .sec-ghost {
