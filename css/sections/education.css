@@ -61,10 +61,7 @@
   font-size: 2.6rem;
   font-weight: 700;
   line-height: 1;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--section-accent, var(--accent));
 }
 
 .edu-card .gpa-of { font-size: 0.8rem; color: var(--ink-3); }

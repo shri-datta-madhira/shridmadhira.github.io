@@ -290,10 +290,7 @@
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--section-accent, var(--accent));
 }
 
 .stat-cell .l { font-size: 0.72rem; color: var(--ink-3); }

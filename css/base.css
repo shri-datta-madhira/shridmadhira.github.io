@@ -99,13 +99,31 @@ ul, ol { list-style: none; }
 /* ── Typography helpers ── */
 .display { font-family: var(--font-display); }
 
+/* Formerly a rainbow gradient; now a solid color that changes per section.
+   Each panel sets --section-accent (see below); elements outside a section
+   (the brand) fall back to the theme accent. */
 .gradient-text {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: var(--section-accent, var(--accent));
 }
+
+/* ── Per-section accent colors (solid, cycling the palette) ──
+   Base values read against the dark background; the light-mode overrides
+   below are tuned for the sand background, running teal → warm → red. */
+#about      { --section-accent: #94d2bd; }
+#experience { --section-accent: #0a9396; }
+#education  { --section-accent: #e9d8a6; }
+#skills     { --section-accent: #ee9b00; }
+#projects   { --section-accent: #ca6702; }
+#hobbies    { --section-accent: #ee9b00; }
+#contact    { --section-accent: #94d2bd; }
+
+body.light-mode #about      { --section-accent: #005f73; }
+body.light-mode #experience { --section-accent: #0a9396; }
+body.light-mode #education  { --section-accent: #ca6702; }
+body.light-mode #skills     { --section-accent: #bb3e03; }
+body.light-mode #projects   { --section-accent: #ae2012; }
+body.light-mode #hobbies    { --section-accent: #9b2226; }
+body.light-mode #contact    { --section-accent: #005f73; }
 
 /* Section heading block: eyebrow + title + ghost number */
 .sec-head { position: relative; margin-bottom: clamp(1.2rem, 2.5vh, 2.4rem); }
@@ -119,14 +137,14 @@ ul, ol { list-style: none; }
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--section-accent, var(--accent));
 }
 
 .sec-eyebrow::before {
   content: '';
   width: 2rem;
   height: 1px;
-  background: var(--gradient);
+  background: var(--section-accent, var(--accent));
 }
 
 .sec-title {

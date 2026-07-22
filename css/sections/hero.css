@@ -81,8 +81,7 @@
   font-style: italic;
   color: var(--ink);
   padding-left: 1.1rem;
-  border-left: 3px solid;
-  border-image: var(--gradient) 1;
+  border-left: 3px solid var(--section-accent, var(--accent));
   max-width: 52ch;
   margin-bottom: 1.8rem;
 }
@@ -150,10 +149,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.05rem;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--section-accent, var(--accent));
   white-space: nowrap;
 }
 
